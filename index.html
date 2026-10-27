@@ -210,9 +210,6 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .abt-cl:hover{color:#fff;text-decoration:underline}
 .abt-disc{font-size:.98rem;color:rgba(205,218,238,.75);line-height:1.65;font-style:italic;border-top:1px solid rgba(247,217,120,.16);padding-top:1rem;margin-top:.5rem}
 
-.abt-toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:.35rem 1.4rem;margin:.4rem 0 0}
-.abt-toc a{color:var(--cyan2);text-decoration:none;font-size:1.05rem;line-height:1.5;padding:.15rem 0;cursor:pointer}
-.abt-toc a:hover{color:#fff;text-decoration:underline}
 .abt-sum{background:rgba(247,217,120,.07);border:1px solid rgba(247,217,120,.3);border-radius:3px;padding:1.1rem 1.3rem}
 .abt-faq details{border:1px solid rgba(247,217,120,.2);border-radius:3px;background:rgba(0,20,55,.5);margin-bottom:.55rem}
 .abt-faq summary{cursor:pointer;padding:.8rem 1.05rem;font-size:1.08rem;font-weight:700;color:var(--cyan2);line-height:1.45}
@@ -223,6 +220,81 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .abt-tl dd{margin:0;font-size:1.06rem;line-height:1.58;color:rgba(235,242,255,.92);padding:.5rem 0;border-top:1px solid rgba(247,217,120,.14)}
 @media (max-width:640px){.abt-tl{grid-template-columns:1fr}.abt-tl dd{border-top:0;padding-top:0}}
 .abt-wrap{scroll-behavior:smooth}.abt-sh{scroll-margin-top:110px}
+
+.abt-toch{font-family:var(--F);font-size:.92rem;font-weight:800;letter-spacing:.2em;color:var(--cyan);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid rgba(247,217,120,.24);display:flex;align-items:center}
+.abt-toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:.5rem .9rem}
+.abt-toc a{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .8rem;border:1px solid rgba(247,217,120,.18);border-radius:3px;background:rgba(0,20,55,.45);text-decoration:none;cursor:pointer;transition:border-color .15s,background .15s}
+.abt-toc a:hover{border-color:var(--cyan);background:rgba(247,217,120,.08)}
+.abt-toc .tn{flex:0 0 auto;min-width:1.9rem;height:1.9rem;border-radius:50%;background:var(--cyan);color:#06142e;font-family:var(--F);font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.abt-toc .tt{display:block;color:#fff;font-size:1.02rem;font-weight:700;line-height:1.3}
+.abt-toc .td{display:block;color:rgba(200,215,240,.75);font-size:.88rem;line-height:1.35;margin-top:.15rem}
+.abt-n{display:inline-flex;align-items:center;justify-content:center;min-width:1.8rem;height:1.8rem;border-radius:50%;background:var(--cyan);color:#06142e;font-size:.8rem;letter-spacing:0;margin-right:.7rem;vertical-align:middle}
+.abt-top{display:block;text-align:right;margin-top:.9rem;font-family:var(--F);font-size:.62rem;letter-spacing:.14em;color:rgba(247,217,120,.6);cursor:pointer;text-decoration:none}
+.abt-top:hover{color:var(--cyan)}
+.abt-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:.8rem;margin-bottom:1rem}
+.abt-tile{background:linear-gradient(180deg,rgba(247,217,120,.12),rgba(247,217,120,.04));border:1px solid rgba(247,217,120,.3);border-radius:4px;padding:1rem 1.1rem;text-align:center}
+.abt-tile b{display:block;font-family:var(--F);font-size:1.7rem;color:var(--cyan);line-height:1.1;margin-bottom:.4rem}
+.abt-tile span{font-size:.98rem;color:rgba(235,242,255,.9);line-height:1.4}
+.abt-flowstrip{display:flex;flex-wrap:wrap;align-items:stretch;gap:.35rem;margin-top:1rem}
+.abt-flowstrip div{flex:1 1 130px;background:rgba(0,20,55,.6);border:1px solid rgba(247,217,120,.25);border-radius:3px;padding:.6rem .7rem;text-align:center;font-size:.98rem;color:#fff;line-height:1.3}
+.abt-flowstrip div b{display:block;color:var(--cyan);font-family:var(--F);font-size:1.1rem;margin-bottom:.2rem}
+.abt-flowstrip i{align-self:center;color:var(--cyan);font-style:normal;font-size:1.1rem}
+.abt-twin{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:.9rem;margin:1rem 0}
+.abt-yes,.abt-no{border-radius:4px;padding:1rem 1.2rem;font-size:1.04rem;line-height:1.55;color:rgba(235,242,255,.93)}
+.abt-yes{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.4)}
+.abt-no{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.4)}
+.abt-twh{font-family:var(--F);font-size:.82rem;font-weight:800;letter-spacing:.18em;margin-bottom:.5rem}
+.abt-yes .abt-twh{color:#4ade80}.abt-no .abt-twh{color:#f87171}
+.abt-yes ul,.abt-no ul{margin:0;padding-left:1.1rem}.abt-yes li,.abt-no li{margin-bottom:.35rem}
+ol.abt-line,ol.abt-pipe{list-style:none;margin:.4rem 0 0;padding:0;position:relative}
+ol.abt-line>li,ol.abt-pipe>li.abt-st{display:flex;gap:1rem;padding-bottom:1.1rem;position:relative}
+ol.abt-line>li::before,ol.abt-pipe>li.abt-st::before{content:"";position:absolute;left:1.05rem;top:2.2rem;bottom:0;width:2px;background:rgba(247,217,120,.3)}
+ol.abt-line>li:last-child::before,ol.abt-pipe>li.abt-st:last-child::before{display:none}
+.abt-dot{flex:0 0 auto;width:2.1rem;height:2.1rem;border-radius:50%;background:var(--cyan);color:#06142e;font-family:var(--F);font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
+.abt-tt{font-family:var(--F);font-size:.85rem;font-weight:800;letter-spacing:.08em;color:var(--cyan2);margin-bottom:.3rem;line-height:1.4}
+.abt-td,.abt-g{font-size:1.06rem;line-height:1.58;color:rgba(235,242,255,.92)}
+.abt-ad{display:inline-block;font-family:var(--F);font-size:.55rem;letter-spacing:.1em;padding:.1rem .4rem;border:1px solid rgba(247,217,120,.5);border-radius:2px;color:var(--cyan);vertical-align:middle;margin-left:.3rem}
+.abt-ad.k{border-color:rgba(120,200,255,.5);color:#9ad0ee}
+.abt-sub{font-family:var(--F);font-size:.78rem;font-weight:800;letter-spacing:.16em;color:#fff;margin:1.4rem 0 .6rem;padding-left:.7rem;border-left:3px solid var(--cyan)}
+.abt-rg{display:grid;grid-template-columns:minmax(260px,430px) 1fr;gap:1.4rem;align-items:center;margin-bottom:1rem}
+.abt-rings{width:100%;height:auto;background:radial-gradient(circle,rgba(0,40,110,.5),rgba(2,8,22,.2));border:1px solid rgba(247,217,120,.2);border-radius:4px}
+@media (max-width:760px){.abt-rg{grid-template-columns:1fr}}
+.abt-zt,.abt-mt{width:100%;border-collapse:collapse;font-size:1.02rem;color:rgba(235,242,255,.93)}
+.abt-zt th,.abt-zt td,.abt-mt th,.abt-mt td{border:1px solid rgba(247,217,120,.2);padding:.55rem .7rem;text-align:left}
+.abt-zt th,.abt-mt thead th{background:rgba(0,20,55,.8);font-family:var(--F);font-size:.68rem;letter-spacing:.1em;color:var(--cyan2)}
+.zc{display:inline-block;width:.8rem;height:.8rem;border-radius:50%;margin-right:.5rem;vertical-align:middle}
+.abt-mt th small{display:block;font-weight:400;letter-spacing:0;color:rgba(200,215,240,.7);font-size:.78rem}
+.abt-mt tbody th{background:rgba(0,20,55,.6);font-family:var(--F);font-size:.72rem;letter-spacing:.08em;color:#fff}
+.abt-mt td.abt-mx{text-align:center;font-family:var(--F);font-size:1.3rem;font-weight:800;color:#fff}
+.abt-mx.cr,.abt-mleg i.cr{background:#c0392b}.abt-mx.hi,.abt-mleg i.hi{background:#d97706}.abt-mx.mo,.abt-mleg i.mo{background:#b8860b}.abt-mx.mn,.abt-mleg i.mn{background:#4d7c3a}
+.abt-mleg{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;margin-top:.7rem;font-size:.95rem;color:rgba(235,242,255,.9)}
+.abt-mleg i{display:inline-block;width:.9rem;height:.9rem;border-radius:2px;margin-right:.4rem;vertical-align:middle}
+.abt-hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:.9rem;margin-top:.8rem}
+.abt-hc{background:rgba(0,20,55,.55);border:1px solid rgba(247,217,120,.2);border-top:4px solid;border-radius:3px;padding:.9rem 1.1rem}
+.abt-hh{font-family:var(--F);font-size:.72rem;font-weight:800;letter-spacing:.1em;color:#fff;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;line-height:1.4}
+.abt-hh i{flex:0 0 auto;width:.85rem;height:.85rem;border-radius:50%}
+.abt-ht{display:flex;flex-wrap:wrap;gap:.3rem .8rem;margin-bottom:.55rem}
+.abt-hr{font-size:.86rem;color:rgba(220,230,250,.85)}
+.abt-tr{display:inline-block;font-family:var(--F);font-size:.52rem;letter-spacing:.08em;font-weight:800;padding:.12rem .4rem;border-radius:2px;color:#fff;margin-left:.2rem;vertical-align:middle}
+.abt-tr.vh{background:#c0392b}.abt-tr.h{background:#d97706}.abt-tr.m{background:#b8860b}.abt-tr.l{background:#4d7c3a}
+.abt-hx{font-size:1rem;line-height:1.55;color:rgba(235,242,255,.9)}
+li.abt-ph{list-style:none;font-family:var(--F);font-size:.68rem;font-weight:800;letter-spacing:.2em;padding:.35rem .8rem;margin:.6rem 0 .8rem;border-radius:2px;color:#06142e;display:block}
+li.abt-ph.p1{background:#60a5fa}li.abt-ph.p2{background:#f7d978}li.abt-ph.p3{background:#4ade80}li.abt-ph.p4{background:#fb923c}
+li.abt-st.p1 .abt-dot{background:#60a5fa}li.abt-st.p2 .abt-dot{background:#f7d978}li.abt-st.p3 .abt-dot{background:#4ade80}li.abt-st.p4 .abt-dot{background:#fb923c}
+.abt-sb{flex:1;min-width:0}
+.abt-sb details{margin-top:.4rem}
+.abt-sb summary{cursor:pointer;color:var(--cyan2);font-size:.95rem;font-weight:700}
+.abt-sb .abt-iv{margin-top:.5rem;padding:.8rem 1rem;background:rgba(0,20,55,.55);border-left:3px solid rgba(247,217,120,.4);border-radius:2px}
+.abt-tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:.9rem}
+.abt-tg{background:rgba(0,20,55,.5);border:1px solid rgba(247,217,120,.2);border-radius:4px;padding:.9rem 1.1rem}
+.abt-tgh{font-family:var(--F);font-size:.74rem;font-weight:800;letter-spacing:.18em;color:var(--cyan);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid rgba(247,217,120,.2)}
+.abt-tool{padding:.55rem 0;border-top:1px solid rgba(247,217,120,.1)}
+.abt-tool:first-of-type{border-top:0}
+.abt-tool b{display:block;font-family:var(--F);font-size:.72rem;letter-spacing:.1em;color:#fff;margin-bottom:.25rem}
+.abt-tool span{font-size:1.02rem;line-height:1.55;color:rgba(235,242,255,.9)}
+.abt-flychips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .9rem}
+.fc{font-family:var(--F);font-size:.6rem;letter-spacing:.1em;font-weight:800;padding:.3rem .7rem;border-radius:2px;color:#06142e}
+.fc.hi{background:#f87171}.fc.me{background:#fbbf24}.fc.lo{background:#4ade80}.fc.pk{background:#fff}
 .abt-copy{font-family:var(--F);font-size:.62rem;letter-spacing:.14em;color:rgba(160,190,225,.55);text-align:center;padding:1rem 0 .3rem}
 
 /* ============================================================
@@ -403,6 +475,18 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 /* ADD AIRPORT OVERLAY */
 #addOL{position:fixed;inset:0;z-index:150;background:rgba(2,8,22,.85);display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
 #addOL.on{display:flex}
+#prnOL{position:fixed;inset:0;z-index:700;background:rgba(8,16,34,.6);display:none;align-items:center;justify-content:center;font-family:Arial,Helvetica,sans-serif}
+#prnOL.on{display:flex}
+.prn-box{width:min(560px,94vw);background:#fff;color:#1f2733;border-radius:6px;border-top:5px solid #b8860b;padding:1.3rem 1.5rem;box-shadow:0 12px 50px rgba(0,0,0,.4)}
+.prn-box h3{margin:0 0 .3rem;font-size:1.15rem;color:#0c1f3d}
+.prn-box p{margin:.2rem 0 .8rem;font-size:.92rem;color:#4a5568;line-height:1.5}
+.prn-box ol{margin:0 0 1rem 1.2rem;padding:0;font-size:.98rem;line-height:1.7}
+.prn-box li b{color:#0c1f3d}
+.prn-warn{background:#fdf3e3;border-left:4px solid #d97706;padding:.5rem .8rem;font-size:.9rem;margin-bottom:1rem;line-height:1.45}
+.prn-row{display:flex;gap:.6rem;justify-content:flex-end;align-items:center;flex-wrap:wrap}
+.prn-row label{margin-right:auto;font-size:.85rem;color:#4a5568}
+.prn-b{padding:.6rem 1.1rem;border:1px solid #0c1f3d;background:#fff;color:#0c1f3d;font-weight:700;cursor:pointer;border-radius:3px;font-size:.85rem}
+.prn-b.p{background:#0c1f3d;color:#fff}
 #pinOL{position:fixed;inset:0;z-index:150;background:rgba(2,8,22,.55);display:none;align-items:center;justify-content:center}
 #pinOL.on{display:flex}
 #infoTip{position:fixed;z-index:2000;max-width:min(330px,86vw);background:#071a38;border:1px solid rgba(247,217,120,.55);color:#eef4ff;font-family:var(--B);font-size:.82rem;line-height:1.5;padding:.6rem .75rem;border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.6);display:none;pointer-events:none;letter-spacing:.01em}
@@ -812,222 +896,140 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
     <div class="abt-body">
 
 
-      <!-- SUMMARY + CONTENTS -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; SUMMARY</div>
+
+      <div class="abt-sec" id="abtContents">
+        <div class="abt-toch">CONTENTS<span class="info-i" tabindex="0" aria-label="How to use the contents" data-info="Click any item to jump straight to that section. At the end of each section, the link BACK TO CONTENTS brings you back here. Use the CLOSE button at the top to return to the map.">i</span></div>
+        <div class="abt-toc" id="abtToc"></div>
+      </div>
+
+            <!-- S1 -->
+      <div class="abt-sec " id="abt1">
+        <div class="abt-sh" data-desc="The tool in one minute"><span class="abt-n">1</span>SUMMARY</div>
+
+        <div class="abt-tiles"><div class="abt-tile"><b>13 + 20 km</b><span>assessment rings around the Aerodrome Reference Point</span></div><div class="abt-tile"><b>11</b><span>habitat groups mapped and colour-coded</span></div><div class="abt-tile"><b>4</b><span>risk tiers: Critical, High, Moderate, Monitor</span></div><div class="abt-tile"><b>4</b><span>outputs: KML, KMZ, PDF report, Word report</span></div></div>
         <div class="abt-sum">
-          <div class="abt-p"><b>In one paragraph.</b> Type the four-letter ICAO code of an aerodrome (for example HECA, RJAA or KJFK). The application finds the Aerodrome Reference Point (ARP), flies the 3D globe to it and draws two rings, 13 km and 20 km. It then downloads mapped land-use and satellite water data for that area, classifies each feature as a wildlife attractant (water, waste, farming, vegetation and so on), gives it a risk tier based on its type and its distance from the ARP, and shows everything as clickable map features. You can correct the map, add your own features and pins, measure distances, and export the result as KML or KMZ for Google Earth, or as a printable report (PDF) and an editable Word file.</div>
+          <div class="abt-p"><b>In one paragraph.</b> Type the four-letter ICAO code of an aerodrome (for example HECA, RJAA or KJFK). The application finds the Aerodrome Reference Point (ARP), flies the 3D globe to it and draws two rings, 13 km and 20 km. It then downloads mapped land-use and satellite water data for that area, classifies each feature as a wildlife attractant (water, waste, farming, vegetation and so on), gives it a risk tier from its type and its distance from the ARP, and shows everything as clickable map features. You can correct the map, add your own features and pins, measure distances, and export the result as KML or KMZ for Google Earth, or as a printable report (PDF) and an editable Word file.</div>
           <div class="abt-p" style="margin-bottom:0"><b>What it is not.</b> It is an initial screening guide built on community-maintained OpenStreetMap data. It does not replace a field survey, a wildlife hazard assessment or the judgement of a qualified wildlife hazard specialist, and it is not certified for regulatory submission on its own.</div>
+        </div>
+        <div class="abt-flowstrip">
+          <div><b>1</b>Enter ICAO code</div><i>&#9656;</i><div><b>2</b>Locate ARP</div><i>&#9656;</i><div><b>3</b>3D approach</div><i>&#9656;</i><div><b>4</b>Rings and habitats</div><i>&#9656;</i><div><b>5</b>Click and verify</div><i>&#9656;</i><div><b>6</b>Export</div>
         </div>
       </div>
 
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; CONTENTS</div>
-        <div class="abt-toc" id="abtToc"></div>
-      </div>
-      <!-- WHAT IS IT -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; WHAT IS HABITAT SCANNER 3D?</div>
+            <!-- S2 -->
+      <div class="abt-sec " id="abt2">
+        <div class="abt-sh" data-desc="Purpose, audience and limits"><span class="abt-n">2</span>WHAT IT IS AND WHAT IT IS NOT</div>
+
         <div class="abt-p"><b>Habitat Scanner 3D</b> is a professional-grade aerodrome wildlife strike intelligence platform designed for aviation safety practitioners, wildlife hazard management teams, aerodrome operators, and safety regulators worldwide.</div>
         <div class="abt-p">By entering any ICAO airport code or GPS coordinates, the platform performs a <b>full 360&deg; geospatial habitat reconnaissance</b> within a 20&thinsp;km radius of the Aerodrome Reference Point (ARP). The virtual drone flies cinematically to the target aerodrome, orbits the ARP, and automatically overlays all surrounding land-use habitats and drainage networks, live-queried at scan time from OpenStreetMap, alongside the world's major migratory bird corridors shown as fixed reference geography (see Migratory Flyways below).</div>
+        <div class="abt-twin">
+          <div class="abt-yes"><div class="abt-twh">&#10003; IT IS</div><ul><li>A fast, consistent first look at the habitats and attractants around any aerodrome in the world.</li><li>A geographic basis for planning field work and for the Wildlife Hazard Management Programme (WHMP).</li><li>Transparent: every feature shows its class, distance, source and verification status.</li><li>Editable: you can add what the scan missed and correct what it got wrong.</li></ul></div>
+          <div class="abt-no"><div class="abt-twh">&#10007; IT IS NOT</div><ul><li>A certified survey or a Wildlife Hazard Assessment.</li><li>A measurement of bird numbers, species, movements or strike probability.</li><li>Complete: it can only show what OpenStreetMap and the satellite data contain.</li><li>A substitute for the judgement of a qualified wildlife hazard specialist.</li></ul></div>
+        </div>
         <div class="abt-p" style="background:rgba(239,68,68,.09);border:1px solid rgba(239,68,68,.35);border-radius:3px;padding:1rem 1.2rem"><b>This is a screening tool, not a certified survey.</b> Automated results are only as complete as current OpenStreetMap coverage in a given area, which varies substantially by region and is measurably lower in parts of the Middle East, Africa, and other areas than in Europe or North America. A blank area on the map means <i>no feature is currently mapped there</i>, not that no attractant exists. Every scan shows a data-confidence indicator, every automated feature is labelled with its verification status and OSM source, and users can manually flag attractants the automated scan missed. Automated output should be field-verified before it is relied on for an operational decision or a regulatory submission.</div>
       </div>
 
-      <!-- HOW IT WORKS -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; HOW IT WORKS</div>
-        <div class="abt-grid">
-          <div class="abt-it">
-            <div class="abt-il">STEP 1 &mdash; ENTER ICAO / GPS</div>
-            <div class="abt-iv">Type any 4-letter ICAO code (e.g. EGLL, KJFK, OMDB) or raw GPS coordinates. Tens of thousands of airports worldwide are supported (OurAirports database).</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 2 &mdash; CINEMATIC APPROACH</div>
-            <div class="abt-iv">A virtual reconnaissance drone navigates from global altitude, descends through the approach sector, and locks onto the ARP in a controlled orbit.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 3 &mdash; LIVE DATA OVERLAY</div>
-            <div class="abt-iv">Habitat polygons, waterway networks, radius rings, and migratory flyways are fetched live from OpenStreetMap Overpass API and rendered in 3D.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 4 &mdash; EXPLORE FREELY</div>
-            <div class="abt-iv">After one full orbit, unlock free 3D exploration: pan, zoom, tilt, and rotate the satellite view to inspect any area in detail.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 5 &mdash; FILTER &amp; COMPARE</div>
-            <div class="abt-iv">Toggle individual habitat categories and flyways on/off. Use <b>Add Airport</b> to overlay multiple aerodromes simultaneously for side-by-side comparison.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 6 &mdash; CLICK FOR FULL DETAIL</div>
-            <div class="abt-iv">Hover any habitat feature for a quick preview, or click (tap on mobile) for its full record: classification, coordinates, distance and area, verification status, OpenStreetMap source object and last-edit date, with a direct link to view or correct it on OpenStreetMap. Hover flyways for species, peak migration windows, and risk level.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">STEP 7 &mdash; VERIFY &amp; FILL GAPS</div>
-            <div class="abt-iv">Check the data-confidence indicator in the airport panel. In areas with sparse OpenStreetMap coverage, use <b>Add Feature</b> to record a real attractant you can identify from imagery or a site visit; it is exported alongside automated features but clearly marked as manually added.</div>
-          </div>
-        </div>
+            <!-- S3 -->
+      <div class="abt-sec " id="abt3">
+        <div class="abt-sh" data-desc="From ICAO code to map, in seven steps"><span class="abt-n">3</span>HOW IT WORKS</div>
+<ol class="abt-line"><li><span class="abt-dot">1</span><div><div class="abt-tt">Enter ICAO / GPS</div><div class="abt-td">Type any 4-letter ICAO code (e.g. EGLL, KJFK, OMDB) or raw GPS coordinates. Tens of thousands of airports worldwide are supported (OurAirports database).</div></div></li><li><span class="abt-dot">2</span><div><div class="abt-tt">Cinematic approach</div><div class="abt-td">A virtual reconnaissance drone navigates from global altitude, descends through the approach sector, and locks onto the ARP in a controlled orbit.</div></div></li><li><span class="abt-dot">3</span><div><div class="abt-tt">Live data overlay</div><div class="abt-td">Habitat polygons, waterway networks, radius rings, and migratory flyways are fetched live from OpenStreetMap Overpass API and rendered in 3D.</div></div></li><li><span class="abt-dot">4</span><div><div class="abt-tt">Explore freely</div><div class="abt-td">After one full orbit, unlock free 3D exploration: pan, zoom, tilt, and rotate the satellite view to inspect any area in detail.</div></div></li><li><span class="abt-dot">5</span><div><div class="abt-tt">Filter &amp; compare</div><div class="abt-td">Toggle individual habitat categories and flyways on/off. Use <b>Add Airport</b> to overlay multiple aerodromes simultaneously for side-by-side comparison.</div></div></li><li><span class="abt-dot">6</span><div><div class="abt-tt">Click for full detail</div><div class="abt-td">Hover any habitat feature for a quick preview, or click (tap on mobile) for its full record: classification, coordinates, distance and area, verification status, OpenStreetMap source object and last-edit date, with a direct link to view or correct it on OpenStreetMap. Hover flyways for species, peak migration windows, and risk level.</div></div></li><li><span class="abt-dot">7</span><div><div class="abt-tt">Verify &amp; fill gaps</div><div class="abt-td">Check the data-confidence indicator in the airport panel. In areas with sparse OpenStreetMap coverage, use <b>Add Feature</b> to record a real attractant you can identify from imagery or a site visit; it is exported alongside automated features but clearly marked as manually added.</div></div></li></ol>
       </div>
 
-      <!-- RADIUS RINGS -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; ASSESSMENT RADIUS RINGS &mdash; ICAO DOC 9137</div>
+            <!-- S4 -->
+      <div class="abt-sec " id="abt4">
+        <div class="abt-sh" data-desc="13 km and 20 km, and the zones A, B and C"><span class="abt-n">4</span>ASSESSMENT RADIUS RINGS (ICAO DOC 9137)</div>
+
+        <div class="abt-rg"><div class="abt-rgv"><svg class="abt-rings" viewBox="0 0 500 460" role="img" aria-label="Diagram of the assessment zones around the aerodrome reference point: Area A 0 to 3 km, Area B 3 to 8 km, Area C 8 to 13 km, Extended 13 to 20 km"><circle cx="230" cy="230" r="210" fill="#2f8f6a" fill-opacity="0.28" stroke="#ef4444" stroke-width="2" stroke-dasharray="8 6"/><circle cx="230" cy="230" r="136.5" fill="#d6a12a" fill-opacity="0.3" stroke="#ef4444" stroke-width="2" /><circle cx="230" cy="230" r="84" fill="#e07b24" fill-opacity="0.34" stroke="#e07b24" stroke-width="2" /><circle cx="230" cy="230" r="31.5" fill="#c0392b" fill-opacity="0.42" stroke="#c0392b" stroke-width="2" /><line x1="212" y1="233" x2="248" y2="227" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="230" cy="230" r="5" fill="#ff4d3d" stroke="#fff" stroke-width="2"/><text x="230" y="209" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">A</text><text x="230" y="223" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">0-3 km</text><text x="230" y="170.25" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">B</text><text x="230" y="184.25" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">3-8 km</text><text x="230" y="117.75" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">C</text><text x="230" y="131.75" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">8-13 km</text><text x="230" y="54.75" text-anchor="middle" fill="#fff" font-size="17" font-weight="800" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">Ext.</text><text x="230" y="68.75" text-anchor="middle" fill="#fff" font-size="10.5" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">13-20 km</text><text x="266.5" y="234" fill="#f7d978" font-size="11" font-family="Arial,sans-serif" font-weight="700">3 km</text><text x="319" y="234" fill="#f7d978" font-size="11" font-family="Arial,sans-serif" font-weight="700">8 km</text><text x="371.5" y="234" fill="#f7d978" font-size="11" font-family="Arial,sans-serif" font-weight="700">13 km</text><text x="396" y="252" fill="#f7d978" font-size="11" font-family="Arial,sans-serif" font-weight="700">20 km</text><text x="238" y="252" fill="#fff" font-size="10" font-family="Arial,sans-serif" paint-order="stroke" stroke="#06142e" stroke-width="3">ARP</text></svg></div><div class="abt-rgt">
         <div class="abt-p"><b>13 km Inner Ring (solid red):</b> The radius around the aerodrome reference point that ICAO guidance, including Doc 9137 (Airport Services Manual, Part 3, Wildlife Control and Reduction), uses for assessing wildlife attractants. Habitats and land uses inside this ring are the ones an aerodrome operator is expected to identify, assess and manage.</div>
         <div class="abt-p"><b>20 km Outer Ring (dashed red):</b> The extended reconnaissance zone used to identify external attractant pressure sources (e.g. landfills, reservoirs, wetlands, fish farms) that may draw high-risk species onto approach and departure corridors even when located outside the primary management boundary.</div>
+        </div></div>
+        <table class="abt-zt"><thead><tr><th>Zone</th><th>Distance from ARP</th><th>Weight</th><th>Source</th></tr></thead><tbody>
+<tr><td><i class="zc" style="background:#c0392b"></i>Area A</td><td>0 to 3 km</td><td>4</td><td>NASF Guideline C, Attachment 3</td></tr>
+<tr><td><i class="zc" style="background:#e07b24"></i>Area B</td><td>3 to 8 km</td><td>3</td><td>NASF Guideline C, Attachment 3</td></tr>
+<tr><td><i class="zc" style="background:#d6a12a"></i>Area C</td><td>8 to 13 km</td><td>2</td><td>NASF Guideline C; ICAO 13 km assessment radius</td></tr>
+<tr><td><i class="zc" style="background:#2f8f6a"></i>Extended</td><td>13 to 20 km</td><td>1</td><td>Precautionary buffer defined by this application</td></tr></tbody></table>
+        <div class="abt-p" style="margin-top:.8rem">Closer zones carry a higher weight because an attractant near the aerodrome puts birds on the approach and departure paths more often. The weights are used in the risk matrix in section 6.</div>
       </div>
 
-      <!-- HABITAT CLASSIFICATION -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; HABITAT CLASSIFICATION &amp; RISK SIGNIFICANCE</div>
-        <div class="abt-grid">
-          <div class="abt-it"><div class="abt-il">&#128994; FOREST / WOODLAND</div><div class="abt-iv">Primary nesting, roosting, and foraging habitat for raptors (buzzards, kestrels, kites), corvids, and a wide range of passerines. Dense woodland adjacent to runways increases raptor strike probability.</div></div>
-          <div class="abt-it"><div class="abt-il">&#128309; WATER BODIES / WETLANDS</div><div class="abt-iv">Critical habitat for waterfowl, wading birds, gulls, and herons. Open water on approach paths represents one of the highest strike-risk habitat types due to mass bird movement at dawn and dusk.</div></div>
-          <div class="abt-it"><div class="abt-il">&#129000; AGRICULTURAL / OPEN LAND</div><div class="abt-iv">Feeding grounds for large flocks of starlings, lapwings, rooks, and pigeons. Freshly ploughed fields attract corvids in numbers; harvested grain fields draw finches and buntings.</div></div>
-          <div class="abt-it"><div class="abt-il">&#9898; URBAN / BUILT-UP</div><div class="abt-iv">Urban areas support feral pigeons, herring gulls, kestrels, and peregrine falcons exploiting building ledges and refuse sites. Refuse collection points within 13 km are significant risk attractants.</div></div>
-          <div class="abt-it"><div class="abt-il">&#128994; PARKS / NATURE RESERVES</div><div class="abt-iv">Managed green spaces and protected areas can harbour significant bird populations. Nature reserves and golf courses are persistent attractants that may be legally difficult to mitigate.</div></div>
-          <div class="abt-it"><div class="abt-il">&#129001; SCRUB / GRASSLAND</div><div class="abt-iv">Short-grass areas on and near the aerodrome attract ground-nesting species (skylarks, lapwings) and small mammals that in turn attract predatory raptors onto the manoeuvring area.</div></div>
-          <div class="abt-it"><div class="abt-il">&#128997; LANDFILL / WASTE SITES</div><div class="abt-iv">The single highest-risk land-use type near any aerodrome. Active waste sites attract thousands of gulls, corvids, starlings, and raptors daily. Aviation guidance advises keeping waste sites well away from aerodromes; ICAO uses 13 km from the reference point as its assessment distance.</div></div>
-          <div class="abt-it"><div class="abt-il">&#128995; WASTEWATER / SEWAGE</div><div class="abt-iv">Sewage treatment works with settling lagoons are highly attractive to gulls, herons, waders, and swallows year-round. A significant and often underappreciated strike risk source near major airports.</div></div>
-          <div class="abt-it"><div class="abt-il">&#129000; FARMYARD / LIVESTOCK</div><div class="abt-iv">Poultry farms, feedlots, and livestock enclosures attract corvids (especially rooks and jackdaws) and raptors. Grain storage near aerodromes draws pigeons and sparrows in large numbers.</div></div>
-          <div class="abt-it"><div class="abt-il">&#128992; AQUACULTURE / FISHERY</div><div class="abt-iv">Fish farms and fishery ponds are potent attractants for herons, cormorants, ospreys, and kingfishers. Even small fish ponds within the 13 km zone can sustain persistent bird activity on approach paths.</div></div>
-          <div class="abt-it"><div class="abt-il">&#129001; SAND / BARE GROUND</div><div class="abt-iv">Unvegetated sand or bare ground offers little food or cover, so it is a weak attractant on its own. It is mapped for completeness and rated low. Beaches and shorelines are classified separately, under Water Bodies &amp; Shoreline.</div></div>
-        </div>
+            <!-- S5 -->
+      <div class="abt-sec " id="abt5">
+        <div class="abt-sh" data-desc="Ten groups, with the attractant level of each"><span class="abt-n">5</span>HABITAT CLASSIFICATION &amp; RISK SIGNIFICANCE</div>
+
+        <div class="abt-p">Each mapped feature is assigned to one class. The coloured label shows the documented attractant level of the class (VERY HIGH, HIGH, MODERATE or LOW), taken from FAA AC 150/5200-33B and ICAO Doc 9137. The level is then combined with the zone to give the risk tier (section 6). Built-up land (residential, commercial, industrial) is not fetched; any water or waste inside it is mapped as its own class.</div>
+        <div class="abt-hgrid"><div class="abt-hc" style="border-top-color:#3b82f6"><div class="abt-hh"><i style="background:#3b82f6"></i>WATER BODIES &amp; SHORELINE</div><div class="abt-ht"><span class="abt-hr">Water <span class="abt-tr vh">VERY HIGH</span></span><span class="abt-hr">Beach / shoreline <span class="abt-tr h">HIGH</span></span></div><div class="abt-hx">Critical habitat for waterfowl, wading birds, gulls and herons. Open water on approach paths is one of the highest strike-risk habitat types because of mass movement at dawn and dusk. Beaches and shorelines concentrate gulls and shorebirds.</div></div><div class="abt-hc" style="border-top-color:#14b8a6"><div class="abt-hh"><i style="background:#14b8a6"></i>WETLANDS &amp; MARSHES</div><div class="abt-ht"><span class="abt-hr">Wetland <span class="abt-tr vh">VERY HIGH</span></span></div><div class="abt-hx">Natural or artificial marshes are named attractants that guidance recommends siting away from aerodromes. They hold waterfowl, waders and raptors throughout the year.</div></div><div class="abt-hc" style="border-top-color:#c2410c"><div class="abt-hh"><i style="background:#c2410c"></i>LANDFILL / WASTE SITES</div><div class="abt-ht"><span class="abt-hr">Waste <span class="abt-tr vh">VERY HIGH</span></span></div><div class="abt-hx">The single highest-risk land-use type near any aerodrome. Active waste sites draw thousands of gulls, corvids, starlings and raptors daily. ICAO uses 13 km from the reference point as its assessment distance.</div></div><div class="abt-hc" style="border-top-color:#8b5cf6"><div class="abt-hh"><i style="background:#8b5cf6"></i>WASTEWATER TREATMENT</div><div class="abt-ht"><span class="abt-hr">Wastewater <span class="abt-tr vh">VERY HIGH</span></span></div><div class="abt-hx">Treatment works with settling lagoons are highly attractive to gulls, herons, waders and swallows all year, and are often an underestimated strike-risk source near major airports.</div></div><div class="abt-hc" style="border-top-color:#f59e0b"><div class="abt-hh"><i style="background:#f59e0b"></i>FARMS &amp; LIVESTOCK</div><div class="abt-ht"><span class="abt-hr">Farmyard / livestock <span class="abt-tr h">HIGH</span></span><span class="abt-hr">Aquaculture / fishery <span class="abt-tr h">HIGH</span></span></div><div class="abt-hx">Poultry farms, feedlots and livestock enclosures attract corvids (especially rooks and jackdaws), raptors and starlings. Fish farms and fishery ponds attract herons, cormorants, ospreys and gulls, even when small.</div></div><div class="abt-hc" style="border-top-color:#a3e635"><div class="abt-hh"><i style="background:#a3e635"></i>AGRICULTURAL &amp; OPEN VEGETATION</div><div class="abt-ht"><span class="abt-hr">Cropland <span class="abt-tr h">HIGH</span></span><span class="abt-hr">Orchard, pasture, grassland <span class="abt-tr m">MODERATE</span></span><span class="abt-hr">Scrub, heath <span class="abt-tr l">LOW</span></span></div><div class="abt-hx">Feeding grounds for flocks of starlings, lapwings, rooks and pigeons. Ploughed or harvested fields draw corvids and finches in numbers. Open grassland supports rodents and insects that attract raptors.</div></div><div class="abt-hc" style="border-top-color:#22c55e"><div class="abt-hh"><i style="background:#22c55e"></i>FOREST &amp; WOODLAND</div><div class="abt-ht"><span class="abt-hr">Forest <span class="abt-tr m">MODERATE</span></span></div><div class="abt-hx">Nesting, roosting and perching habitat for raptors, corvids and many passerines. Dense woodland beside runways raises the chance of raptor strikes.</div></div><div class="abt-hc" style="border-top-color:#16a34a"><div class="abt-hh"><i style="background:#16a34a"></i>PARKS, NATURE RESERVES &amp; GOLF</div><div class="abt-ht"><span class="abt-hr">Nature reserve <span class="abt-tr h">HIGH</span></span><span class="abt-hr">Golf course, park <span class="abt-tr m">MODERATE</span></span></div><div class="abt-hx">Managed green spaces and protected areas can hold large bird populations, and are persistent attractants that may be legally difficult to change. Golf turf and water hazards attract geese, gulls and starlings.</div></div><div class="abt-hc" style="border-top-color:#d9f99d"><div class="abt-hh"><i style="background:#d9f99d"></i>MOWN GRASS (LAWNS, VERGES, AIRFIELD)</div><div class="abt-ht"><span class="abt-hr">Mown grass <span class="abt-tr l">LOW</span></span></div><div class="abt-hx">Short turf has modest value on its own but can hold loafing gulls, geese and starlings. It is drawn only from 1 ha upward so road verges do not clutter the map.</div></div><div class="abt-hc" style="border-top-color:#a8a29e"><div class="abt-hh"><i style="background:#a8a29e"></i>SAND &amp; BARE GROUND</div><div class="abt-ht"><span class="abt-hr">Bare ground <span class="abt-tr l">LOW</span></span></div><div class="abt-hx">Little food or cover, so a weak attractant on its own. It is mapped for completeness and rated low.</div></div></div>
         <div class="abt-p" style="margin-top:1rem"><b>&#9472; Drainage / Waterways (blue lines):</b> Drains, ditches, canals, streams, and rivers mapped as linear features. These corridors attract wading birds and waterfowl and act as movement highways for birds through and across the aerodrome perimeter. Even narrow drainage channels on the airfield itself represent a strike risk in wet conditions.</div>
       </div>
 
-      <!-- HOW THE MAP IS BUILT (Ver33) -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; HOW THE MAP IS BUILT, STEP BY STEP</div>
+            <!-- S6 -->
+      <div class="abt-sec " id="abt6">
+        <div class="abt-sh" data-desc="Attractant level multiplied by zone weight"><span class="abt-n">6</span>HOW RISK IS SCORED</div>
+
+        <div class="abt-p">Each feature receives a score: <b>attractant level weight (1 to 4) multiplied by zone weight (1 to 4)</b>. The table shows every possible result. Example: a landfill (VERY HIGH, 4) in Area A (4) scores 16 and is a critical hotspot; the same landfill in the 13 to 20 km extended buffer (1) scores 4 and is moderate.</div>
+        <table class="abt-mt"><thead><tr><th>Attractant level</th><th>Zone A<small>weight 4</small></th><th>Zone B<small>weight 3</small></th><th>Zone C<small>weight 2</small></th><th>Zone Ext.<small>weight 1</small></th></tr></thead><tbody><tr><th>VERY HIGH<small>weight 4</small></th><td class="abt-mx cr">16</td><td class="abt-mx cr">12</td><td class="abt-mx hi">8</td><td class="abt-mx mo">4</td></tr><tr><th>HIGH<small>weight 3</small></th><td class="abt-mx cr">12</td><td class="abt-mx hi">9</td><td class="abt-mx mo">6</td><td class="abt-mx mn">3</td></tr><tr><th>MODERATE<small>weight 2</small></th><td class="abt-mx hi">8</td><td class="abt-mx mo">6</td><td class="abt-mx mo">4</td><td class="abt-mx mn">2</td></tr><tr><th>LOW<small>weight 1</small></th><td class="abt-mx mo">4</td><td class="abt-mx mn">3</td><td class="abt-mx mn">2</td><td class="abt-mx mn">1</td></tr></tbody></table><div class="abt-mleg"><span><i class="cr"></i>12 to 16 CRITICAL HOTSPOT</span><span><i class="hi"></i>8 to 11 HIGH CONCERN</span><span><i class="mo"></i>4 to 7 MODERATE</span><span><i class="mn"></i>1 to 3 MONITOR ONLY</span></div>
+        <div class="abt-p" style="margin-top:.8rem">This is a rule-based screening score, not a statistical model and not a measured strike probability. Size and species-specific factors are not in the score. A cluster flag (different strong attractants within 1 km of each other, all inside 13 km) is shown separately and never changes a feature score.</div>
+      </div>
+
+            <!-- S7 -->
+      <div class="abt-sec " id="abt7">
+        <div class="abt-sh" data-desc="Ten processing steps, in order"><span class="abt-n">7</span>HOW THE MAP IS BUILT, STEP BY STEP</div>
+
         <div class="abt-p">This section states exactly what the scanner does to the data, so a specialist can judge what the map can and cannot support. Items marked <b>app-defined</b> are screening choices made for this tool; they are not published standards and are not claimed to be.</div>
-        <div class="abt-grid">
-          <div class="abt-it"><div class="abt-il">1 &mdash; FETCH</div><div class="abt-iv">The scan asks OpenStreetMap (via the Overpass service) for six separate query parts. Critical attractants (open water, wetlands, waste, wastewater, fish farms, livestock and poultry sites, waterways, runways) are fetched across the full 20 km. Generic cover (forest and woods, grass and meadow, farmland, orchards, scrub, heath, beach and sand, cemeteries, recreation grounds, parks and gardens) is fetched only within 13 km. Built-up land (residential, commercial, industrial) is not fetched. If any part fails, the scan is marked INCOMPLETE and says which part is missing; the result is never presented as complete.</div></div>
-          <div class="abt-it"><div class="abt-il">2 &mdash; CLASSIFY</div><div class="abt-iv">Each OpenStreetMap object is assigned one habitat class from its tags (for example natural=water to Water Body, landuse=landfill to Landfill / Waste Site, landuse=grass to Mown Grass, landuse=meadow to Pasture / Meadow). Each class carries an attractant tier: very high, high, moderate or low, with the source cited in the click panel (FAA AC 150/5200-33C, ICAO Doc 9137 and related guidance).</div></div>
-          <div class="abt-it"><div class="abt-il">3 &mdash; REMOVE FALSE POINTS</div><div class="abt-iv">Dumpsters and recycling bins are not landfills. They are left out unless a mapped outline of 1 ha or more exists. Each scan reports how many were left out. Multi-part features that come back without an outline are not drawn as boxes; they are listed in the diagnostics.</div></div>
-          <div class="abt-it"><div class="abt-il">4 &mdash; DISTANCE AND ZONE</div><div class="abt-iv">Distance is measured from the reference point to the nearest edge of the feature (to the centre for point-only features; to the nearest shore for large water). Zones: Area A 0 to 3 km, Area B 3 to 8 km, Area C 8 to 13 km (the ICAO assessment radius), and an extended 13 to 20 km buffer. The A, B, C split follows the Australian NASF Guideline C; the 20 km buffer is app-defined.</div></div>
-          <div class="abt-it"><div class="abt-il">5 &mdash; MINIMUM MAPPING UNIT (app-defined)</div><div class="abt-iv">Features smaller than a threshold are not drawn by default, to keep the map readable and fast, but they are kept for the report and KML and are flagged there. Water, wetland, waste, wastewater, farms and fish farms: 0.05 ha in Area A, 0.25 ha in B, 1 ha in C and beyond. All other classes: 0.25 ha in A, 1 ha in B, 4 ha in C and beyond. Mown grass: never below 1 ha. A switch in the legend shows the hidden features. Because they are hidden only on the map, a small pond can appear in a report and not on screen.</div></div>
-          <div class="abt-it"><div class="abt-il">6 &mdash; OVERLAPS (drawing only, app-defined)</div><div class="abt-iv">OpenStreetMap often stacks polygons (a pond inside a park, a landfill inside industrial land). For drawing, the more significant class wins the overlapping area, in this order: waste, wastewater, fish farms, livestock sites; then open water; wetland; farmland and orchards; golf courses; grass, meadow, scrub, heath, beach, bare ground; forest. Parks and nature reserves are drawn as dashed outlines only and never hide anything. Areas, distances, scores and the KML always use the true, untrimmed footprints.</div></div>
-          <div class="abt-it"><div class="abt-il">7 &mdash; WATER CROSS-CHECK</div><div class="abt-iv">Where available, ESA WorldCover satellite water (10 m pixels, via Google Earth Engine) is drawn faintly as a cross-check. Its outlines are generalised and can be oversized, so it is labelled satellite-derived, is never used to delete an OpenStreetMap feature, and is not used in the combined-attractant test. Water larger than 3 km2 inside the circle is shown as a thin shoreline with a callout, not a filled polygon.</div></div>
-          <div class="abt-it"><div class="abt-il">8 &mdash; SCORE</div><div class="abt-iv">Each feature: attractant severity weight (1 to 4) multiplied by zone weight (1 to 4). A score of 12 or more is CRITICAL HOTSPOT, 8 to 11 HIGH CONCERN, 4 to 7 MODERATE, below 4 MONITOR ONLY. This is a rule-based screening score, not a statistical model and not a measured strike probability. Size and species-specific factors are not in the score.</div></div>
-          <div class="abt-it"><div class="abt-il">9 &mdash; COMBINED ATTRACTANTS (app-defined)</div><div class="abt-iv">Two or more different very-high or high classes within 1 km of each other, all inside 13 km, are flagged as a cluster (FAA AC 150/5200-33C, 2.10: separately acceptable land uses can together form a wildlife corridor). The flag adds information; it never changes a feature score.</div></div>
-          <div class="abt-it"><div class="abt-il">10 &mdash; REPORT, KML AND BATCH</div><div class="abt-iv">The report and KML carry the scan time, the OpenStreetMap retrieval time, data-confidence checks, counts of features retrieved and below the mapping unit, overlaps resolved, containers left out, and the combined clusters. Batch mode applies the same scan to a list of airports and keeps only a summary per airport; its counts are a screening summary, not a risk score.</div></div>
-        </div>
+        <ol class="abt-pipe"><li class="abt-ph p1">DATA IN</li><li class="abt-st p1"><span class="abt-dot">1</span><div class="abt-sb"><div class="abt-tt">Fetch </div><div class="abt-g">Download the mapped features from OpenStreetMap in six separate parts.</div><details><summary>Full explanation</summary><div class="abt-iv">The scan asks OpenStreetMap (via the Overpass service) for six separate query parts. Critical attractants (open water, wetlands, waste, wastewater, fish farms, livestock and poultry sites, waterways, runways) are fetched across the full 20 km. Generic cover (forest and woods, grass and meadow, farmland, orchards, scrub, heath, beach and sand, cemeteries, recreation grounds, parks and gardens) is fetched only within 13 km. Built-up land (residential, commercial, industrial) is not fetched. If any part fails, the scan is marked INCOMPLETE and says which part is missing; the result is never presented as complete.</div></details></div></li><li class="abt-st p1"><span class="abt-dot">2</span><div class="abt-sb"><div class="abt-tt">Classify </div><div class="abt-g">Give each object one habitat class from its tags.</div><details><summary>Full explanation</summary><div class="abt-iv">Each OpenStreetMap object is assigned one habitat class from its tags (for example natural=water to Water Body, landuse=landfill to Landfill / Waste Site, landuse=grass to Mown Grass, landuse=meadow to Pasture / Meadow). Each class carries an attractant tier: very high, high, moderate or low, with the source cited in the click panel (FAA AC 150/5200-33C, ICAO Doc 9137 and related guidance).</div></details></div></li><li class="abt-st p1"><span class="abt-dot">3</span><div class="abt-sb"><div class="abt-tt">Remove false points </div><div class="abt-g">Drop dumpsters and recycling bins that are not landfills.</div><details><summary>Full explanation</summary><div class="abt-iv">Dumpsters and recycling bins are not landfills. They are left out unless a mapped outline of 1 ha or more exists. Each scan reports how many were left out. Multi-part features that come back without an outline are not drawn as boxes; they are listed in the diagnostics.</div></details></div></li><li class="abt-ph p2">MEASURE AND FILTER</li><li class="abt-st p2"><span class="abt-dot">4</span><div class="abt-sb"><div class="abt-tt">Distance and zone </div><div class="abt-g">Measure from the reference point and place each feature in a zone.</div><details><summary>Full explanation</summary><div class="abt-iv">Distance is measured from the reference point to the nearest edge of the feature (to the centre for point-only features; to the nearest shore for large water). Zones: Area A 0 to 3 km, Area B 3 to 8 km, Area C 8 to 13 km (the ICAO assessment radius), and an extended 13 to 20 km buffer. The A, B, C split follows the Australian NASF Guideline C; the 20 km buffer is app-defined.</div></details></div></li><li class="abt-st p2"><span class="abt-dot">5</span><div class="abt-sb"><div class="abt-tt">Minimum mapping unit <span class="abt-ad">app-defined</span></div><div class="abt-g">Hide very small features on screen; keep them in counts, report and KML.</div><details><summary>Full explanation</summary><div class="abt-iv">Features smaller than a threshold are not drawn by default, to keep the map readable and fast, but they are kept for the report and KML and are flagged there. Water, wetland, waste, wastewater, farms and fish farms: 0.05 ha in Area A, 0.25 ha in B, 1 ha in C and beyond. All other classes: 0.25 ha in A, 1 ha in B, 4 ha in C and beyond. Mown grass: never below 1 ha. A switch in the legend shows the hidden features. Because they are hidden only on the map, a small pond can appear in a report and not on screen.</div></details></div></li><li class="abt-ph p3">DRAW</li><li class="abt-st p3"><span class="abt-dot">6</span><div class="abt-sb"><div class="abt-tt">Overlaps <span class="abt-ad">app-defined</span></div><div class="abt-g">Draw one answer per place: the more significant class wins.</div><details><summary>Full explanation</summary><div class="abt-iv">OpenStreetMap often stacks polygons (a pond inside a park, a landfill inside industrial land). For drawing, the more significant class wins the overlapping area, in this order: waste, wastewater, fish farms, livestock sites; then open water; wetland; farmland and orchards; golf courses; grass, meadow, scrub, heath, beach, bare ground; forest. Parks and nature reserves are drawn as dashed outlines only and never hide anything. Areas, distances, scores and the KML always use the true, untrimmed footprints.</div></details></div></li><li class="abt-st p3"><span class="abt-dot">7</span><div class="abt-sb"><div class="abt-tt">Water cross-check </div><div class="abt-g">Compare with satellite water; never delete OpenStreetMap features with it.</div><details><summary>Full explanation</summary><div class="abt-iv">Where available, ESA WorldCover satellite water (10 m pixels, via Google Earth Engine) is drawn faintly as a cross-check. Its outlines are generalised and can be oversized, so it is labelled satellite-derived, is never used to delete an OpenStreetMap feature, and is not used in the combined-attractant test. Water larger than 3 km2 inside the circle is shown as a thin shoreline with a callout, not a filled polygon.</div></details></div></li><li class="abt-ph p4">SCORE AND REPORT</li><li class="abt-st p4"><span class="abt-dot">8</span><div class="abt-sb"><div class="abt-tt">Score </div><div class="abt-g">Attractant level times zone weight gives the risk tier.</div><details><summary>Full explanation</summary><div class="abt-iv">Each feature: attractant severity weight (1 to 4) multiplied by zone weight (1 to 4). A score of 12 or more is CRITICAL HOTSPOT, 8 to 11 HIGH CONCERN, 4 to 7 MODERATE, below 4 MONITOR ONLY. This is a rule-based screening score, not a statistical model and not a measured strike probability. Size and species-specific factors are not in the score.</div></details></div></li><li class="abt-st p4"><span class="abt-dot">9</span><div class="abt-sb"><div class="abt-tt">Combined attractants <span class="abt-ad">app-defined</span></div><div class="abt-g">Flag different strong attractants lying within 1 km of each other.</div><details><summary>Full explanation</summary><div class="abt-iv">Two or more different very-high or high classes within 1 km of each other, all inside 13 km, are flagged as a cluster (FAA AC 150/5200-33C, 2.10: separately acceptable land uses can together form a wildlife corridor). The flag adds information; it never changes a feature score.</div></details></div></li><li class="abt-st p4"><span class="abt-dot">10</span><div class="abt-sb"><div class="abt-tt">Report, kml and batch </div><div class="abt-g">Package the results together with their data-quality checks.</div><details><summary>Full explanation</summary><div class="abt-iv">The report and KML carry the scan time, the OpenStreetMap retrieval time, data-confidence checks, counts of features retrieved and below the mapping unit, overlaps resolved, containers left out, and the combined clusters. Batch mode applies the same scan to a list of airports and keeps only a summary per airport; its counts are a screening summary, not a risk score.</div></details></div></li></ol>
         <div class="abt-p" style="background:rgba(239,68,68,.09);border:1px solid rgba(239,68,68,.35);border-radius:3px;padding:1rem 1.2rem"><b>What this map cannot tell you:</b> OpenStreetMap is community-maintained. Coverage is thinner in parts of Africa, the Middle East and Asia than in Europe and North America, and an unmapped landfill, farm or pond is simply absent. The scanner cannot see seasonal flooding, active feeding, bird counts or species. Treat every result as a guide for field verification and for the aerodrome's own wildlife hazard assessment, not as a substitute for either.</div>
       </div>
 
-      <!-- DATA SOURCES, VERIFICATION & EXPORT -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; DATA SOURCES, VERIFICATION &amp; EXPORT</div>
-        <div class="abt-p"><b>Primary data:</b> OpenStreetMap, queried live via the Overpass API at scan time (&copy; OpenStreetMap contributors, Open Database Licence). <b>Optional context layer:</b> ESA WorldCover 10&thinsp;m global land cover (CC BY 4.0), toggled from the airport panel &mdash; useful in areas with limited local OpenStreetMap detail, though it cannot distinguish specific attractant types such as a landfill from bare ground.</div>
-        <div class="abt-p"><b>Evidentiary status:</b> every feature is labelled AUTOMATED (OpenStreetMap-sourced) or MANUAL (added by a user of this tool), and automated features additionally show whether OpenStreetMap maps a real boundary or only a point location. Automated features carry their OpenStreetMap object ID and last-edited date where available, and link directly to the live OpenStreetMap object.</div>
-        <div class="abt-p"><b>Export:</b> KML export includes an embedded methodology/limitations statement, the scan timestamp, and per-feature status and source metadata, so the file remains self-explanatory wherever it is opened or forwarded. KMZ export is planned but not yet implemented; the current KML opens directly in Google Earth and Google Earth Pro.</div>
-        <div class="abt-p"><b>Display rules (Ver26):</b> generic cover (forest, grass, farmland, parks) is fetched only within 13 km; critical attractants (open water, wetland, waste, wastewater, aquaculture, livestock, golf, reserves) are fetched to 20 km. Features smaller than an app-defined minimum size for their distance are hidden by default (still in report and KML; toggle in the legend). Large water labels appear only for named water within 13 km (max 6). Runway sectors are off by default. Full methodology text follows in a later version.</div>
-        <div class="abt-p"><b>Many airports at once (Ver30):</b> scans are queued two at a time, overlap resolution runs one airport at a time in the background, and finishing one airport no longer redraws the others. Habitat polygons are drawn only when zoomed in to about 7 or closer; the rings and pins stay visible at any zoom. Large numbers of airports in one session still use a lot of memory in the browser; for dozens of airports, scan and export them in batches.</div>
-        <div class="abt-p"><b>Batch mode (Ver31):</b> paste a list of ICAO codes and the app scans them one at a time, with pauses so the public OpenStreetMap servers are not overloaded, and builds a summary table (very-high attractant counts by distance zone, high, moderate and low counts, nearest very-high attractant, data status). Only a summary is kept per airport, so memory stays flat. The table downloads as CSV. OPEN loads one airport on the map in full detail. Incomplete scans are retried automatically and marked INCOMPLETE if they still fail. Counts are a screening summary, not a risk score.</div>
-        <div class="abt-p"><b>Combined attractants (Ver32):</b> FAA AC 150/5200-33C (2.10) notes that land uses that are acceptable on their own can together form a wildlife corridor. The app flags a cluster when two or more different higher-severity classes (very high or high tier) lie within 1 km of each other, edge to edge, inside the 13 km zone. This 1 km rule is an app-defined screening choice, not a published standard. Small features below the minimum mapping unit, park and nature-reserve overlays, and satellite-derived water polygons are not tested. The flag appears in the click panel, the report (Section 3) and the KML, and never changes a single feature score. Reports and KML also state how many features are below the minimum mapping unit.</div>
-        <div class="abt-p"><b>Mown grass is not pasture (Ver29):</b> OpenStreetMap landuse=grass (lawns, road verges, interchange infields, airfield grass) is now its own class, "Mown / Amenity Grass", rated LOW and ranked just below pasture. It has its own legend switch and is only drawn from 1 ha upward (an app-defined size limit), so road verges and small infields do not clutter the map; larger areas such as airfield grass and big lawns remain. Only landuse=meadow is called "Pasture / Meadow". Polygons are draped on the ground, so grass beneath a flyover or bridge is drawn where it really lies, which can look as if it sits on the road.</div>
-        <div class="abt-p"><b>Waste containers are not landfills (Ver28b):</b> dumpsters, skips and recycling bins (OpenStreetMap amenity=waste_disposal, and amenity=recycling that is not a recycling centre) are street furniture, so they are not mapped as waste sites. Landfills, waste transfer stations, recycling centres and any tagged waste compound with a mapped outline of 1 ha or more are kept. Each scan reports how many containers were left out. Open dumpsters at terminals and catering areas can still attract birds; they are a matter for the aerodrome's own site inspection, not this map.</div>
-        <div class="abt-p"><b>One answer per place (Ver28):</b> where habitat polygons overlap, only one is drawn. Ranking, highest first: (1) landfill and waste sites, wastewater treatment, aquaculture, farmyards and livestock; (2) open water; (3) wetland; (4) farmland and orchards; (5) golf courses; (6) grassland, pasture, scrub, heath, beach and bare ground; (7) forest; satellite-derived water ranks last and only fills places OpenStreetMap leaves unmapped. Within one rank the smaller polygon wins. Parks and nature reserves are designations, not ground cover, so they appear as dashed outlines and do not hide anything. The ranking is this app's own rule for wildlife-hazard screening (it follows the fixed-priority idea used in OpenStreetMap-to-land-cover conversion and the hazard emphasis of FAA AC 150/5200-33C), not a published standard. Only the drawing is trimmed: areas, distances, scores and the KML keep each feature's full footprint.</div>
-        <div class="abt-p"><b>Very large lakes (Ver40 to Ver53):</b> some areas contain lakes so large (for example Lake Nasser near Aswan) that the public OpenStreetMap servers cannot always deliver their detailed outlines. In that case the app asks for a lighter version of the water query (all ponds, lakes and rivers drawn as single outlines) and draws the very large lakes from satellite data (ESA WorldCover, 10 m resolution, outlines approximate). The panel then shows a blue note, &ldquo;Large lakes shown from satellite data&rdquo;. Every other habitat class is complete. Satellite polygons are always marked as such and never replace an OpenStreetMap feature.</div>
-        <div class="abt-p"><b>Long scans (Ver44):</b> a notice appears only if the data is still not ready after 20 seconds (and never during the flight). Areas with many water bodies or features take longer; please keep the page open.</div>
-        <div class="abt-p"><b>Ranking rule (Ver53):</b> features smaller than the minimum mapping unit remain in the counts and the KML export but are not ranked as hotspots. The batch table lists satellite water in its own column, marked &ldquo;satellite&rdquo;, and keeps it out of the tier counts.</div>
-        <div class="abt-p"><b>Management summary (Ver53):</b> the report now starts with a one-page visual summary: headline verdict, key figures, features by zone and risk tier, largest habitat classes, the top five sites, key observations and suggested follow-up for specialist review. The detailed sections follow.</div>
-        <div class="abt-p"><b>Screen layout (Ver38):</b> the side panel and the tool buttons can each be hidden with the small panel icons, and the text size control (A+ / A&minus;) goes from 90% to 125%.</div>
-        <div class="abt-p"><b>Scan integrity (Ver27):</b> each scan runs five small OpenStreetMap queries instead of one large one, and states in the data-confidence panel whether all five were retrieved. Multi-part OpenStreetMap features (lakes, reservoirs, wetlands, parks, reserves) are now requested with their full outlines; any that still arrive without an outline are left off the map and counted, never drawn as boxes. Straight outline segments of 3 to 4 km or more in water polygons (typically where incomplete OSM data was closed with a straight line) are flagged, and are left out of the shoreline drawn for large water bodies. The thresholds are app-defined heuristics, not a standard.</div>
-        <div class="abt-p"><b>Report:</b> the GENERATE REPORT button produces a printable wildlife hazard screening report for the current session: the reference point, a full habitat/attractant inventory, a rule-based hazard assessment ranking the most concerning sites, a process-flow summary, and the cited methodology (ICAO, FAA, and NASF Guideline C sources). Use PRINT / SAVE AS PDF in the report view to save it as a PDF via your browser's print dialog. It is a screening aid to help prioritize a field survey, not a certified Wildlife Hazard Assessment.</div>
+            <!-- S8 -->
+      <div class="abt-sec " id="abt8">
+        <div class="abt-sh" data-desc="What each control does and when to use it"><span class="abt-n">8</span>TOOLS GUIDE: EVERY BUTTON EXPLAINED</div>
+
+        <div class="abt-p">After a scan finishes, the tools appear on the map screen. Each one does a single job.</div>
+        <div class="abt-tgrid"><div class="abt-tg"><div class="abt-tgh">NAVIGATE</div><div class="abt-tool"><b>RETURN TO ARP</b><span>Brings the camera back to the Aerodrome Reference Point after you have moved around the map.</span></div><div class="abt-tool"><b>RE-ORBIT</b><span>Replays the slow circling camera move around the ARP.</span></div><div class="abt-tool"><b>EXPLORE FREELY</b><span>Stops the guided orbit and releases the camera so you can pan, tilt and zoom yourself. The other tools become active at this point.</span></div></div><div class="abt-tg"><div class="abt-tgh">ADD TO THE MAP</div><div class="abt-tool"><b>ADD AIRPORT</b><span>Type another ICAO code to add a second aerodrome to the current map without interrupting your view, for example to compare two airports.</span></div><div class="abt-tool"><b>BATCH TABLE</b><span>Paste a list of ICAO codes to scan several aerodromes one after another and compare them in one table (feature counts and nearest attractants). The table can be downloaded as CSV, and OPEN loads any airport from it.</span></div><div class="abt-tool"><b>ADD FEATURE</b><span>Add a habitat or attractant that the scan missed (for example a new pond or a poultry farm you know about): choose a shape (point, circle, rectangle or freeform polygon), draw it on the map and give it a class.</span></div><div class="abt-tool"><b>ADD COORDINATES</b><span>Paste or type a latitude and longitude (decimal degrees, or with N, S, E, W), give the point a name (for example 1 to 5, or a site name) and a classification, then press Insert. A small pin is placed. The pin does not replace the feature underneath it: hovering over the feature still works, and the pin shows a short name and classification. Pins are included in the KML and KMZ export in their own folder.</span></div><div class="abt-tool"><b>IMPORT KML / GEOJSON / STRIKE CSV</b><span>Loads a KML, GeoJSON or strike-record CSV file onto the map, for example your own survey layers or bird-strike locations.</span></div></div><div class="abt-tg"><div class="abt-tgh">MEASURE</div><div class="abt-tool"><b>MEASURE DISTANCE</b><span>Click two or more points on the map to read the distance between them.</span></div></div><div class="abt-tg"><div class="abt-tgh">SIDE PANEL CONTROLS</div><div class="abt-tool"><b>HABITAT SWITCHES</b><span>Tick or untick a habitat group to show or hide it. ALL and NONE change every group at once.</span></div><div class="abt-tool"><b>SHOW / HIDE SMALL FEATURES</b><span>Small features are mapped features below the minimum map size for their distance from the ARP. They stay in the counts and in the KML export but are not ranked as hotspots. Hide them for a clean overview of the larger attractants; show them when checking an area in detail, because a small pond or waste point close to the runway can still matter. Hover over the small i beside the control for the exact size limits.</span></div><div class="abt-tool"><b>DOWNLOAD SCAN DIAGNOSTICS (JSON)</b><span>A technical record of the scan: how complete the data download was, which queries failed, how many features were found, merged or hidden, suspicious outlines, the largest features, clusters and timings. Use it when a result looks wrong or when you send feedback; you do not need it for normal work. Hover over the i beside it for details.</span></div><div class="abt-tool"><b>FLYWAY MONTH FILTER</b><span>Highlights the migratory flyways that are in their peak period in the chosen month.</span></div></div><div class="abt-tg"><div class="abt-tgh">EXPORT AND REPORT</div><div class="abt-tool"><b>EXTRACT KML / KMZ</b><span>Downloads the scan for Google Earth and other GIS software. KMZ is the same content compressed into one file.</span></div><div class="abt-tool"><b>GENERATE REPORT</b><span>Builds the Wildlife Hazard Screening Report: a cover and contents page, Part A (management summary with charts and the top five sites to look at first, with their coordinates) and Part B (technical and operational detail). PRINT / SAVE AS PDF makes a PDF; EXPORT WORD (.DOCX) makes an editable file with the same sections, header, footer and page numbers. Word needs an internet connection the first time because it loads the Word-writing library.</span></div><div class="abt-tool"><b>REPORT MARKERS 1 TO 5</b><span>The numbered markers on the report map are the top five sites. Each link in Part A jumps to its marker, and the coordinates are printed so you can copy them.</span></div></div></div>
       </div>
 
-      <!-- MIGRATORY FLYWAYS -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; MIGRATORY FLYWAYS</div>
+            <!-- S9 -->
+      <div class="abt-sec " id="abt9">
+        <div class="abt-sh" data-desc="Where the data comes from and how to rely on it"><span class="abt-n">9</span>DATA SOURCES, VERIFICATION &amp; EXPORT</div>
+
+        <div class="abt-sub">A. DATA SOURCES AND REFERENCES</div>
+        <ol class="abt-line"><li><span class="abt-dot">1</span><div><div class="abt-tt">OpenStreetMap, via the Overpass API <span class="abt-ad k">MAP DATA</span></div><div class="abt-td">Habitats, land use, waterways, runways and facilities, queried live at scan time. &copy; OpenStreetMap contributors, Open Database Licence (ODbL).</div></div></li><li><span class="abt-dot">2</span><div><div class="abt-tt">ESA WorldCover 10 m, via Google Earth Engine <span class="abt-ad k">SATELLITE DATA</span></div><div class="abt-td">Satellite water cross-check and the optional land-cover baseline in the side panel (CC BY 4.0). It cannot tell a landfill from bare ground, so it is context only.</div></div></li><li><span class="abt-dot">3</span><div><div class="abt-tt">Esri World Imagery <span class="abt-ad k">IMAGERY</span></div><div class="abt-td">The satellite basemap you see under the features.</div></div></li><li><span class="abt-dot">4</span><div><div class="abt-tt">OurAirports <span class="abt-ad k">AIRPORT DATABASE</span></div><div class="abt-td">Airport codes and reference locations (tens of thousands of airports). Loaded at start-up; a built-in list is used when offline.</div></div></li><li><span class="abt-dot">5</span><div><div class="abt-tt">Migratory flyway corridors <span class="abt-ad k">REFERENCE DATA</span></div><div class="abt-td">Compiled from BirdLife International, UNEP/AEWA and Wetlands International, with regional sources named in the report. Fixed reference geography, not live tracking.</div></div></li><li><span class="abt-dot">6</span><div><div class="abt-tt">ICAO Doc 9137, Airport Services Manual, Part 3 <span class="abt-ad k">REGULATORY GUIDANCE</span></div><div class="abt-td">Source of the 13 km assessment radius and the general habitat guidance.</div></div></li><li><span class="abt-dot">7</span><div><div class="abt-tt">FAA Advisory Circulars 150/5200-33B, -33C and -34B <span class="abt-ad k">REGULATORY GUIDANCE</span></div><div class="abt-td">Hazardous wildlife attractants (33B), combined land uses (33C, section 2.10) and documenting wildlife hazards (34B).</div></div></li><li><span class="abt-dot">8</span><div><div class="abt-tt">Australian NASF Guideline C, Attachment 3 (Dec 2023) <span class="abt-ad k">REGULATORY GUIDANCE</span></div><div class="abt-td">Source of the Area A, B and C split of the 13 km radius.</div></div></li></ol>
+        <div class="abt-sub">B. VERIFICATION AND EVIDENTIARY STATUS</div>
+        <div class="abt-p"><b>Evidentiary status:</b> every feature is labelled AUTOMATED (OpenStreetMap-sourced) or MANUAL (added by a user of this tool), and automated features additionally show whether OpenStreetMap maps a real boundary or only a point location. Automated features carry their OpenStreetMap object ID and last-edited date where available, and link directly to the live OpenStreetMap object.</div>
+        <div class="abt-p">Every scan also shows a data-confidence indicator and a list of integrity checks (a tick means passed, an exclamation mark is a note to read). Whatever the result, field verification by a qualified specialist is required before a decision or a regulatory submission.</div>
+        <div class="abt-sub">C. EXPORT FORMATS</div>
+        <ol class="abt-line"><li><span class="abt-dot">1</span><div><div class="abt-tt">KML</div><div class="abt-td">Opens directly in Google Earth and Google Earth Pro. Carries a methodology and limitations statement, the scan timestamp and per-feature status and source, so the file explains itself wherever it is forwarded.</div></div></li><li><span class="abt-dot">2</span><div><div class="abt-tt">KMZ</div><div class="abt-td">The same content compressed into one file, convenient for e-mail and sharing.</div></div></li><li><span class="abt-dot">3</span><div><div class="abt-tt">PDF report</div><div class="abt-td">Print or save as PDF from the report window. A4, with cover, contents, header, footer and page numbers.</div></div></li><li><span class="abt-dot">4</span><div><div class="abt-tt">Word report (.docx)</div><div class="abt-td">An editable version of the same report for your own formatting and additions.</div></div></li></ol>
+      </div>
+
+            <!-- S10 -->
+      <div class="abt-sec " id="abt10">
+        <div class="abt-sh" data-desc="How the tool handles difficult situations"><span class="abt-n">10</span>SPECIAL CASES AND DESIGN DECISIONS</div>
+
+        <div class="abt-p">These notes explain choices that affect what you see. Open any item to read it.</div>
+        <div class="abt-faq"><details><summary>Display rules</summary><div class="abt-a">generic cover (forest, grass, farmland, parks) is fetched only within 13 km; critical attractants (open water, wetland, waste, wastewater, aquaculture, livestock, golf, reserves) are fetched to 20 km. Features smaller than an app-defined minimum size for their distance are hidden by default (still in report and KML; toggle in the legend). Large water labels appear only for named water within 13 km (max 6). Runway sectors are off by default. Full methodology text follows in a later version.</div></details><details><summary>Many airports at once</summary><div class="abt-a">scans are queued two at a time, overlap resolution runs one airport at a time in the background, and finishing one airport no longer redraws the others. Habitat polygons are drawn only when zoomed in to about 7 or closer; the rings and pins stay visible at any zoom. Large numbers of airports in one session still use a lot of memory in the browser; for dozens of airports, scan and export them in batches.</div></details><details><summary>Batch mode</summary><div class="abt-a">paste a list of ICAO codes and the app scans them one at a time, with pauses so the public OpenStreetMap servers are not overloaded, and builds a summary table (very-high attractant counts by distance zone, high, moderate and low counts, nearest very-high attractant, data status). Only a summary is kept per airport, so memory stays flat. The table downloads as CSV. OPEN loads one airport on the map in full detail. Incomplete scans are retried automatically and marked INCOMPLETE if they still fail. Counts are a screening summary, not a risk score.</div></details><details><summary>Combined attractants</summary><div class="abt-a">FAA AC 150/5200-33C (2.10) notes that land uses that are acceptable on their own can together form a wildlife corridor. The app flags a cluster when two or more different higher-severity classes (very high or high tier) lie within 1 km of each other, edge to edge, inside the 13 km zone. This 1 km rule is an app-defined screening choice, not a published standard. Small features below the minimum mapping unit, park and nature-reserve overlays, and satellite-derived water polygons are not tested. The flag appears in the click panel, the report (Section 3) and the KML, and never changes a single feature score. Reports and KML also state how many features are below the minimum mapping unit.</div></details><details><summary>Mown grass is not pasture</summary><div class="abt-a">OpenStreetMap landuse=grass (lawns, road verges, interchange infields, airfield grass) is now its own class, "Mown / Amenity Grass", rated LOW and ranked just below pasture. It has its own legend switch and is only drawn from 1 ha upward (an app-defined size limit), so road verges and small infields do not clutter the map; larger areas such as airfield grass and big lawns remain. Only landuse=meadow is called "Pasture / Meadow". Polygons are draped on the ground, so grass beneath a flyover or bridge is drawn where it really lies, which can look as if it sits on the road.</div></details><details><summary>Waste containers are not landfills</summary><div class="abt-a">dumpsters, skips and recycling bins (OpenStreetMap amenity=waste_disposal, and amenity=recycling that is not a recycling centre) are street furniture, so they are not mapped as waste sites. Landfills, waste transfer stations, recycling centres and any tagged waste compound with a mapped outline of 1 ha or more are kept. Each scan reports how many containers were left out. Open dumpsters at terminals and catering areas can still attract birds; they are a matter for the aerodrome's own site inspection, not this map.</div></details><details><summary>One answer per place</summary><div class="abt-a">where habitat polygons overlap, only one is drawn. Ranking, highest first: (1) landfill and waste sites, wastewater treatment, aquaculture, farmyards and livestock; (2) open water; (3) wetland; (4) farmland and orchards; (5) golf courses; (6) grassland, pasture, scrub, heath, beach and bare ground; (7) forest; satellite-derived water ranks last and only fills places OpenStreetMap leaves unmapped. Within one rank the smaller polygon wins. Parks and nature reserves are designations, not ground cover, so they appear as dashed outlines and do not hide anything. The ranking is this app's own rule for wildlife-hazard screening (it follows the fixed-priority idea used in OpenStreetMap-to-land-cover conversion and the hazard emphasis of FAA AC 150/5200-33C), not a published standard. Only the drawing is trimmed: areas, distances, scores and the KML keep each feature's full footprint.</div></details><details><summary>Very large lakes</summary><div class="abt-a">some areas contain lakes so large (for example Lake Nasser near Aswan) that the public OpenStreetMap servers cannot always deliver their detailed outlines. In that case the app asks for a lighter version of the water query (all ponds, lakes and rivers drawn as single outlines) and draws the very large lakes from satellite data (ESA WorldCover, 10 m resolution, outlines approximate). The panel then shows a blue note, &ldquo;Large lakes shown from satellite data&rdquo;. Every other habitat class is complete. Satellite polygons are always marked as such and never replace an OpenStreetMap feature.</div></details><details><summary>Long scans</summary><div class="abt-a">a notice appears only if the data is still not ready after 20 seconds (and never during the flight). Areas with many water bodies or features take longer; please keep the page open.</div></details><details><summary>Ranking rule</summary><div class="abt-a">features smaller than the minimum mapping unit remain in the counts and the KML export but are not ranked as hotspots. The batch table lists satellite water in its own column, marked &ldquo;satellite&rdquo;, and keeps it out of the tier counts.</div></details><details><summary>Management summary</summary><div class="abt-a">the report starts with a one-page visual summary: headline verdict, key figures, features by zone and risk tier, largest habitat classes, the top five sites, key observations and suggested follow-up for specialist review. The detailed sections follow.</div></details><details><summary>Screen layout</summary><div class="abt-a">the side panel and the tool buttons can each be hidden with the small panel icons, and the text size control (A+ / A&minus;) goes from 90% to 125%.</div></details><details><summary>Scan integrity</summary><div class="abt-a">each scan runs six small OpenStreetMap queries instead of one large one, and states in the data-confidence panel whether all six were retrieved. Multi-part OpenStreetMap features (lakes, reservoirs, wetlands, parks, reserves) are now requested with their full outlines; any that still arrive without an outline are left off the map and counted, never drawn as boxes. Straight outline segments of 3 to 4 km or more in water polygons (typically where incomplete OSM data was closed with a straight line) are flagged, and are left out of the shoreline drawn for large water bodies. The thresholds are app-defined heuristics, not a standard.</div></details></div>
+      </div>
+
+            <!-- S11 -->
+      <div class="abt-sec " id="abt11">
+        <div class="abt-sh" data-desc="Seasonal context, not live bird movement"><span class="abt-n">11</span>MIGRATORY FLYWAYS</div>
+
         <div class="abt-p">The platform overlays the world&rsquo;s major bird migration corridors, each colour-coded by risk level (High / Medium / Low). Hover any flyway line to see the peak migration windows, key species groups, estimated annual bird volume, and the specific aerodromes most affected. <b>These corridors are fixed reference geography for planning context, not a live or per-flight verified feed</b> &mdash; there is no free, continuously updated global tracking dataset at this scale. Treat them as indicative of known seasonal risk, not as real-time bird activity.</div>
         <div class="abt-p">Flyways are particularly important for understanding <b>seasonal strike risk spikes</b> &mdash; an aerodrome that is low-risk in summer may become extremely high-risk during spring and autumn migration periods when billions of birds are in transit across major corridors.</div>
       </div>
 
-      <!-- BENEFITS & USE CASES -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; WHO IS THIS FOR &amp; WHAT CAN YOU DO WITH IT?</div>
-        <div class="abt-grid">
-          <div class="abt-it">
-            <div class="abt-il">&#9992; AERODROME WILDLIFE OFFICERS</div>
-            <div class="abt-iv">Rapidly identify and map all attractant habitats within the ICAO Doc 9137 assessment zones. Use filtered overlays to prioritise habitat management and justify budget allocation for specific mitigation measures.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">&#128203; SAFETY MANAGEMENT TEAMS</div>
-            <div class="abt-iv">Support the production of Wildlife Hazard Assessments (WHAs) with a visual habitat baseline. Demonstrate compliance with ICAO Annex 14, EASA ADR.OPS.B.010, and national regulatory requirements.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">&#127758; AIRPORT PLANNERS &amp; DEVELOPERS</div>
-            <div class="abt-iv">Screen new or expanding aerodrome sites for surrounding land-use conflicts before committing to infrastructure investment. Compare multiple candidate sites simultaneously using the multi-airport overlay feature.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">&#127979; TRAINING &amp; EDUCATION</div>
-            <div class="abt-iv">An ideal teaching tool for aviation safety courses, wildlife hazard management training, and aerodrome operations programmes. Use real airports worldwide to illustrate habitat risk concepts in a live 3D environment.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">&#128269; INCIDENT INVESTIGATION SUPPORT</div>
-            <div class="abt-iv">Following a wildlife strike, rapidly visualise the habitat and flyway context around the aerodrome to identify potential source areas and inform the causal analysis and corrective action plan.</div>
-          </div>
-          <div class="abt-it">
-            <div class="abt-il">&#128202; REGULATORY OVERSIGHT</div>
-            <div class="abt-iv">Civil aviation authorities and safety regulators can use the tool to quickly assess the wildlife risk environment of any aerodrome under their jurisdiction, and to validate the scope of an operator&rsquo;s Wildlife Hazard Management Programme.</div>
-          </div>
-        </div>
+            <!-- S12 -->
+      <div class="abt-sec " id="abt12">
+        <div class="abt-sh" data-desc="Six typical users"><span class="abt-n">12</span>WHO IS THIS FOR &amp; WHAT CAN YOU DO WITH IT?</div>
+<div class="abt-grid"><div class="abt-it"><div class="abt-il">&#9992; AERODROME WILDLIFE OFFICERS</div><div class="abt-iv">Rapidly identify and map all attractant habitats within the ICAO Doc 9137 assessment zones. Use filtered overlays to prioritise habitat management and justify budget allocation for specific mitigation measures.</div></div><div class="abt-it"><div class="abt-il">&#128203; SAFETY MANAGEMENT TEAMS</div><div class="abt-iv">Support the production of Wildlife Hazard Assessments (WHAs) with a visual habitat baseline. Demonstrate compliance with ICAO Annex 14, EASA ADR.OPS.B.010, and national regulatory requirements.</div></div><div class="abt-it"><div class="abt-il">&#127758; AIRPORT PLANNERS &amp; DEVELOPERS</div><div class="abt-iv">Screen new or expanding aerodrome sites for surrounding land-use conflicts before committing to infrastructure investment. Compare multiple candidate sites simultaneously using the multi-airport overlay feature.</div></div><div class="abt-it"><div class="abt-il">&#127979; TRAINING &amp; EDUCATION</div><div class="abt-iv">An ideal teaching tool for aviation safety courses, wildlife hazard management training, and aerodrome operations programmes. Use real airports worldwide to illustrate habitat risk concepts in a live 3D environment.</div></div><div class="abt-it"><div class="abt-il">&#128269; INCIDENT INVESTIGATION SUPPORT</div><div class="abt-iv">Following a wildlife strike, rapidly visualise the habitat and flyway context around the aerodrome to identify potential source areas and inform the causal analysis and corrective action plan.</div></div><div class="abt-it"><div class="abt-il">&#128202; REGULATORY OVERSIGHT</div><div class="abt-iv">Civil aviation authorities and safety regulators can use the tool to quickly assess the wildlife risk environment of any aerodrome under their jurisdiction, and to validate the scope of an operator&rsquo;s Wildlife Hazard Management Programme.</div></div></div>
       </div>
 
-
-      <!-- TOOLS GUIDE -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; TOOLS GUIDE: EVERY BUTTON EXPLAINED</div>
-        <div class="abt-p">After a scan finishes, the tools appear on the map screen. Each one does a single job.</div>
-        <dl class="abt-tl">
-          <dt>RETURN TO ARP</dt><dd>Brings the camera back to the Aerodrome Reference Point after you have moved around the map.</dd>
-          <dt>ADD AIRPORT</dt><dd>Type another ICAO code to add a second aerodrome to the current map without interrupting your view, for example to compare two airports.</dd>
-          <dt>BATCH TABLE</dt><dd>Paste a list of ICAO codes to scan several aerodromes one after another and compare them in one table (feature counts and nearest attractants). The table can be downloaded as CSV, and OPEN loads any airport from it.</dd>
-          <dt>RE-ORBIT</dt><dd>Replays the slow circling camera move around the ARP.</dd>
-          <dt>ADD FEATURE</dt><dd>Add a habitat or attractant that the scan missed (for example a new pond or a poultry farm you know about): choose a shape (point, circle, rectangle or freeform polygon), draw it on the map and give it a class. It is then counted and exported with the rest.</dd>
-          <dt>MEASURE DISTANCE</dt><dd>Click two or more points on the map to read the distance between them.</dd>
-          <dt>ADD COORDINATES</dt><dd>Paste or type a latitude and longitude (decimal degrees, or with N, S, E, W), give the point a name (for example 1 to 5, or a site name) and a classification, and press Insert. A small pin is placed. The pin does not replace the feature underneath it: hovering over the feature still works, and the pin shows a short name and classification. Pins are included in the KML and KMZ export in their own folder.</dd>
-          <dt>EXTRACT KML / KMZ</dt><dd>Downloads the scan for Google Earth and other GIS software. KMZ is the same content compressed into one file.</dd>
-          <dt>IMPORT</dt><dd>Loads a KML, GeoJSON or strike-record CSV file onto the map, for example your own survey layers or bird-strike locations.</dd>
-          <dt>GENERATE REPORT</dt><dd>Builds the Wildlife Hazard Screening Report: a cover and contents page, Part A (management summary with charts and the top five sites to look at first, with their coordinates) and Part B (technical and operational detail). Use PRINT / SAVE AS PDF for a PDF, or EXPORT WORD (.DOCX) for an editable file with the same sections, header, footer and page numbers. Word needs an internet connection the first time because it loads the Word-writing library.</dd>
-          <dt>EXPLORE FREELY</dt><dd>Stops the guided orbit and releases the camera so you can pan, tilt and zoom yourself. The other tools become active at this point.</dd>
-          <dt>SHOW / HIDE SMALL FEATURES (the legend)</dt><dd>Small features are mapped features that are very small (a few tens of metres across, such as a tiny pond or a small plot). They stay in the counts and in the KML export but are not ranked as hotspots. Hide them when the map looks crowded or you want to focus on the larger attractants. Show them when you are checking a specific area in detail, because a small pond or waste point close to the runway can still matter. Hover over the small <b>i</b> beside the control for the same explanation.</dd>
-          <dt>Report markers 1 to 5</dt><dd>The numbered markers on the report map are the top five sites. Each link in Part A jumps to its marker, and the coordinates are printed so you can copy them.</dd>
-        </dl>
-      </div>
-
-      <!-- FAQ -->
-      <div class="abt-sec abt-faq">
-        <div class="abt-sh">&#9670; FREQUENTLY ASKED QUESTIONS</div>
-        <details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details>
-        <details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details>
-        <details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details>
-        <details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details>
-        <details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details>
-        <details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details>
-        <details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details>
-        <details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details>
-        <details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details>
-        <details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog, set Destination to Save as PDF and tick Headers and footers if you want the browser header). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details>
-        <details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details>
-        <details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. Pins, added features and imports stay in your browser page; closing the page discards them unless you exported them.</div></details>
-        <details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Use the contact link at the end of this page. Include the ICAO code and what you expected to see.</div></details>
-      </div>
-      <!-- DATA SOURCES -->
-      <div class="abt-sec">
-        <div class="abt-sh">&#9670; DATA SOURCES</div>
-        <div class="abt-grid">
-          <div class="abt-it"><div class="abt-il">SATELLITE IMAGERY</div><div class="abt-iv">Esri World Imagery (Maxar). High-resolution global satellite basemap updated regularly.</div></div>
-          <div class="abt-it"><div class="abt-il">HABITAT &amp; LAND-USE DATA</div><div class="abt-iv">OpenStreetMap via Overpass API. Fetched live on every scan for the most current data available.</div></div>
-          <div class="abt-it"><div class="abt-il">AIRPORT DATABASE</div><div class="abt-iv">OurAirports global database (tens of thousands of airports). Loaded at startup; falls back to built-in dataset offline.</div></div>
-          <div class="abt-it"><div class="abt-il">MIGRATORY FLYWAYS</div><div class="abt-iv">Compiled from BirdLife International, UNEP/AEWA, and Wetlands International published flyway corridor data.</div></div>
-          <div class="abt-it"><div class="abt-il">WATERWAY NETWORKS</div><div class="abt-iv">OpenStreetMap drainage and waterway data (rivers, streams, canals, drains, ditches) fetched live via Overpass API.</div></div>
-          <div class="abt-it"><div class="abt-il">REGULATORY FRAMEWORK</div><div class="abt-iv">Radius rings and classification guidance based on ICAO Doc 9137 (Airport Services Manual, Part 3), 4th Edition.</div></div>
-        </div>
+            <!-- S13 -->
+      <div class="abt-sec " id="abt13">
+        <div class="abt-sh" data-desc="Quick answers for first-time users"><span class="abt-n">13</span>FREQUENTLY ASKED QUESTIONS</div>
+<div class="abt-faq"><details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details><details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details><details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details><details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details><details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details><details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details><details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details><details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details><details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details><details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog choose Save as PDF, A4, Margins Default, untick Headers and footers, tick Background graphics; a short checklist appears before the dialog opens). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details><details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details><details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. Pins, added features and imports stay in your browser page; closing the page discards them unless you exported them.</div></details><details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Use the contact link at the end of this page. Include the ICAO code and what you expected to see.</div></details></div>
       </div>
 
       <!-- CREATED BY -->
       <div class="abt-sec">
-        <div class="abt-sh">&#9670; CREATED BY</div>
+        <div class="abt-sh" data-desc="Who built the tool and how to reach us"><span class="abt-n">14</span>CREATED BY</div>
         <div class="abt-cr">
           <div class="abt-cn">Waleed MAHROUS</div>
           <div class="abt-p" style="color:rgba(200,225,250,.85)">Founder, <b>StopBIRDSTRIKE</b> &middot; Aviation Wildlife Hazard Management Consultant</div>
@@ -1217,7 +1219,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 <!-- Wildlife Hazard Report (screen preview + printable/PDF output) -->
 <div id="reportView">
   <div class="rpt-bar">
-    <div><div class="rpt-bar-tit">&#128196; WILDLIFE HAZARD SCREENING REPORT</div><div class="rpt-hint">In the print window: choose Save as PDF, paper A4, margins Default, and untick &ldquo;Headers and footers&rdquo; (the report has its own).</div></div>
+    <div><div class="rpt-bar-tit">&#128196; WILDLIFE HAZARD SCREENING REPORT</div><div class="rpt-hint">Print window: Save as PDF, paper A4, <b>Margins: Default</b> (not None), untick &ldquo;Headers and footers&rdquo;, tick &ldquo;Background graphics&rdquo;.</div></div>
     <div class="rpt-bar-btns">
       <button class="rpt-btn primary" id="rptPrintBtn">&#11015; PRINT / SAVE AS PDF</button>
       <button class="rpt-btn" id="rptDocxBtn" title="Editable Word file with the same sections, header, footer and page numbers">&#11015; EXPORT WORD (.DOCX)</button>
@@ -1315,6 +1317,19 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
      name + category, shown after a shape (or a single point click) has
      been placed/confirmed. -->
 <!-- ADD COORDINATES (pin) OVERLAY -->
+<div id="prnOL"><div class="prn-box">
+  <h3>Before the print window opens</h3>
+  <p>The report is laid out for A4 with its own header, footer and page numbers. These settings in the print window give the intended result:</p>
+  <ol>
+    <li><b>Destination:</b> Save as PDF</li>
+    <li><b>Paper size:</b> A4</li>
+    <li><b>Margins:</b> Default <span style="color:#b42318">(not None)</span></li>
+    <li><b>Headers and footers:</b> untick (the report has its own)</li>
+    <li><b>Background graphics:</b> tick (colours and charts)</li>
+  </ol>
+  <div class="prn-warn">If Margins is set to None, the report loses its page margins, header and footer, and the pages break in the wrong places. Chrome remembers the last choice, so check it each time on a new computer.</div>
+  <div class="prn-row"><label><input type="checkbox" id="prnSkip"> Do not show this again</label><button class="prn-b" id="prnCx" type="button">CANCEL</button><button class="prn-b p" id="prnGo" type="button">OPEN PRINT WINDOW</button></div>
+</div></div>
 <div id="pinOL">
   <div class="add-box" style="width:min(430px,92vw)">
     <h3>&#128205; ADD COORDINATES</h3>
@@ -2487,6 +2502,10 @@ function buildLegend() {
     dg.style.cssText = "justify-content:center;border:1px solid rgba(120,200,255,.25);color:#9ad0ee;font-size:.46rem;letter-spacing:.08em;margin-top:.3rem";
     dg.textContent = "\u2b07 DOWNLOAD SCAN DIAGNOSTICS (JSON)";
     dg.addEventListener("click", function () { downloadScanDiagnostics(delApt); });
+    var dgI = document.createElement("span"); dgI.className = "info-i"; dgI.tabIndex = 0; dgI.textContent = "i"; dgI.setAttribute("aria-label", "What is the scan diagnostics file?");
+    dgI.setAttribute("data-info", "SCAN DIAGNOSTICS is a technical record of this scan, saved as a JSON file (plain text, readable by software). It lists how complete the data download was, which queries failed, how many features were found, merged or hidden, outlines that looked suspicious, the largest features, the combined-attractant clusters and the time each step took. WHEN TO USE IT: if a result looks wrong or incomplete, or you want to send feedback, attach this file so the problem can be traced exactly. You do not need it for normal work. It contains no personal data, only scan results.");
+    dgI.addEventListener("click", function (ev) { ev.stopPropagation(); });
+    dg.appendChild(dgI);
     hl.appendChild(dg);
   }
   var fl =document.getElementById("flyLeg"); fl.innerHTML = "";
@@ -2956,14 +2975,18 @@ document.getElementById("whyBtn").addEventListener("click", openAbout);
 (function () {
   function buildAbtToc() {
     var box = document.getElementById("abtToc"); if (!box || box.childNodes.length) return;
-    var hs = document.querySelectorAll("#ABT .abt-sh");
-    Array.prototype.forEach.call(hs, function (h, i) {
-      var t = h.textContent.replace(/^[\s\u25C6]+/, "").trim();
-      if (/^(CONTENTS)$/i.test(t)) return;
-      h.id = h.id || "abtS" + i;
-      var a = document.createElement("a"); a.textContent = t.charAt(0) + t.slice(1).toLowerCase(); a.setAttribute("data-t", h.id);
+    var wrap = document.querySelector("#ABT .abt-wrap");
+    Array.prototype.forEach.call(document.querySelectorAll("#ABT .abt-sh"), function (h, i) {
+      var n = h.querySelector(".abt-n"), num = n ? n.textContent : String(i + 1);
+      var t = h.textContent.replace(num, "").replace(/^[\s\u25C6]+/, "").trim(); t = t.charAt(0) + t.slice(1).toLowerCase();
+      t = t.replace(/\bicao\b/gi, "ICAO").replace(/\bkml\b/gi, "KML").replace(/\bkmz\b/gi, "KMZ").replace(/\barp\b/gi, "ARP").replace(/\bfaq\b/gi, "FAQ").replace(/ doc 9137/i, " Doc 9137");
+      var sec = h.closest(".abt-sec"); h.id = h.id || "abtH" + num; if (sec) sec.id = sec.id || "abtSec" + num;
+      var a = document.createElement("a"); a.setAttribute("data-t", h.id);
+      a.innerHTML = '<span class="tn">' + num + '</span><span><span class="tt"></span><span class="td"></span></span>';
+      a.querySelector(".tt").textContent = t; a.querySelector(".td").textContent = h.getAttribute("data-desc") || "";
       a.addEventListener("click", function () { var e = document.getElementById(this.getAttribute("data-t")); if (e) e.scrollIntoView({ behavior: "smooth", block: "start" }); });
       box.appendChild(a);
+      if (sec && num !== "") { var b = document.createElement("a"); b.className = "abt-top"; b.textContent = "\u2191 BACK TO CONTENTS"; b.addEventListener("click", function () { var c = document.getElementById("abtContents"); if (c) c.scrollIntoView({ behavior: "smooth", block: "start" }); }); sec.appendChild(b); }
     });
   }
   buildAbtToc();
@@ -5508,9 +5531,9 @@ function batchCsv() {
     catKeys.forEach(function (c) { var o = (r.cats || {})[c]; row.push(o ? o.n : 0); row.push(o ? o.km2 : 0); });
     lines.push(row.map(q).join(","));
   });
-  lines.push(q("NOTE: Habitat Scanner 3D Ver53 batch summary. Counts are within the 20 km scan radius, exclude features below the minimum mapping unit, and are a screening summary, not a risk score. VH = very high attractant tier. Satellite-derived water polygons (approximate outlines) are NOT included in the tier counts or the nearest very-high figure; they are listed in their own columns. Rows with status other than COMPLETE must not be relied on. Source: OpenStreetMap contributors (ODbL), plus ESA WorldCover water via Google Earth Engine where used."));
+  lines.push(q("NOTE: Habitat Scanner 3D batch summary. Counts are within the 20 km scan radius, exclude features below the minimum mapping unit, and are a screening summary, not a risk score. VH = very high attractant tier. Satellite-derived water polygons (approximate outlines) are NOT included in the tier counts or the nearest very-high figure; they are listed in their own columns. Rows with status other than COMPLETE must not be relied on. Source: OpenStreetMap contributors (ODbL), plus ESA WorldCover water via Google Earth Engine where used."));
   var blob = new Blob(["\ufeff" + lines.join("\r\n")], { type: "text/csv;charset=utf-8" });
-  var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "habitat_batch_summary_Ver39.csv";
+  var a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "habitat_batch_summary.csv";
   document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
 }
 function batchOpen(icao) {
@@ -6036,7 +6059,7 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver53 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver54 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
@@ -7476,7 +7499,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver53", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
+  var out = { app: "Habitat Scanner 3D Ver54", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
   feats.forEach(function (f) {
@@ -7534,11 +7557,11 @@ function downloadScanDiagnostics(apt) {
   out.largest = feats.filter(function (f) { return typeof f.properties.areaM2 === "number"; }).slice().sort(function (a, b) { return b.properties.areaM2 - a.properties.areaM2; }).slice(0, 30)
     .map(function (f) { var p = f.properties; return { id: p.id, cat: p.cat, name: p.name || null, areaHa: +(p.areaM2 / 10000).toFixed(1), distKm: typeof p.distKm === "number" ? +p.distKm.toFixed(2) : null, source: p.source || null }; });
   var blob = new Blob([JSON.stringify(out, null, 1)], { type: "application/json" }), a = document.createElement("a");
-  a.href = URL.createObjectURL(blob); a.download = (apt.icao || "COORDS") + "_scan_diagnostics_Ver39.json";
+  a.href = URL.createObjectURL(blob); a.download = (apt.icao || "COORDS") + "_scan_diagnostics.json";
   document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(a.href);
   var copied = false;
-  try { navigator.clipboard.writeText(JSON.stringify(out)).then(function () { document.getElementById("hst").textContent = "\u2713 DIAGNOSTICS SAVED TO YOUR DOWNLOADS FOLDER AND COPIED (PASTE INTO THE CHAT)"; }, function () {}); copied = true; } catch (eCp) {}
-  document.getElementById("hst").textContent = "\u2713 DIAGNOSTICS SAVED TO YOUR DOWNLOADS FOLDER: " + a.download + (copied ? " (ALSO COPIED, PASTE INTO THE CHAT)" : "");
+  try { navigator.clipboard.writeText(JSON.stringify(out)).then(function () { document.getElementById("hst").textContent = "\u2713 DIAGNOSTICS SAVED TO YOUR DOWNLOADS FOLDER AND COPIED (ATTACH IT TO YOUR FEEDBACK)"; }, function () {}); copied = true; } catch (eCp) {}
+  document.getElementById("hst").textContent = "\u2713 DIAGNOSTICS SAVED TO YOUR DOWNLOADS FOLDER: " + a.download + (copied ? " (ALSO COPIED, ATTACH IT TO YOUR FEEDBACK)" : "");
 }
 
 /* ================================================================
@@ -8415,6 +8438,7 @@ async function rptBuildDocx() {
 }
 window.rptBuildDocx = rptBuildDocx;
 async function rptExportDocx() {
+  try { if (window._rptMapPromise) await window._rptMapPromise; } catch (e) {}
   var btn = document.getElementById("rptDocxBtn"), old = btn.innerHTML; btn.disabled = true; btn.textContent = "PREPARING WORD FILE...";
   try {
     await rptLoadDocxLib();
@@ -8909,6 +8933,7 @@ function captureReportMap(apt) {
       var bb = turf.bbox(turf.circle([apt.lon, apt.lat], 20.3, { units: "kilometers" }));
       map.fitBounds([[bb[0], bb[1]], [bb[2], bb[3]]], { padding: 24, pitch: 0, bearing: 0, duration: 0, animate: false });
       timer = setTimeout(grab, 12000);
+      setTimeout(function () { finish(null); }, 40000); /* failsafe: never leave the report waiting for the map */
       map.once("idle", function () { if (timer) clearTimeout(timer); timer = null; grab(); });
     } catch (e) { finish(null); }
   });
@@ -8950,9 +8975,24 @@ function openReport(apt) {
   box.innerHTML = '<div class="rpt-part">PART B &middot; TECHNICAL AND OPERATIONAL ASSESSMENT<small>Method, inventory, ranked hotspots and data quality</small></div><div class="rpt-sec-h">Assessment Area Map</div><div class="rpt-p" id="rptMapBody">Preparing the map image\u2026</div>';
   if (first) first.parentNode.insertBefore(box, first); else doc.appendChild(box);
   rptBuildToc(doc); rptApplyPageStyle(apt);
-  captureReportMap(apt).then(function (url) {
+  rptLoadMap(apt, box);
+}
+function rptSetBusy(on) {
+  [["rptPrintBtn", "PREPARING MAP\u2026"], ["rptDocxBtn", "PREPARING MAP\u2026"]].forEach(function (x) {
+    var b = document.getElementById(x[0]); if (!b) return;
+    if (on) { if (b.dataset.old === undefined) b.dataset.old = b.innerHTML; b.disabled = true; b.innerHTML = x[1]; }
+    else if (b.dataset.old !== undefined) { b.disabled = false; b.innerHTML = b.dataset.old; delete b.dataset.old; }
+  });
+}
+function rptLoadMap(apt, box) {
+  var body = box.querySelector("#rptMapBody"); if (!body) return;
+  body.className = "rpt-p"; body.textContent = "Preparing the map image\u2026 this can take up to about 40 seconds for large airports. The Print and Word buttons unlock when it is ready.";
+  var old = box.querySelector(".rpt-maprow"); if (old) old.remove();
+  rptSetBusy(true);
+  window._rptMapPromise = captureReportMap(apt).then(function (url) {
+    rptSetBusy(false);
     var body = box.querySelector("#rptMapBody"); if (!body) return;
-    if (!url) { body.textContent = "The map image could not be created in this browser (for example because the imagery server blocked image export). The report content below is unaffected; the full map is in the KML export."; body.insertAdjacentHTML("afterend", rptMarkLegend()); return; }
+    if (!url) { body.textContent = "The map image could not be created (the imagery server may have blocked image export, or the map took too long). The rest of the report is unaffected and the full map is in the KML export. "; var rb = document.createElement("button"); rb.type = "button"; rb.className = "rpt-btn"; rb.style.cssText = "margin:.4rem 0;color:#0c1f3d;border-color:#0c1f3d"; rb.textContent = "TRY THE MAP AGAIN"; rb.addEventListener("click", function () { rptLoadMap(apt, box); }); body.appendChild(rb); if (!box.querySelector(".rpt-maplegend")) { body.insertAdjacentHTML("afterend", '<div class="rpt-maplegend">' + rptMarkLegend() + "</div>"); } return; }
     body.className = ""; body.innerHTML = '<img class="rpt-map" id="rptMapImg" alt="Map of the 20 km assessment area" src="' + url + '"><div class="rpt-map-cap">Top-down view of the 20 km area around the ' + escXML((apt.refLabel === "ARP" || !apt.refLabel) ? "Aerodrome Reference Point (ARP)" : apt.refLabel) + ', with the 13 km and 20 km rings, as displayed when the report was generated (habitat layers that were switched off are not shown). Text callouts and dimension labels are not drawn on this image; every feature with its coordinates and distance is in the Google Earth (KML) export. Basemap: Esri World Imagery. The numbered markers 1 to 5 are the five sites listed under &ldquo;Top sites to look at first&rdquo; in Part A (<a class="rpt-lnk" href="#rptTopSites" onclick="var e=document.getElementById(\'rptTopSites\');if(e){e.scrollIntoView({behavior:\'smooth\',block:\'start\'});}return false;">go to that list in Part A &#8593;</a>). Each marker is placed at the point of the feature nearest the Aerodrome Reference Point; large features extend beyond it.</div>' + rptMarkLegend();
   });
 }
@@ -8964,6 +9004,16 @@ document.getElementById("rptCloseBtn").addEventListener("click", function () {
 });
 var _rptTitleOld = null;
 document.getElementById("rptPrintBtn").addEventListener("click", function () {
+  var skip = false; try { skip = localStorage.getItem("hs3dPrnSkip") === "1"; } catch (e) {}
+  if (skip) { rptDoPrint(); return; }
+  document.getElementById("prnOL").classList.add("on");
+});
+document.getElementById("prnCx").addEventListener("click", function () { document.getElementById("prnOL").classList.remove("on"); });
+document.getElementById("prnGo").addEventListener("click", function () {
+  try { if (document.getElementById("prnSkip").checked) localStorage.setItem("hs3dPrnSkip", "1"); } catch (e) {}
+  document.getElementById("prnOL").classList.remove("on"); rptDoPrint();
+});
+function rptDoPrint() {
   /* The browser proposes the page title as the file name: date, report name, airport. */
   var a = window._rptApt || {}, d = new Date();
   function z(n) { return (n < 10 ? "0" : "") + n; }
@@ -8972,7 +9022,7 @@ document.getElementById("rptPrintBtn").addEventListener("click", function () {
   if (_rptTitleOld === null) _rptTitleOld = document.title;
   document.title = parts.join("_").slice(0, 150);
   window.print();
-});
+}
 window.addEventListener("afterprint", function () { if (_rptTitleOld !== null) { document.title = _rptTitleOld; _rptTitleOld = null; } });
 
 function hexToKmlColor(hex, alpha) {
