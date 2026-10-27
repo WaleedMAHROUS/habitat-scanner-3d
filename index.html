@@ -2371,7 +2371,7 @@ var FLYWAYS = [
     airports: "KDEN, KDFW, KMCI, KOMA, KSAT",
     threats: "Platte River water diversion; prairie pothole drainage; collision with power lines",
     icaoRisk: "Moderate risk; Sandhill Crane flocks (10,000+) at low altitudes near staging areas Mar",
-    source: "Central Flyway Council; USFWS; WCSC (Whooping Crane Conservation Association)",
+    source: "Central Flyway Council; USFWS; Whooping Crane Conservation Association",
     coords: [[-110,68],[-105,60],[-100,52],[-98,44],[-96,36],[-95,28],[-92,20],[-88,12],[-84,5]]
   },
   {
@@ -6059,7 +6059,7 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver54 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver55 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
@@ -7499,7 +7499,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver54", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
+  var out = { app: "Habitat Scanner 3D Ver55", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
   feats.forEach(function (f) {
@@ -8873,6 +8873,8 @@ function buildReport(apt) {
      ["UTC", "Coordinated Universal Time, the time standard used for the scan timestamp."],
      ["ha (hectare)", "A unit of area equal to 10,000 square metres (about 2.5 acres)."],
      ["Open Database Licence (ODbL)", "The licence under which OpenStreetMap data is shared; it requires the source to be credited."],
+     ["GIS", "Geographic Information System: mapping software that can open and analyse the KML export."],
+     ["Flyway source organisations", "AEWA: African-Eurasian Waterbird Agreement. CMS: Convention on the Conservation of Migratory Species of Wild Animals. MOU: Memorandum of Understanding. EAAF / EAAFP: East Asian-Australasian Flyway (Partnership). IUCN: International Union for Conservation of Nature. UNEP: United Nations Environment Programme. USFWS: United States Fish and Wildlife Service. They appear only in the list of flyway information sources."],
      ["WHMP", "Wildlife Hazard Management Programme: the aerodrome plan for identifying and controlling wildlife hazards. This report can support it but does not replace it."]
     ].map(function (r) { return '<tr><td><b>' + escXML(r[0]) + '</b></td><td>' + escXML(r[1]) + '</td></tr>'; }).join("") +
     '</tbody></table>');
