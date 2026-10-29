@@ -295,6 +295,8 @@ li.abt-st.p1 .abt-dot{background:#60a5fa}li.abt-st.p2 .abt-dot{background:#f7d97
 .abt-flychips{display:flex;flex-wrap:wrap;gap:.5rem;margin:.2rem 0 .9rem}
 .fc{font-family:var(--F);font-size:.6rem;letter-spacing:.1em;font-weight:800;padding:.3rem .7rem;border-radius:2px;color:#06142e}
 .fc.hi{background:#f87171}.fc.me{background:#fbbf24}.fc.lo{background:#4ade80}.fc.pk{background:#fff}
+.beta-chip{display:inline-block;margin-left:.6rem;padding:.12rem .45rem;border:1px solid rgba(247,217,120,.8);border-radius:2px;color:#f7d978;font-family:var(--F);font-size:.5rem;letter-spacing:.2em;font-weight:800;vertical-align:middle;line-height:1.3}
+.itit .beta-chip,.logo .beta-chip{font-size:.55rem;margin-left:.8rem}
 .abt-copy{font-family:var(--F);font-size:.62rem;letter-spacing:.14em;color:rgba(160,190,225,.55);text-align:center;padding:1rem 0 .3rem}
 
 /* ============================================================
@@ -796,7 +798,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
   <div class="lc">
     <div class="ls-scroll">
     <div class="ls-eye">Wildlife Strike Intelligence &middot; Aerodrome Habitat Reconnaissance</div>
-    <h1 class="logo" aria-label="Habitat Scanner 3D">HABITAT <b>SCANNER</b> <span class="l3">3D</span></h1>
+    <h1 class="logo" aria-label="Habitat Scanner 3D">HABITAT <b>SCANNER</b> <span class="l3">3D</span><span class="beta-chip">BETA</span></h1>
     <div class="ls-rule"></div>
     <div class="ls-msg">
       <p class="ls-l1">Welcome aboard.</p>
@@ -879,7 +881,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 <div id="ABT">
   <div class="abt-wrap">
     <div class="abt-hd">
-      <div><div class="abt-htit">HABITAT<b>SCANNER</b> 3D</div><div class="abt-ver">WILDLIFE STRIKE INTELLIGENCE PLATFORM</div></div>
+      <div><div class="abt-htit">HABITAT<b>SCANNER</b> 3D<span class="beta-chip">BETA</span></div><div class="abt-ver">WILDLIFE STRIKE INTELLIGENCE PLATFORM</div></div>
       <div style="display:flex;align-items:center;gap:.7rem;flex-shrink:0"><button class="abt-close" id="abtClose">&#10005; CLOSE</button></div>
     </div>
     <div class="abt-hero">
@@ -1024,7 +1026,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
             <!-- S13 -->
       <div class="abt-sec " id="abt13">
         <div class="abt-sh" data-desc="Quick answers for first-time users"><span class="abt-n">13</span>FREQUENTLY ASKED QUESTIONS</div>
-<div class="abt-faq"><details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details><details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details><details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details><details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details><details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details><details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details><details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details><details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details><details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details><details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog choose Save as PDF, A4, Margins Default, untick Headers and footers, tick Background graphics; a short checklist appears before the dialog opens). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details><details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details><details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. Pins, added features and imports stay in your browser page; closing the page discards them unless you exported them.</div></details><details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Use the contact link at the end of this page. Include the ICAO code and what you expected to see.</div></details></div>
+<div class="abt-faq"><details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details><details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details><details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details><details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details><details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details><details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details><details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details><details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details><details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details><details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog choose Save as PDF, A4, Margins Default, untick Headers and footers, tick Background graphics; a short checklist appears before the dialog opens). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details><details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details><details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. The tool is in BETA: results can contain errors, so please report them. To learn which functions are used, it may count anonymous visits and button use (for example that a scan or an export happened) without cookies and without personal data. Pins, added features and imports stay in your browser page; closing the page discards them unless you exported them.</div></details><details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Press the FEEDBACK button at the top of the map screen (or SEND FEEDBACK on the start screen). Include the ICAO code, what you expected to see and what you saw. You can also use the contact links at the end of this page.</div></details></div>
       </div>
 
       <!-- CREATED BY -->
@@ -1034,6 +1036,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
           <div class="abt-cn">Waleed MAHROUS</div>
           <div class="abt-p" style="color:rgba(200,225,250,.85)">Founder, <b>StopBIRDSTRIKE</b> &middot; Aviation Wildlife Hazard Management Consultant</div>
           <div class="abt-p">Habitat Scanner 3D is built and maintained by Waleed Mahrous, founder of the StopBIRDSTRIKE platform, to give aerodrome wildlife-hazard specialists worldwide a fast, practical first look at the habitat environment around any airport. Questions, feedback, or interested in a wildlife hazard management consultation? Reach out through any of the links below.</div>
+          <a class="abt-cl" href="#" onclick="hsOpenFeedback();return false;">&#9993; Send feedback about this tool</a>
           <a class="abt-cl" href="https://waleedmahrous.com/" target="_blank" rel="noopener">&#127760; Website &mdash; waleedmahrous.com</a>
           <a class="abt-cl" href="https://waleedmahrous.com/#contact-waleed-mahrous" target="_blank" rel="noopener">&#9993; Contact Waleed Mahrous</a>
           <a class="abt-cl" href="https://waleedmahrous.com/book-an-appointment-for-a-wildlife-hazard-management-consultation" target="_blank" rel="noopener">&#128197; Book a Wildlife Hazard Management Consultation</a>
@@ -1057,7 +1060,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
   </div>
   <div class="icard">
     <div class="iey">Wildlife Strike Intelligence &middot; Aerodrome Habitat Scanner</div>
-    <div class="itit">HABITAT<br><b>SCANNER</b> 3D</div>
+    <div class="itit">HABITAT<br><b>SCANNER</b> 3D<span class="beta-chip">BETA</span></div>
     <div class="idesc">Enter a 4-letter ICAO code or GPS coordinates. The drone navigates to the aerodrome and conducts a full habitat reconnaissance within a 20 km radius of the Aerodrome Reference Point.</div>
     <div class="igroup">
       <label class="ilabel" for="II">ICAO CODE / GPS COORDINATES (LAT, LON)</label>
@@ -1085,6 +1088,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
     </div>
     <div class="dbst"><div class="dbdot pulse" id="dbdot"></div><span id="dbstxt">LOADING AIRPORT DATABASE...</span></div>
     <span class="abt-lnk" id="aboutLnk">&#9432; ABOUT THIS TOOL</span>
+    <span class="abt-lnk" id="fbLnk">&#9993; SEND FEEDBACK</span>
   </div>
 </div>
 
@@ -1117,10 +1121,11 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
   </div>
   <div id="hud">
     <div class="htop">
-      <div class="htop-l">HABITAT<b>SCANNER</b> 3D</div>
+      <div class="htop-l">HABITAT<b>SCANNER</b> 3D<span class="beta-chip">BETA</span></div>
       <div class="htop-c"><span class="dot"></span><span id="hst">DRONE ACTIVE</span></div>
       <div class="htop-r">
         
+        <button class="hbtn" id="feedbackBtn">&#9993;&nbsp;FEEDBACK</button>
         <button class="hbtn" id="aboutBtn2">&#9432;&nbsp;ABOUT</button>
         <button class="hbtn scan" id="newScanBtn">&#8592; NEW SCAN</button>
       </div>
@@ -1431,6 +1436,26 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
    tried first and the direct mirrors are only used as a last-resort
    fallback if the proxy itself is unreachable.
 ================================================================ */
+/* ---- Deployment settings (edit here only) ----
+   feedbackUrl: the feedback form page. Until the form exists it points to the contact page.
+   goatCounterUrl: anonymous visit counter, for example "https://yourcode.goatcounter.com/count". Empty means no counting. */
+var HS_CONFIG = { feedbackUrl: "https://waleedmahrous.com/#contact-waleed-mahrous", goatCounterUrl: "" };
+var HS_UTM = (function () { try { var p = new URLSearchParams(location.search), o = {}; ["utm_source", "utm_medium", "utm_campaign", "utm_content", "ref"].forEach(function (k) { var v = p.get(k); if (v) o[k] = v.slice(0, 60); }); return o; } catch (e) { return {}; } })();
+function hsTrack(name) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: String(name), title: String(name), event: true }); } catch (e) {} }
+(function () { if (!HS_CONFIG.goatCounterUrl) return; try { var sc = document.createElement("script"); sc.async = true; sc.setAttribute("data-goatcounter", HS_CONFIG.goatCounterUrl); sc.src = "https://gc.zgo.at/count.js"; document.head.appendChild(sc); } catch (e) {} })();
+function hsFeedbackUrl() {
+  var base = HS_CONFIG.feedbackUrl, hash = "", i = base.indexOf("#"); if (i >= 0) { hash = base.slice(i); base = base.slice(0, i); }
+  var q = ["app=habitat-scanner-3d"]; Object.keys(HS_UTM).forEach(function (k) { q.push(k + "=" + encodeURIComponent(HS_UTM[k])); });
+  try { var a = pinFocusedApt(); if (a && a.icao && a.icao !== "COORDS") q.push("icao=" + encodeURIComponent(a.icao)); } catch (e) {}
+  return base + (base.indexOf("?") >= 0 ? "&" : "?") + q.join("&") + hash;
+}
+function hsOpenFeedback() { hsTrack("feedback-click"); window.open(hsFeedbackUrl(), "_blank", "noopener"); }
+/* Regions where OpenStreetMap coverage is often thinner (Africa, Middle East, parts of Asia): a plain reminder, not a score. */
+var HS_THIN_OSM = "DZ AO BJ BW BF BI CM CV CF TD KM CG CD CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW EH AE BH IQ IR IL JO KW LB OM PS QA SA SY TR YE AF PK BD NP MM LA KH TL KZ UZ TM KG TJ".split(" ");
+function hsRegionNote(apt) {
+  var c = apt && apt.country ? String(apt.country).toUpperCase() : "";
+  return HS_THIN_OSM.indexOf(c) >= 0 ? "OpenStreetMap coverage in this region is often less complete than in Europe or North America. A blank area on the map does not mean that no attractant is there: check the imagery and verify on site." : "";
+}
 var OVERPASS_PROXY_URL = "https://habitat-scanner-proxy2.waleed-elsagheer17.workers.dev";
 
 /* Optional: URL of the Cloud Run GEE water-detection service (see the
@@ -2970,6 +2995,8 @@ function openAbout() {
 }
 document.getElementById("aboutLnk").addEventListener("click", openAbout);
 document.getElementById("aboutBtn2").addEventListener("click", openAbout);
+document.getElementById("feedbackBtn").addEventListener("click", hsOpenFeedback);
+document.getElementById("fbLnk").addEventListener("click", hsOpenFeedback);
 document.getElementById("whyBtn").addEventListener("click", openAbout);
 
 (function () {
@@ -3054,7 +3081,7 @@ function doScan() {
   if (!raw) { document.getElementById("ER").textContent = "Please enter an ICAO code or GPS coordinates."; return; }
   document.getElementById("ER").textContent = "";
   var apt = lookupAirport(raw);
-  if (apt) { proceedWithRefPoint(apt, function () { startMainFlight(apt); }); return; }
+  if (apt) { hsTrack("scan-" + (apt.icao || "coords")); proceedWithRefPoint(apt, function () { startMainFlight(apt); }); return; }
   document.getElementById("ER").textContent = "\"" + raw.toUpperCase() + "\" not found. Please verify the ICAO code.";
 }
 
@@ -5057,7 +5084,7 @@ function addAirportData(aptObj, data) {
   if (_retryEl) _retryEl.style.display = _needRetry ? "block" : "none";
   if (_needRetry) { setRetryTexts(data); renderOverpassDiagnostics(data.diagnostics); }
   /* Data-confidence banner (heuristic — see computeConfidence) */
-  renderConfidence(data.confidence);
+  renderConfidence(data.confidence, aptObj);
   /* Habitat fill layers are added above ring layers in the draw stack.
      Re-elevate the ring layers so they always render on top of fills. */
   liftRingLayersToTop();
@@ -5108,7 +5135,7 @@ function renderOverpassDiagnostics(diag) {
 /* ================================================================
    DATA CONFIDENCE BANNER
 ================================================================ */
-function renderConfidence(conf) {
+function renderConfidence(conf, aptRef) {
   var el = document.getElementById("habConf");
   if (!el || !conf) return;
   var colors = { none: "#ef4444", reduced: "#60a5fa", partial: "#f97316", low: "#f59e0b", moderate: "#eab308", good: "#4ade80" };
@@ -5119,6 +5146,7 @@ function renderConfidence(conf) {
     '<div style="font-family:var(--F);font-size:.46rem;font-weight:700;letter-spacing:.16em;color:' + (colors[conf.level] || "#888") + ';margin-bottom:.35rem">&#9679; DATA CONFIDENCE: ' + (labels[conf.level] || conf.level.toUpperCase()) + '</div>' +
     '<div style="font-size:.68rem;color:rgba(200,225,255,.72);line-height:1.55">' + escXML(conf.message) + '</div>' +
     (conf.checks ? '<div style="margin-top:.45rem;font-size:.6rem;line-height:1.6">' + conf.checks.map(function (k) { return '<div style="color:' + (k.ok ? "rgba(120,220,160,.85)" : "#ffb347") + '">' + (k.ok ? "\u2713 " : "! ") + escXML(k.text) + '</div>'; }).join("") + '</div>' : "") +
+    (hsRegionNote(aptRef) ? '<div style="margin-top:.45rem;padding:.4rem .5rem;border-left:3px solid #f59e0b;background:rgba(245,158,11,.08);font-size:.6rem;line-height:1.55;color:#ffd9a0">' + escXML(hsRegionNote(aptRef)) + '</div>' : '') +
     '<div style="font-family:var(--F);font-size:.4rem;letter-spacing:.08em;color:rgba(100,175,215,.4);margin-top:.35rem">HEURISTIC BASED ON RAW OSM FEATURE COUNT \u00b7 NOT A VALIDATED COMPLETENESS SCORE</div>';
 }
 
@@ -5286,7 +5314,7 @@ function showAptPanel(apt) {
   var needRetry2 = data && (osmCount === 0 || (data.confidence && (data.confidence.level === "partial" || data.confidence.level === "reduced")));
   if (retryEl) retryEl.style.display = needRetry2 ? "block" : "none";
   if (needRetry2) { setRetryTexts(data); renderOverpassDiagnostics(data.diagnostics); }
-  if (data) { renderConfidence(data.confidence); }
+  if (data) { renderConfidence(data.confidence, apt); }
   else { var confEl = document.getElementById("habConf"); if (confEl) confEl.style.display = "none"; }
 }
 
@@ -6059,7 +6087,7 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver55 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver56 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
@@ -7499,7 +7527,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver55", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
+  var out = { app: "Habitat Scanner 3D Ver56", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null,
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
   feats.forEach(function (f) {
@@ -7963,7 +7991,7 @@ document.getElementById("importFile").addEventListener("change", function (ev) {
   rd.readAsText(file);
 });
 document.getElementById("btnKMZ").addEventListener("click", function () {
-  openOutputPicker("SELECT AIRPORT TO EXPORT (KMZ)", function (a) { exportKML(a, true); });
+  hsTrack("export-kmz"); openOutputPicker("SELECT AIRPORT TO EXPORT (KMZ)", function (a) { exportKML(a, true); });
 });
 /* KMZ and IMPORT buttons are shown exactly when EXTRACT KML is */
 (function () {
@@ -7976,11 +8004,11 @@ document.getElementById("btnKMZ").addEventListener("click", function () {
    KML EXPORT + REPORT GENERATION (shared airport picker)
 ================================================================ */
 document.getElementById("btnKML").addEventListener("click", function () {
-  openOutputPicker("SELECT AIRPORT TO EXPORT", exportKML);
+  hsTrack("export-kml"); openOutputPicker("SELECT AIRPORT TO EXPORT", exportKML);
 });
 
 document.getElementById("btnREPORT").addEventListener("click", function () {
-  openOutputPicker("SELECT AIRPORT FOR REPORT", openReport);
+  hsTrack("report-open"); openOutputPicker("SELECT AIRPORT FOR REPORT", openReport);
 });
 
 function openOutputPicker(label, action) {
@@ -8438,6 +8466,7 @@ async function rptBuildDocx() {
 }
 window.rptBuildDocx = rptBuildDocx;
 async function rptExportDocx() {
+  hsTrack("export-word");
   try { if (window._rptMapPromise) await window._rptMapPromise; } catch (e) {}
   var btn = document.getElementById("rptDocxBtn"), old = btn.innerHTML; btn.disabled = true; btn.textContent = "PREPARING WORD FILE...";
   try {
@@ -8506,9 +8535,9 @@ function reportExecutiveHtml(apt, rows, hotspots, rptComb, conf, habFeats, rlbl,
   var nClust = rptComb && rptComb.clusters ? rptComb.clusters.length : 0;
   var nearVH = null; mapped.forEach(function (r) { if (!r.sat && r.sev.tier === "VERY HIGH" && (!nearVH || r.distKm < nearVH.distKm)) nearVH = r; });
   var aptName = apt.name || apt.icao || "", icao = apt.icao && apt.icao !== "COORDS" ? apt.icao : "";
-  var verdictCol = critAll > 0 ? "#c0392b" : highAll > 0 ? "#d97706" : "#2f7d4f";
-  var verdict = critAll > 0 ? (critAll + " critical hotspot" + (critAll > 1 ? "s" : "") + " and " + highAll + " high-concern site" + (highAll !== 1 ? "s" : "") + " identified")
-              : highAll > 0 ? (highAll + " high-concern site" + (highAll > 1 ? "s" : "") + " identified, no critical hotspot")
+  var verdictCol = "#0c1f3d", verdictEdge = critAll > 0 ? "#c0392b" : highAll > 0 ? "#d97706" : "#2f7d4f";
+  var verdict = critAll > 0 ? ("Screening result: " + (critAll + highAll) + " features reach the two highest risk tiers (" + critAll + " critical, " + highAll + " high concern). Start with the five sites listed below.")
+              : highAll > 0 ? ("Screening result: " + highAll + " high-concern feature" + (highAll > 1 ? "s" : "") + ", no critical hotspot. Start with the sites listed below.")
               : "No critical or high-concern site identified under this screening logic";
   var cl = conf.level || "unknown";
   var confTxt = { good: "Good coverage", moderate: "Moderate coverage", low: "Low coverage", reduced: "Complete (large lakes from satellite)", partial: "Incomplete scan", none: "No OSM data" }[cl] || cl;
@@ -8651,7 +8680,7 @@ function reportExecutiveHtml(apt, rows, hotspots, rptComb, conf, habFeats, rlbl,
   var dateLine = escXML(genDateStr);
   return '<div class="ex-wrap"><div class="rpt-part">PART A &middot; MANAGEMENT SUMMARY<small>Headline result, key figures and suggested follow-up</small></div>' +
     '<div class="ex-head"><div><div class="ex-kick">WILDLIFE HAZARD SCREENING</div><div class="ex-apt">' + escXML(aptName) + (icao ? ' <span>' + escXML(icao) + '</span>' : '') + '</div><div class="ex-sub">20 km scan around the ' + escXML(rlbl === "ARP" ? "Aerodrome Reference Point (ARP)" : rlbl) + ' &middot; ' + dateLine + '</div></div><div class="ex-conf" style="border-color:' + confCol + ';color:' + confCol + '">DATA: ' + escXML(confTxt.toUpperCase()) + '</div></div>' +
-    '<div class="ex-verdict" style="background:' + verdictCol + '">' + escXML(verdict) + '</div>' +
+    '<div class="ex-verdict" style="background:' + verdictCol + ';border-left:8px solid ' + verdictEdge + '">' + escXML(verdict) + '</div>' +
     '<div class="ex-kpis">' +
       '<div class="ex-kpi"><b style="color:#c0392b">' + critAll + '</b><span>Critical hotspots</span></div>' +
       '<div class="ex-kpi"><b style="color:#d97706">' + highAll + '</b><span>High-concern sites</span></div>' +
@@ -8768,7 +8797,7 @@ function buildReport(apt) {
     rptKV("Inner assessment zone", "13 km radius (ICAO) — Areas A (0–3 km), B (3–8 km), C (8–13 km)") +
     rptKV("Extended buffer", "13–20 km (precautionary, app-defined)") +
     '</div>' +
-    '<div class="rpt-p">Data-confidence assessment for this scan: <b>' + escXML((conf.level || "unknown").toUpperCase()) + '</b> — ' + escXML(conf.message) + '</div><div class="rpt-p" style="margin-bottom:.2rem"><b>Integrity checks</b> (a tick means passed; an exclamation mark is a note to read):</div>' + ((conf && conf.checks) ? '<ul class="rpt-checks">' + conf.checks.map(function (k) { return '<li><span class="' + (k.ok ? 'ck-ok' : 'ck-no') + '">' + (k.ok ? '&#10003;' : '!') + '</span> ' + escXML(k.text) + '</li>'; }).join('') + '</ul>' : '')
+    '<div class="rpt-p">Data-confidence assessment for this scan: <b>' + escXML((conf.level || "unknown").toUpperCase()) + '</b> — ' + escXML(conf.message) + '</div>' + (hsRegionNote(apt) ? '<div class="rpt-p"><b>Regional note.</b> ' + escXML(hsRegionNote(apt)) + '</div>' : '') + '<div class="rpt-p" style="margin-bottom:.2rem"><b>Integrity checks</b> (a tick means passed; an exclamation mark is a note to read):</div>' + ((conf && conf.checks) ? '<ul class="rpt-checks">' + conf.checks.map(function (k) { return '<li><span class="' + (k.ok ? 'ck-ok' : 'ck-no') + '">' + (k.ok ? '&#10003;' : '!') + '</span> ' + escXML(k.text) + '</li>'; }).join('') + '</ul>' : '')
   );
 
   /* ── 2. Habitat & attractant overview (Ver12: dashboard, not a
@@ -9016,6 +9045,7 @@ document.getElementById("prnGo").addEventListener("click", function () {
   document.getElementById("prnOL").classList.remove("on"); rptDoPrint();
 });
 function rptDoPrint() {
+  hsTrack("report-pdf");
   /* The browser proposes the page title as the file name: date, report name, airport. */
   var a = window._rptApt || {}, d = new Date();
   function z(n) { return (n < 10 ? "0" : "") + n; }
