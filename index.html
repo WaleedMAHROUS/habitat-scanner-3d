@@ -2463,7 +2463,7 @@ var ANN_ITEMS = [
   { id: "manualFeat", label: "Manually Added Features", color: "#ffe28a" },
   { id: "measurements", label: "Distance Measurements", color: "#ffa500" },
   { id: "sectors", label: "Runway Approach/Departure Sectors (screening)", color: "#f59e0b" },
-  { id: "strikes", label: "Bird-strike Log Heatmap", color: "#ef4444" }
+  { id: "strikes", label: "Bird-strike Log Heatmap", color: "#ef4444", info: "BIRD-STRIKE LOG HEATMAP shows your own bird-strike records on the map. It stays empty until you import them. Step 1: press ABOUT, open the question \"How do I add my own bird-strike records\" near the end, and press the word template to download the CSV file (the same link is in the tools guide under IMPORT). Step 2: fill the file with your aerodrome\u0027s records and delete the example rows; latitude and longitude are optional. Step 3: press IMPORT KML / GEOJSON / STRIKE CSV on this screen and choose the file. The heatmap then appears (yellow to red) and each record becomes a red dot when you zoom in. It is for context only: it does not change any risk score and the app does not check your records." }
 ];
 var activeAnn = { manualFeat: true, measurements: true, sectors: false, strikes: true };
 
@@ -2561,6 +2561,11 @@ function buildLegend() {
       var on = activeAnn[a.id];
       var d = document.createElement("div"); d.className = "legit" + (on ? "" : " off");
       d.innerHTML = '<div class="legsw" style="background:' + a.color + '"></div><span>' + a.label + '</span><span class="legck">' + (on ? "&#10003;" : "") + "</span>";
+      if (a.info) {
+        var aI = document.createElement("span"); aI.className = "info-i"; aI.tabIndex = 0; aI.textContent = "i"; aI.setAttribute("aria-label", "About " + a.label); aI.setAttribute("data-info", a.info);
+        aI.addEventListener("click", function (ev) { ev.stopPropagation(); });
+        d.insertBefore(aI, d.querySelector(".legck"));
+      }
       d.addEventListener("click", function () {
         activeAnn[a.id] = !activeAnn[a.id];
         buildLegend(); applyAnnotationFilter();
@@ -3510,6 +3515,10 @@ function enrichHabitatFeatures(fc, aptLat, aptLon) {
       if (typeof ed === "number") { p.distKm = ed; p.distBasis = "edge"; }
     }
     p.areaM2 = areaM2;
+    /* Ver60: a very large area that contains the reference point is usually a rough outline (it also holds buildings, roads and other uses) */
+    if (areaM2 && areaM2 >= 10000000 && p.footprintType !== "point" && window._turfReady && !/^Satellite/.test(p.source || "")) {
+      try { if (turf.booleanPointInPolygon([aptLon, aptLat], f)) p.coversArp = true; } catch (eCv) {}
+    }
   }
   return fc;
 }
@@ -4074,6 +4083,8 @@ function computeIntegrity(partsStatus, habGJ, rwyCount, perf, noOutlineCount) {
   if (perf && perf.clipApprox > 0) checks.push({ ok: true, text: perf.clipApprox + " very large outline(s) were trimmed to the scan circle with a fast linear method (same result as the exact method; the circle edge may show short straight sections)" });
   var sse = (perf && perf.satSuspectEdges) || 0;
   if (sse > 0) checks.push({ ok: false, text: sse + " satellite-derived water outline(s) contain a straight segment of 3 km or more (raster artefact; extent approximate); flagged on the feature" });
+  var cov = (habGJ.features || []).filter(function (f) { return f.properties && f.properties.coversArp; });
+  if (cov.length) checks.push({ ok: false, text: cov.length + " large area(s) of more than 1,000 ha cover the reference point (" + cov.slice(0, 3).map(function (f) { return (f.properties.label || "area") + " " + Math.round(f.properties.areaM2 / 10000).toLocaleString() + " ha"; }).join(", ") + "). Areas this large are often rough outlines in OpenStreetMap that also include buildings and roads; check them against imagery before relying on them" });
   var shown = (habGJ.features || []).filter(function (f) { return !(f.properties && f.properties.belowMMU); }).length;
   /* Ver39: this is a performance note, not a data-quality failure, so it no longer shows as a warning mark. */
   checks.push({ ok: true, text: shown + " features drawn on the map" + (shown > 4000 ? " (dense area: the map may be slower; small features can be hidden with the legend switch)" : "") });
@@ -5210,9 +5221,18 @@ function selectOwnRunways(rwyLines, apt) {
     }).sort(function (x, y) { return x.d - y.d; });
     var best = list[0];
     if (best && best.d <= RWY_OWN_MAX_KM) {
-      best.g.forEach(function (it) { res.own.features.push(it.f); });
+      /* Ver60: parallel runways of one aerodrome carry the same number with L, C or R (ICAO Annex 14 designation rule). A group within
+         RWY_OWN_MAX_KM that shares a runway number with a suffix (for example 05L/23R and 05C/23C) belongs to the same aerodrome even when
+         the parallels are further apart than RWY_LINK_KM (Cairo). */
+      function rwyNums(g) { var o = {}; g.forEach(function (it) { String(it.f.properties.ref || "").split(/[\/\-]/).forEach(function (t) { var m = /^(\d{1,2})[LCR]$/i.exec(t.trim()); if (m) o[String(+m[1])] = true; }); }); return o; }
+      var ownNums = rwyNums(best.g), ownGroups = [best], rest = [];
+      list.slice(1).forEach(function (o) {
+        var n2 = rwyNums(o.g), share = Object.keys(n2).some(function (k) { return ownNums[k]; });
+        if (share && o.d <= RWY_OWN_MAX_KM) { ownGroups.push(o); Object.keys(n2).forEach(function (k) { ownNums[k] = true; }); } else rest.push(o);
+      });
+      ownGroups.forEach(function (gr) { gr.g.forEach(function (it) { res.own.features.push(it.f); }); });
       res.ownKm = +best.d.toFixed(2);
-      list.slice(1).forEach(function (o) { res.others.push({ ways: o.g.length, refs: o.g.map(function (it) { return it.f.properties.ref || null; }), nearestKm: +o.d.toFixed(1) }); });
+      rest.forEach(function (o) { res.others.push({ ways: o.g.length, refs: o.g.map(function (it) { return it.f.properties.ref || null; }), nearestKm: +o.d.toFixed(1) }); });
     } else {
       list.forEach(function (o) { res.others.push({ ways: o.g.length, refs: o.g.map(function (it) { return it.f.properties.ref || null; }), nearestKm: +o.d.toFixed(1) }); });
     }
@@ -5276,6 +5296,7 @@ function showHabitatDetail(feature, point, aptObj) {
   if (p.combinedId) rows.push(["Combined attractant", "Yes (" + p.combinedId + "): within 1 km of " + p.combinedWith + ". Together these can form a wildlife corridor (FAA AC 150/5200-33C, 2.10). App-defined 1 km rule; this flag does not change the score."]);
   if (typeof p.areaM2 === "number") rows.push(["Approx. area", (p.areaM2 >= 10000 ? (p.areaM2/10000).toFixed(2) + " ha" : p.areaM2.toFixed(0) + " m\u00b2")]);
   rows.push(["Footprint", p.bigWater ? "Large water body: shown as a thin shoreline with a callout, not as a filled area, and its area is not counted. The callout marks the shore point nearest to the ARP and the distance is measured to it." : p.footprintType === "point" ? (isManual ? "Manually placed marker (approximate, ~90 m)" : "Point location only \u2014 verify boundary in the field") : (isManual ? "Manually drawn shape \u2014 traced by a user of this scanner" : (isSat ? "Satellite-derived outline (about 35 m pixel scale), not a surveyed boundary" : "Mapped OSM area"))]);
+  if (p.coversArp) rows.push(["Data check", "This area is larger than 1,000 ha and contains the reference point. Areas this large are often rough outlines in OpenStreetMap that also include buildings, roads and other land uses, so its extent may not match the real vegetation. Check it against current imagery before relying on it."]);
   if (typeof p.satEdgeKm === "number") rows.push(["Data check", "This satellite-derived outline contains a straight segment of " + p.satEdgeKm.toFixed(1) + " km. Satellite water comes from 10 m raster pixels, so such edges are a vectorisation artefact and the extent is approximate (it can be oversized). It is shown only as a cross-check; verify on imagery before using its size or distance."]);
   if (typeof p.suspectEdgeKm === "number") rows.push(["Data check", "The source outline contains a straight segment of " + p.suspectEdgeKm.toFixed(1) + " km. This is often an artefact of incomplete OpenStreetMap data, not a real shoreline" + (p.bigWater ? " (that segment is omitted from the shoreline shown here)" : "") + ". Verify on imagery."]);
   if (!isManual) {
@@ -6188,7 +6209,7 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver59 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver60 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
@@ -7628,8 +7649,8 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver59", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
-    runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
+  var out = { app: "Habitat Scanner 3D Ver60", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
+    runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, from: a ? [+a[1].toFixed(5), +a[0].toFixed(5)] : null, to: b ? [+b[1].toFixed(5), +b[0].toFixed(5)] : null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
   feats.forEach(function (f) {
@@ -7879,10 +7900,11 @@ function newStrikeSum() { return { total: 0, mapped: 0, noCoord: 0, damage: 0, f
 function sumAdd(o, k) { if (k === "" || k == null) return; o[k] = (o[k] || 0) + 1; }
 /* Adds parsed records to the airport: mapped points (within 40 km) for the heatmap, every record of this aerodrome for the summary. */
 function strikeAbsorb(apt, parsed) {
-  var out = { read: parsed.recs.length, mapped: 0, noCoord: 0, far: 0, otherAd: 0 };
+  var out = { read: parsed.recs.length, mapped: 0, noCoord: 0, far: 0, otherAd: 0, example: 0 };
   apt.strikeSum = apt.strikeSum || newStrikeSum();
   var S = apt.strikeSum, ours = (apt.icao && apt.icao !== "COORDS") ? apt.icao : "";
   parsed.recs.forEach(function (r) {
+    if (r.icao === "EXAMPLE") { out.example++; return; }
     if (ours && r.icao && r.icao !== ours) { out.otherAd++; return; }
     var hasXY = r.lat != null && r.lon != null;
     if (hasXY && haversine(apt.lat, apt.lon, r.lat, r.lon) > 40) { out.far++; return; }
@@ -7901,8 +7923,8 @@ function strikeAbsorb(apt, parsed) {
   return out;
 }
 function strikeTemplateCsv() {
-  var ex = ["2025-03-14", "day", "HECA", "05L", "30.1120", "31.3990", "150", "140", "take-off run", "Black kite", "1", "2-10", "medium", "none", "", "", "some cloud", "none", "no", "", "", "", "Bird seen on runway before rotation"];
-  var ex2 = ["2025-04-02", "dusk", "HECA", "23R", "", "", "30", "135", "approach", "Cattle egret", "2-10", "2-10", "small", "none", "engine no. 1", "engine no. 1", "no cloud", "none", "yes", "2", "15", "", "Latitude and longitude left empty: counted in the summary, not drawn"];
+  var ex = ["2025-03-14", "day", "EXAMPLE", "05L", "30.1120", "31.3990", "150", "140", "take-off run", "Black kite", "1", "2-10", "medium", "none", "", "", "some cloud", "none", "no", "", "", "", "EXAMPLE ROW, ignored on import: replace EXAMPLE with your airport code (for example HECA) and enter your own record"];
+  var ex2 = ["2025-04-02", "dusk", "EXAMPLE", "23R", "", "", "30", "135", "approach", "Cattle egret", "2-10", "2-10", "small", "none", "engine no. 1", "engine no. 1", "no cloud", "none", "yes", "2", "15", "", "EXAMPLE ROW, ignored on import: latitude and longitude may be left empty, such a record is counted in the report summary and not drawn"];
   return IBIS_COLS.join(",") + "\r\n" + ex.map(function (x) { return /[,"]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(",") + "\r\n" + ex2.map(function (x) { return /[,"]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(",") + "\r\n";
 }
 function downloadStrikeTemplate() {
@@ -8227,11 +8249,11 @@ document.getElementById("importFile").addEventListener("change", function (ev) {
       var r;
       try { r = parseStrikeCsv(String(rc.result)); } catch (e) { window.alert("This CSV could not be used (" + e.message + "). Nothing was imported."); return; }
       var a = strikeAbsorb(apt, r);
-      if (!a.mapped && !a.noCoord) { window.alert("No usable record for this aerodrome was found in the " + a.read + " row(s) read." + (a.far ? "\nMore than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nBelong to another aerodrome code: " + a.otherAd + "." : "") + "\nCheck the aerodrome_icao, latitude and longitude columns, or use the template."); return; }
+      if (!a.mapped && !a.noCoord) { window.alert("No usable record for this aerodrome was found in the " + a.read + " row(s) read." + (a.far ? "\nMore than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nBelong to another aerodrome code: " + a.otherAd + "." : "") + (a.example ? "\nExample rows ignored: " + a.example + " (replace EXAMPLE with your airport code)." : "") + "\nCheck the aerodrome_icao, latitude and longitude columns, or use the template."); return; }
       if (a.mapped) { activeAnn.strikes = true; drawStrikes(apt); buildLegend(); applyAnnotationFilter(); }
       saveWorkNow(apt);
       var un = Object.keys(r.unrec).map(function (k) { return k.replace(/_/g, " ") + ": " + r.unrec[k]; }).join(", ");
-      window.alert("Bird-strike log: " + (a.mapped + a.noCoord) + " record(s) added for this aerodrome.\nOn the map as a heatmap: " + a.mapped + ".\nWithout coordinates (counted in the report summary only): " + a.noCoord + "." + (a.far ? "\nSkipped, more than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nSkipped, another aerodrome code: " + a.otherAd + "." : "") + (r.badCoord ? "\nInvalid coordinates (kept in the summary without a map point): " + r.badCoord + "." : "") + (un ? "\nValues not recognised (" + un + ")." : "") + (r.truncated ? "\nOnly the first " + STRIKE_MAX_ROWS.toLocaleString() + " rows were read." : "") + "\nThe heatmap and summary are for context. The app does not verify the data or infer causes. Importing the same file twice counts the records twice.");
+      window.alert("Bird-strike log: " + (a.mapped + a.noCoord) + " record(s) added for this aerodrome.\nOn the map as a heatmap: " + a.mapped + ".\nWithout coordinates (counted in the report summary only): " + a.noCoord + "." + (a.far ? "\nSkipped, more than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nSkipped, another aerodrome code: " + a.otherAd + "." : "") + (a.example ? "\nExample rows ignored: " + a.example + "." : "") + (r.badCoord ? "\nInvalid coordinates (kept in the summary without a map point): " + r.badCoord + "." : "") + (un ? "\nValues not recognised (" + un + ")." : "") + (r.truncated ? "\nOnly the first " + STRIKE_MAX_ROWS.toLocaleString() + " rows were read." : "") + "\nThe heatmap and summary are for context. The app does not verify the data or infer causes. Importing the same file twice counts the records twice.");
     };
     rc.readAsText(file);
     return;
