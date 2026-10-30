@@ -985,7 +985,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
         <div class="abt-sh" data-desc="What each control does and when to use it"><span class="abt-n">8</span>TOOLS GUIDE: EVERY BUTTON EXPLAINED</div>
 
         <div class="abt-p">After a scan finishes, the tools appear on the map screen. Each one does a single job.</div>
-        <div class="abt-tgrid"><div class="abt-tg"><div class="abt-tgh">NAVIGATE</div><div class="abt-tool"><b>RETURN TO ARP</b><span>Brings the camera back to the Aerodrome Reference Point after you have moved around the map.</span></div><div class="abt-tool"><b>RE-ORBIT</b><span>Replays the slow circling camera move around the ARP.</span></div><div class="abt-tool"><b>EXPLORE FREELY</b><span>Stops the guided orbit and releases the camera so you can pan, tilt and zoom yourself. The other tools become active at this point.</span></div></div><div class="abt-tg"><div class="abt-tgh">ADD TO THE MAP</div><div class="abt-tool"><b>ADD AIRPORT</b><span>Type another ICAO code to add a second aerodrome to the current map without interrupting your view, for example to compare two airports.</span></div><div class="abt-tool"><b>BATCH TABLE</b><span>Paste a list of ICAO codes to scan several aerodromes one after another and compare them in one table (feature counts and nearest attractants). The table can be downloaded as CSV, and OPEN loads any airport from it.</span></div><div class="abt-tool"><b>ADD FEATURE</b><span>Add a habitat or attractant that the scan missed (for example a new pond or a poultry farm you know about): choose a shape (point, circle, rectangle or freeform polygon), draw it on the map and give it a class.</span></div><div class="abt-tool"><b>ADD COORDINATES</b><span>Paste or type a latitude and longitude (decimal degrees, or with N, S, E, W), give the point a name (for example 1 to 5, or a site name) and a classification, then press Insert. A small pin is placed. The pin does not replace the feature underneath it: hovering over the feature still works, and the pin shows a short name and classification. Pins are included in the KML and KMZ export in their own folder.</span></div><div class="abt-tool"><b>IMPORT KML / GEOJSON / STRIKE CSV</b><span>Loads a KML, GeoJSON or strike-record CSV file onto the map, for example your own survey layers or bird-strike locations.</span></div></div><div class="abt-tg"><div class="abt-tgh">MEASURE</div><div class="abt-tool"><b>MEASURE DISTANCE</b><span>Click two or more points on the map to read the distance between them.</span></div></div><div class="abt-tg"><div class="abt-tgh">SIDE PANEL CONTROLS</div><div class="abt-tool"><b>HABITAT SWITCHES</b><span>Tick or untick a habitat group to show or hide it. ALL and NONE change every group at once.</span></div><div class="abt-tool"><b>SHOW / HIDE SMALL FEATURES</b><span>Small features are mapped features below the minimum map size for their distance from the ARP. They stay in the counts and in the KML export but are not ranked as hotspots. Hide them for a clean overview of the larger attractants; show them when checking an area in detail, because a small pond or waste point close to the runway can still matter. Hover over the small i beside the control for the exact size limits.</span></div><div class="abt-tool"><b>DOWNLOAD SCAN DIAGNOSTICS (JSON)</b><span>A technical record of the scan: how complete the data download was, which queries failed, how many features were found, merged or hidden, suspicious outlines, the largest features, clusters and timings. Use it when a result looks wrong or when you send feedback; you do not need it for normal work. Hover over the i beside it for details.</span></div><div class="abt-tool"><b>FLYWAY MONTH FILTER</b><span>Highlights the migratory flyways that are in their peak period in the chosen month.</span></div></div><div class="abt-tg"><div class="abt-tgh">EXPORT AND REPORT</div><div class="abt-tool"><b>EXTRACT KML / KMZ</b><span>Downloads the scan for Google Earth and other GIS software. KMZ is the same content compressed into one file.</span></div><div class="abt-tool"><b>GENERATE REPORT</b><span>Builds the Wildlife Hazard Screening Report: a cover and contents page, Part A (management summary with charts and the top five sites to look at first, with their coordinates) and Part B (technical and operational detail). PRINT / SAVE AS PDF makes a PDF; EXPORT WORD (.DOCX) makes an editable file with the same sections, header, footer and page numbers. Word needs an internet connection the first time because it loads the Word-writing library.</span></div><div class="abt-tool"><b>REPORT MARKERS 1 TO 5</b><span>The numbered markers on the report map are the top five sites. Each link in Part A jumps to its marker, and the coordinates are printed so you can copy them.</span></div></div></div>
+        <div class="abt-tgrid"><div class="abt-tg"><div class="abt-tgh">NAVIGATE</div><div class="abt-tool"><b>RETURN TO ARP</b><span>Brings the camera back to the Aerodrome Reference Point after you have moved around the map.</span></div><div class="abt-tool"><b>RE-ORBIT</b><span>Replays the slow circling camera move around the ARP.</span></div><div class="abt-tool"><b>EXPLORE FREELY</b><span>Stops the guided orbit and releases the camera so you can pan, tilt and zoom yourself. The other tools become active at this point.</span></div></div><div class="abt-tg"><div class="abt-tgh">ADD TO THE MAP</div><div class="abt-tool"><b>ADD AIRPORT</b><span>Type another ICAO code to add a second aerodrome to the current map without interrupting your view, for example to compare two airports.</span></div><div class="abt-tool"><b>BATCH TABLE</b><span>Paste a list of ICAO codes to scan several aerodromes one after another and compare them in one table (feature counts and nearest attractants). The table can be downloaded as CSV, and OPEN loads any airport from it.</span></div><div class="abt-tool"><b>ADD FEATURE</b><span>Add a habitat or attractant that the scan missed (for example a new pond or a poultry farm you know about): choose a shape (point, circle, rectangle or freeform polygon), draw it on the map and give it a class.</span></div><div class="abt-tool"><b>ADD COORDINATES</b><span>Paste or type a latitude and longitude (decimal degrees, or with N, S, E, W), give the point a name (for example 1 to 5, or a site name) and a classification, then press Insert. A small pin is placed. The pin does not replace the feature underneath it: hovering over the feature still works, and the pin shows a short name and classification. Pins are included in the KML and KMZ export in their own folder.</span></div><div class="abt-tool"><b>IMPORT KML / GEOJSON / STRIKE CSV</b><span>Loads a KML or GeoJSON file (for example your own survey layers) or a bird-strike log in CSV form. In a strike log the column names follow the ICAO bird strike reporting form (IBIS). Records with coordinates appear on the map as the <b style="display:inline;font-size:inherit;letter-spacing:0;color:#fff">Bird-strike Log Heatmap</b>, and every record is summarised in the report. <a href="#" onclick="downloadStrikeTemplate();return false" style="color:#7dd3fc;text-decoration:underline">Download the strike log template</a>. More in the questions at the end of this page.</span></div></div><div class="abt-tg"><div class="abt-tgh">MEASURE</div><div class="abt-tool"><b>MEASURE DISTANCE</b><span>Click two or more points on the map to read the distance between them.</span></div></div><div class="abt-tg"><div class="abt-tgh">SIDE PANEL CONTROLS</div><div class="abt-tool"><b>HABITAT SWITCHES</b><span>Tick or untick a habitat group to show or hide it. ALL and NONE change every group at once.</span></div><div class="abt-tool"><b>SHOW / HIDE SMALL FEATURES</b><span>Small features are mapped features below the minimum map size for their distance from the ARP. They stay in the counts and in the KML export but are not ranked as hotspots. Hide them for a clean overview of the larger attractants; show them when checking an area in detail, because a small pond or waste point close to the runway can still matter. Hover over the small i beside the control for the exact size limits.</span></div><div class="abt-tool"><b>DOWNLOAD SCAN DIAGNOSTICS (JSON)</b><span>A technical record of the scan: how complete the data download was, which queries failed, how many features were found, merged or hidden, suspicious outlines, the largest features, clusters and timings. Use it when a result looks wrong or when you send feedback; you do not need it for normal work. Hover over the i beside it for details.</span></div><div class="abt-tool"><b>FLYWAY MONTH FILTER</b><span>Highlights the migratory flyways that are in their peak period in the chosen month.</span></div></div><div class="abt-tg"><div class="abt-tgh">EXPORT AND REPORT</div><div class="abt-tool"><b>EXTRACT KML / KMZ</b><span>Downloads the scan for Google Earth and other GIS software. KMZ is the same content compressed into one file.</span></div><div class="abt-tool"><b>GENERATE REPORT</b><span>Builds the Wildlife Hazard Screening Report: a cover and contents page, Part A (management summary with charts and the top five sites to look at first, with their coordinates) and Part B (technical and operational detail). PRINT / SAVE AS PDF makes a PDF; EXPORT WORD (.DOCX) makes an editable file with the same sections, header, footer and page numbers. Word needs an internet connection the first time because it loads the Word-writing library.</span></div><div class="abt-tool"><b>REPORT MARKERS 1 TO 5</b><span>The numbered markers on the report map are the top five sites. Each link in Part A jumps to its marker, and the coordinates are printed so you can copy them.</span></div></div></div>
       </div>
 
             <!-- S9 -->
@@ -1026,7 +1026,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
             <!-- S13 -->
       <div class="abt-sec " id="abt13">
         <div class="abt-sh" data-desc="Quick answers for first-time users"><span class="abt-n">13</span>FREQUENTLY ASKED QUESTIONS</div>
-<div class="abt-faq"><details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details><details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details><details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details><details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details><details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details><details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details><details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details><details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details><details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details><details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog choose Save as PDF, A4, Margins Default, untick Headers and footers, tick Background graphics; a short checklist appears before the dialog opens). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details><details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details><details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. The tool is in BETA: results can contain errors, so please report them. To learn which functions are used, it may count anonymous visits and button use (for example that a scan or an export happened) without cookies and without personal data. Pins, added features and imports stay in your browser page; closing the page discards them unless you exported them.</div></details><details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Press the FEEDBACK button at the top of the map screen (or SEND FEEDBACK on the start screen). Include the ICAO code, what you expected to see and what you saw. You can also use the contact links at the end of this page.</div></details></div>
+<div class="abt-faq"><details><summary>How do I start?</summary><div class="abt-a">Type a four-letter ICAO code in the box (for example HECA) and press INITIATE HABITAT SCAN. If the airport is not in the database, use ADD AIRPORT or enter coordinates instead. The scan usually takes from several seconds to about a minute, depending on how busy the servers are and how much is mapped around the airport.</div></details><details><summary>What do the 13 km and 20 km rings mean?</summary><div class="abt-a">They follow the assessment distances of ICAO Doc 9137 (Airport Services Manual, Part 3): attractants matter most close to the aerodrome and less with distance. The report also splits the area into zones by distance from the ARP so you can see how many features lie in each.</div></details><details><summary>Where does the data come from, and how accurate is it?</summary><div class="abt-a">Land use and facilities come from OpenStreetMap (live), water from ESA WorldCover satellite data where needed, and airports from OurAirports. OpenStreetMap is edited by volunteers, so completeness differs between countries and even between districts. A missing feature on the map does not prove it is absent on the ground, and a mapped one may be outdated. Always verify on site.</div></details><details><summary>Why is a known lake, farm or landfill missing?</summary><div class="abt-a">Either it is not mapped in OpenStreetMap, or it is mapped with a different tag than the scan recognises. Use ADD FEATURE to add it yourself, and consider adding it to OpenStreetMap so everyone benefits.</div></details><details><summary>What do the risk tiers (Critical, High, Moderate, Monitor) mean?</summary><div class="abt-a">They are screening tiers combining how attractive the feature type is to birds or other wildlife with how close it is to the ARP. They tell you where to look first. They are not a measured strike risk and they do not replace a wildlife hazard assessment.</div></details><details><summary>What is a combined-attractant cluster?</summary><div class="abt-a">Different attractant classes lying within 1 km of each other, for example a waste site next to a pond. Combined attractants can draw more birds than each one alone, so the report lists them together.</div></details><details><summary>What does "satellite, approx." mean on a feature?</summary><div class="abt-a">Its outline comes from 10 m satellite land-cover data rather than a hand-drawn map. The outline is approximate and may include artefacts, so check it against the imagery.</div></details><details><summary>The report says the scan is INCOMPLETE. What should I do?</summary><div class="abt-a">Part of the OpenStreetMap download failed or timed out (the report names which part). Run the scan again, ideally at a quieter time, and compare the counts. Do not use an incomplete scan as a final result.</div></details><details><summary>How do I open the export in Google Earth?</summary><div class="abt-a">Download the KML or KMZ, then open it in Google Earth (double-click the file, or use File, Open). Features are grouped in folders by class and carry name, class, distance and source in their description.</div></details><details><summary>How do I get the report as a PDF or Word file?</summary><div class="abt-a">Press GENERATE REPORT. In the report window choose the print or save-as-PDF button (in the print dialog choose Save as PDF, A4, Margins Default, untick Headers and footers, tick Background graphics; a short checklist appears before the dialog opens). For an editable file press EXPORT WORD (.DOCX). The file name starts with the date, then the report name and the airport.</div></details><details><summary>Can I use the result in a regulatory submission?</summary><div class="abt-a">Use it as a starting point and a map for planning the field work. The regulator will expect verified data and the assessment of a qualified specialist. The report says this on its own pages too.</div></details><details><summary>How do I add my own bird-strike records, and what is the Bird-strike Log Heatmap?</summary><div class="abt-a">Press IMPORT KML / GEOJSON / STRIKE CSV and choose a CSV file. The <a href="#" onclick="downloadStrikeTemplate();return false" style="color:#7dd3fc;text-decoration:underline">template</a> shows the column names. They follow the fields of the ICAO bird strike reporting form (IBIS), for example date, runway, height_agl_ft, phase_of_flight, bird_species, birds_struck, bird_size and effect_on_flight. IBIS does not define a CSV layout, so the importer reads these header names and common spellings, and accepts the form's letter codes (for example A to H for phase of flight) as well as plain words. A semicolon or comma separator both work.<br><br><b>On the map.</b> Records that have latitude and longitude and lie within 40 km of the reference point are drawn as the Bird-strike Log Heatmap: yellow where a few records are close together, orange to red where many are. Zoom in to about level 13 and each record becomes a red dot; click it to see its details. Switch the layer on or off in the legend, under annotations, at Bird-strike Log Heatmap.<br><br><b>In the report.</b> Records without coordinates are not drawn, but they are counted in a summary table in the report (phase of flight, height above ground, time of day, bird size, number of birds, effect on flight, species, month and year). If the file has an aerodrome_icao column, rows for other aerodromes are skipped. Up to 20,000 rows are read.<br><br><b>What it is not.</b> The log is for context only. It does not change any risk score, the app does not check the records, and the report does not claim that any habitat caused any strike. The records stay in your browser and are not uploaded. Importing the same file twice counts the records twice; use CLEAR next to the autosave note in the legend to start again.</div></details><details><summary>Does it cost anything, and is my data uploaded?</summary><div class="abt-a">It uses free and open data sources. The tool is in BETA: results can contain errors, so please report them. To learn which functions are used, it may count anonymous visits and button use (for example that a scan or an export happened) without cookies and without personal data. Pins, added features, measurements and imported strike records stay in your browser and are not uploaded. They are saved in this browser and come back when you scan the same airport again here; clearing the browser data removes them. Export to KML to keep a copy or share it.</div></details><details><summary>How do I report a problem or suggest an improvement?</summary><div class="abt-a">Press the FEEDBACK button at the top of the map screen (or SEND FEEDBACK on the start screen). Include the ICAO code, what you expected to see and what you saw. You can also use the contact links at the end of this page.</div></details></div>
       </div>
 
       <!-- CREATED BY -->
@@ -5089,10 +5089,14 @@ function addAirportData(aptObj, data) {
   }
   /* Runways */
   if (data.rwyData.lines.features.length > 0) {
+    var _own = (aptObj.icao && aptObj.icao !== "COORDS") ? selectOwnRunways(data.rwyData.lines, aptObj) : { own: data.rwyData.lines, others: [], ownKm: null, usable: data.rwyData.lines.features.length };
+    aptObj.rwyOwn = _own;
+    var _ownSet = {}; _own.own.features.forEach(function (f) { _ownSet[f.properties.osm] = true; });
+    data.rwyData.lines.features.forEach(function (f) { f.properties.own = !!_ownSet[f.properties.osm]; });
     addSrc(pfx + "rwy", data.rwyData.lines);
-    addLyr({ id: pfx + "rwyl", type: "line", source: pfx + "rwy", minzoom: 11, paint: { "line-color": "rgba(255,255,255,0.18)", "line-width": ["interpolate", ["linear"], ["zoom"], 11, 2, 16, 9] } });
+    addLyr({ id: pfx + "rwyl", type: "line", source: pfx + "rwy", minzoom: 11, paint: { "line-color": ["case", ["==", ["get", "own"], false], "rgba(255,255,255,0.07)", "rgba(255,255,255,0.18)"], "line-width": ["interpolate", ["linear"], ["zoom"], 11, 2, 16, 9] } });
     try {
-      aptObj.rwySectors = buildRunwaySectors(data.rwyData.lines);
+      aptObj.rwySectors = buildRunwaySectors(_own.own);
       if (aptObj.rwySectors.features.length) {
         addSrc(pfx + "rwySect", aptObj.rwySectors);
         addLyr({ id: pfx + "rwySectF", type: "fill", source: pfx + "rwySect", paint: { "fill-color": "#f59e0b", "fill-opacity": 0.09 } });
@@ -5112,7 +5116,7 @@ function addAirportData(aptObj, data) {
   if (_retryEl) _retryEl.style.display = _needRetry ? "block" : "none";
   if (_needRetry) { setRetryTexts(data); renderOverpassDiagnostics(data.diagnostics); }
   /* Data-confidence banner (heuristic — see computeConfidence) */
-  try { aptObj.arpCheck = (aptObj.icao && aptObj.icao !== "COORDS") ? computeArpCheck(aptObj, data.rwyData && data.rwyData.lines) : null; } catch (eAc) { aptObj.arpCheck = null; }
+  try { aptObj.arpCheck = (aptObj.icao && aptObj.icao !== "COORDS") ? computeArpCheck(aptObj, aptObj.rwyOwn && aptObj.rwyOwn.own) : null; } catch (eAc) { aptObj.arpCheck = null; }
   renderConfidence(data.confidence, aptObj);
   /* Habitat fill layers are added above ring layers in the draw stack.
      Re-elevate the ring layers so they always render on top of fills. */
@@ -5166,7 +5170,55 @@ function renderOverpassDiagnostics(diag) {
 ================================================================ */
 /* Ver57: objective check of the reference point. The point comes from OurAirports, not from the AIP. If it lies far from the middle
    of the runways mapped in OpenStreetMap, the user is told, because zones and distances all depend on it. App-defined threshold. */
-var ARP_CHECK_M = 500;
+var ARP_CHECK_M = 1000;
+/* Ver59: which mapped runway ways belong to THIS aerodrome? OpenStreetMap runway ways inside the scan circle can belong to neighbouring
+   aerodromes (for example Wilson and Eastleigh near Nairobi, Sharjah near Dubai). Ways are grouped by proximity (single linkage, links up to
+   RWY_LINK_KM apart); the group nearest to the reference point is taken as this aerodrome, if it lies within RWY_OWN_MAX_KM. Two aerodromes
+   closer together than RWY_LINK_KM cannot be separated by this rule. Ways whose two ends coincide (closed loops) or are under 0.15 km are ignored. */
+var RWY_LINK_KM = 2.5, RWY_OWN_MAX_KM = 6;
+function rwySamples(cs) {
+  var pts = [];
+  for (var i = 0; i < cs.length - 1; i++) {
+    var a = cs[i], b = cs[i + 1], seg = haversine(a[1], a[0], b[1], b[0]), n = Math.max(1, Math.ceil(seg / 0.3));
+    for (var k = 0; k < n; k++) pts.push([a[0] + (b[0] - a[0]) * k / n, a[1] + (b[1] - a[1]) * k / n]);
+  }
+  pts.push(cs[cs.length - 1]);
+  return pts;
+}
+function selectOwnRunways(rwyLines, apt) {
+  var res = { own: { type: "FeatureCollection", features: [] }, others: [], ownKm: null, usable: 0 };
+  try {
+    var fs = (rwyLines && rwyLines.features) || [], items = [];
+    fs.forEach(function (f) {
+      var cs = f.geometry && f.geometry.coordinates; if (!cs || cs.length < 2) return;
+      var a = cs[0], b = cs[cs.length - 1], len = haversine(a[1], a[0], b[1], b[0]);
+      if (len < 0.15) return;
+      items.push({ f: f, len: len, pts: rwySamples(cs), cl: -1 });
+    });
+    res.usable = items.length;
+    if (!items.length) return res;
+    var par = items.map(function (_, i) { return i; });
+    function find(x) { while (par[x] !== x) { par[x] = par[par[x]]; x = par[x]; } return x; }
+    function near(A, B) { for (var i = 0; i < A.length; i++) for (var j = 0; j < B.length; j++) if (haversine(A[i][1], A[i][0], B[j][1], B[j][0]) <= RWY_LINK_KM) return true; return false; }
+    for (var i = 0; i < items.length; i++) for (var j = i + 1; j < items.length; j++) { if (find(i) !== find(j) && near(items[i].pts, items[j].pts)) par[find(i)] = find(j); }
+    var groups = {};
+    items.forEach(function (it, i) { var r = find(i); (groups[r] = groups[r] || []).push(it); });
+    var list = Object.keys(groups).map(function (k) {
+      var g = groups[k], dmin = 1e9;
+      g.forEach(function (it) { it.pts.forEach(function (p) { var d = haversine(apt.lat, apt.lon, p[1], p[0]); if (d < dmin) dmin = d; }); });
+      return { g: g, d: dmin, tot: g.reduce(function (s, it) { return s + it.len; }, 0) };
+    }).sort(function (x, y) { return x.d - y.d; });
+    var best = list[0];
+    if (best && best.d <= RWY_OWN_MAX_KM) {
+      best.g.forEach(function (it) { res.own.features.push(it.f); });
+      res.ownKm = +best.d.toFixed(2);
+      list.slice(1).forEach(function (o) { res.others.push({ ways: o.g.length, refs: o.g.map(function (it) { return it.f.properties.ref || null; }), nearestKm: +o.d.toFixed(1) }); });
+    } else {
+      list.forEach(function (o) { res.others.push({ ways: o.g.length, refs: o.g.map(function (it) { return it.f.properties.ref || null; }), nearestKm: +o.d.toFixed(1) }); });
+    }
+  } catch (e) { console.warn("selectOwnRunways", e); }
+  return res;
+}
 function computeArpCheck(apt, rwyLines) {
   try {
     var fs = (rwyLines && rwyLines.features) || [], sx = 0, sy = 0, sw = 0, n = 0;
@@ -6136,7 +6188,7 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver58 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver59 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
@@ -7576,8 +7628,8 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver58", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
-    runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction }; }), runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
+  var out = { app: "Habitat Scanner 3D Ver59", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
+    runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
   feats.forEach(function (f) {
@@ -7655,9 +7707,10 @@ function buildRunwaySectors(rwyFC) {
   var ends = [];
   rwyFC.features.forEach(function (f, wi) {
     var cs = f.geometry && f.geometry.coordinates; if (!cs || cs.length < 2) return;
-    var len = 0; try { len = turf.length(f, { units: "kilometers" }); } catch (e) {}
+    var a = cs[0], b = cs[cs.length - 1], len = haversine(a[1], a[0], b[1], b[0]); /* Ver59: end-to-end distance, so a closed loop mapped as a runway gets no fan */
     if (len < 0.8) return; /* too short to be a runway: helipad, stub or fragment */
-    var a = cs[0], b = cs[cs.length - 1], ref = ((f.properties && f.properties.ref) || "").split("/");
+    var ref = ((f.properties && f.properties.ref) || "").split("/");
+    if (!(f.properties && f.properties.ref) && len < 1.0) return; /* Ver59: no designator and short: not treated as a runway */
     ends.push({ w: wi, pt: a, out: calcBearing(b[1], b[0], a[1], a[0]), label: (ref[0] || "").trim() });
     ends.push({ w: wi, pt: b, out: calcBearing(a[1], a[0], b[1], b[0]), label: (ref[1] || "").trim() });
   });
@@ -7684,10 +7737,16 @@ function sectorHitsFor(apt, f) {
   secs.forEach(function (s) { try { if (turf.booleanIntersects(s, { type: "Feature", properties: {}, geometry: g })) hits.push(s.properties.end); } catch (e) {} });
   return hits;
 }
+function rwyOtherNote(apt) {
+  var o = apt && apt.rwyOwn; if (!o || !o.others || !o.others.length) return "";
+  var n = 0, near = 1e9; o.others.forEach(function (x) { n += x.ways; if (x.nearestKm < near) near = x.nearestKm; });
+  return n + ' runway line(s) mapped in OpenStreetMap inside the scan area appear to belong to other aerodromes (nearest ' + near.toFixed(1) + ' km from the reference point). They were not used for the sectors or for the reference point check. Aerodromes closer than ' + RWY_LINK_KM + ' km to each other cannot be told apart by this rule.';
+}
 function reportSectorHtml(apt, habFeats, manualFeats, rlbl) {
   var secs = (apt.rwySectors && apt.rwySectors.features) || [];
   var h = '<div class="rpt-p" style="margin-top:.9rem"><b>Runway approach/departure sectors.</b> ';
-  if (!secs.length) return h + 'No runway geometry was available from OpenStreetMap for this aerodrome, so approach/departure sectors were not assessed.</div>';
+  var _on = rwyOtherNote(apt); if (_on) h += _on + ' ';
+  if (!secs.length) return h + 'No runway of this aerodrome was found within ' + RWY_OWN_MAX_KM + ' km of the reference point in OpenStreetMap, so approach/departure sectors were not assessed.</div>';
   h += 'Screening sectors were drawn from the mapped runway ends (' + secs.length + ' sectors, ' + SECT.lenKm + ' km long, ' + SECT.w0M + ' m half-width at the runway end, widening ' + SECT.flareDeg + '&deg; each side). These dimensions are defined by this application for screening; they are not an ICAO Annex 14 obstacle limitation surface. A feature inside a sector lies under or beside a likely low-level flight path and deserves priority attention. <b>Risk scores are not modified by this check.</b></div>';
   var rows = [];
   (habFeats || []).concat(manualFeats || []).forEach(function (f) {
@@ -7723,35 +7782,145 @@ function reportFlywayHtml(apt, rlbl) {
   var srcs = {}; near.forEach(function (r) { if (r.f.source) srcs[r.f.source] = true; });
   return h + t + '<div class="rpt-cite">Flyways within 500 km are listed. Flyway information source(s): ' + escXML(Object.keys(srcs).join("; ")) + '.</div>';
 }
-function reportStrikeHtml(apt) {
-  var pts = apt.strikePts || [];
-  if (!pts.length) return "";
-  var near = pts.filter(function (q) { return haversine(apt.lat, apt.lon, q[1], q[0]) <= 13; }).length;
-  return '<div class="rpt-p" style="margin-top:.9rem"><b>Bird-strike log overlay.</b> ' + pts.length + ' strike record(s) were imported by the user, ' + near + ' of them within 13 km of the reference point. They are shown on the map as a heatmap for context only. This report does not infer that any habitat caused any strike; the data is supplied by the user and has not been verified by this application.</div>';
-}
-
-/* ---- strike log CSV ---- */
-function parseStrikeCsv(text) {
-  var lines = String(text).replace(/^﻿/, "").split(/\r?\n/).filter(function (l) { return l.trim(); });
-  if (lines.length < 2) throw new Error("the file has no data rows");
-  var delim = [",", ";", "\t"].sort(function (a, b) { return lines[0].split(b).length - lines[0].split(a).length; })[0];
-  var head = lines[0].split(delim).map(function (s) { return s.trim().replace(/^"|"$/g, "").toLowerCase(); });
-  var iLat = head.findIndex(function (h) { return /^(lat|latitude|y)$/.test(h); });
-  var iLon = head.findIndex(function (h) { return /^(lon|lng|long|longitude|x)$/.test(h); });
-  var iDt = head.findIndex(function (h) { return /^(date|datetime|time|strike_date)$/.test(h); });
-  if (iLat < 0 || iLon < 0) throw new Error("no latitude/longitude columns found (expected headers such as lat and lon)");
-  var pts = [], bad = 0;
-  for (var i = 1; i < lines.length && pts.length < 20000; i++) {
-    var cols = lines[i].split(delim), la = parseFloat(cols[iLat]), lo = parseFloat(cols[iLon]);
-    if (!isFinite(la) || !isFinite(lo) || Math.abs(la) > 90 || Math.abs(lo) > 180) { bad++; continue; }
-    pts.push([+lo.toFixed(5), +la.toFixed(5), iDt >= 0 ? String(cols[iDt] || "").trim().replace(/^"|"$/g, "") : ""]);
+/* ---- strike log CSV (Ver59: field names follow the ICAO bird strike reporting form used for IBIS) ----
+   IBIS is a reporting form and database; it defines no official CSV file layout. This importer reads the form's field names (and common
+   spellings of them) from the header row. Latitude and longitude are optional: records without them are counted in the summary only. */
+var STRIKE_MAX_ROWS = 20000;
+var IBIS_COLS = ["date", "time_of_day", "aerodrome_icao", "runway", "latitude", "longitude", "height_agl_ft", "speed_ias_kt", "phase_of_flight", "bird_species", "birds_struck", "birds_seen", "bird_size", "effect_on_flight", "parts_struck", "parts_damaged", "sky_condition", "precipitation", "pilot_warned", "out_of_service_hours", "repair_cost_usd_thousands", "other_cost_usd_thousands", "remarks"];
+var IBIS_ALIAS = {
+  lat: /^(lat|latitude|strike_lat|strike_latitude|y)$/, lon: /^(lon|lng|long|longitude|strike_lon|strike_longitude|x)$/,
+  date: /^(date|strike_date|date_of_strike|datetime|date_time|incident_date|date_dd_mm_yyyy)$/, day: /^(day|dd)$/, month: /^(month|mm)$/, year: /^(year|yyyy)$/,
+  tod: /^(time_of_day|timeofday|local_time_of_day|light|light_condition|day_night)$/, clock: /^(time|local_time|time_local|time_utc)$/,
+  icao: /^(aerodrome_icao|icao|aerodrome|aerodrome_name|airport|airport_icao|location_icao)$/, rwy: /^(runway|runway_used|rwy)$/,
+  h: /^(height_agl_ft|height_agl|height|height_ft|altitude_agl|alt_agl)$/, v: /^(speed_ias_kt|speed_ias|speed|ias|speed_kt)$/,
+  ph: /^(phase_of_flight|phase|flight_phase)$/, sp: /^(bird_species|species|bird|species_name)$/,
+  n: /^(birds_struck|number_of_birds_struck|number_struck|no_struck|struck|number_of_birds|no_of_birds|number)$/, seen: /^(birds_seen|number_of_birds_seen|number_seen|seen)$/,
+  sz: /^(bird_size|size_of_bird|size)$/, ef: /^(effect_on_flight|effect|effect_on_flt)$/, ps: /^(parts_struck|part_struck|parts_of_aircraft_struck)$/,
+  pd: /^(parts_damaged|part_damaged|damaged_parts|parts_of_aircraft_damaged|damage)$/, sk: /^(sky_condition|sky|cloud)$/, pr: /^(precipitation|weather|precip)$/,
+  pw: /^(pilot_warned|pilot_warned_of_birds|warned)$/, hrs: /^(out_of_service_hours|aircraft_time_out_of_service|hours_out_of_service)$/,
+  c1: /^(repair_cost_usd_thousands|cost_of_repairs|repair_cost|estimated_cost_of_repairs)$/, c2: /^(other_cost_usd_thousands|other_costs|other_cost|estimated_other_costs)$/, rm: /^(remarks|comments|notes|description)$/
+};
+function ibisN(s) { return String(s == null ? "" : s).toLowerCase().replace(/[^a-z0-9+]+/g, " ").trim(); }
+function ibisPick(v, table) { var t = ibisN(v); if (!t) return ""; for (var i = 0; i < table.length; i++) if (table[i][1].test(t)) return table[i][0]; return null; }
+var IBIS_T = {
+  ph: [["parked", /^(a|parked|parking|stand)$/], ["taxi", /^(b|taxi|taxiing)$/], ["take-off run", /^(c|take off run|takeoff run|take off roll|takeoff roll|take off|takeoff|t o|tkof)$/], ["climb", /^(d|climb|initial climb|climbing|departure)$/], ["en route", /^(e|en route|enroute|cruise)$/], ["descent", /^(f|descent|descending)$/], ["approach", /^(g|approach|final|final approach|initial approach)$/], ["landing roll", /^(h|landing roll|landing|landing run|roll out|rollout)$/]],
+  tod: [["dawn", /^(a|dawn)$/], ["day", /^(b|day|daytime|daylight)$/], ["dusk", /^(c|dusk|twilight|evening)$/], ["night", /^(d|night)$/]],
+  ef: [["none", /^(none|no effect|nil|no|n a|32)$/], ["aborted take-off", /abort|reject/], ["precautionary landing", /precaution/], ["engines shut down", /shut ?down|engine.*shut/], ["other", /^(other|36)/]],
+  sk: [["no cloud", /^(a|no cloud|clear|skc|clr|nil cloud|cavok)$/], ["some cloud", /^(b|some cloud|scattered|few|broken|partly cloudy|sct|bkn)$/], ["overcast", /^(c|overcast|ovc)$/]],
+  pr: [["none", /^(none|no|nil|dry)$/], ["fog", /fog|mist/], ["rain", /rain|shower|drizzle/], ["snow", /snow|sleet/]],
+  sz: [["small", /^(s|small)$/], ["medium", /^(m|med|medium)$/], ["large", /^(l|large)$/]],
+  pw: [["yes", /^(y|yes|true|1)$/], ["no", /^(n|x|no|false|0)$/]],
+  cnt: [["1", /^(a|1|one)$/], ["2-10", /^(b|2 10|2 10 birds)$/], ["11-100", /^(c|11 100)$/], ["more than 100", /^(d|more|more than 100|over 100|100\+|101)$/]]
+};
+function ibisCount(v) { var t = ibisN(v); if (!t) return ""; var m = /^(\d+)$/.exec(t); if (m) { var n = +m[1]; return n === 1 ? "1" : n <= 10 ? "2-10" : n <= 100 ? "11-100" : "more than 100"; } return ibisPick(v, IBIS_T.cnt); }
+function ibisDate(s, d, m, y) {
+  var t = String(s || "").trim(), a;
+  if (t) {
+    if ((a = /(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/.exec(t))) return { y: +a[1], m: +a[2], txt: t };
+    if ((a = /(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{2,4})/.exec(t))) { var p = +a[1], q = +a[2], yy = +a[3]; if (yy < 100) yy += 2000; var mo = (p <= 12 && q <= 12) || q <= 12 ? q : p; return { y: yy, m: mo, txt: t }; }
+    if ((a = /^(\d{4})[-\/.](\d{1,2})$/.exec(t))) return { y: +a[1], m: +a[2], txt: t };
   }
-  return { pts: pts, bad: bad };
+  if (+y > 1900 && +m >= 1 && +m <= 12) return { y: +y, m: +m, txt: (d ? d + "/" : "") + m + "/" + y };
+  return { y: 0, m: 0, txt: t };
+}
+function csvRows(text, delim) {
+  var rows = [], row = [], f = "", q = false, i = 0, n = text.length;
+  for (; i < n; i++) {
+    var c = text[i];
+    if (q) { if (c === '"') { if (text[i + 1] === '"') { f += '"'; i++; } else q = false; } else f += c; }
+    else if (c === '"') q = true;
+    else if (c === delim) { row.push(f); f = ""; }
+    else if (c === "\n" || c === "\r") { if (c === "\r" && text[i + 1] === "\n") i++; row.push(f); f = ""; if (row.some(function (x) { return x.trim(); })) rows.push(row); row = []; if (rows.length > STRIKE_MAX_ROWS + 1) break; }
+    else f += c;
+  }
+  if (f || row.length) { row.push(f); if (row.some(function (x) { return x.trim(); })) rows.push(row); }
+  return rows;
+}
+/* Returns parsed records. Nothing is filtered by airport here (see strikeAbsorb). */
+function parseStrikeCsv(text) {
+  text = String(text).replace(/^﻿/, "");
+  var first = text.split(/\r?\n/)[0] || "";
+  var delim = [",", ";", "\t"].sort(function (a, b) { return first.split(b).length - first.split(a).length; })[0];
+  var rows = csvRows(text, delim);
+  if (rows.length < 2) throw new Error("the file has no data rows");
+  var head = rows[0].map(function (s) { return s.trim().toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); });
+  var ix = {}, known = {};
+  Object.keys(IBIS_ALIAS).forEach(function (k) { var j = head.findIndex(function (h) { return IBIS_ALIAS[k].test(h); }); if (j >= 0) { ix[k] = j; known[j] = true; } });
+  if (ix.lat == null && ix.lon == null && ix.ph == null && ix.sp == null && ix.date == null && ix.n == null) throw new Error("no recognised column names were found; use the template (header names such as date, latitude, longitude, phase_of_flight, bird_species)");
+  var unknownCols = rows[0].filter(function (_, j) { return !known[j] && rows[0][j].trim(); });
+  function g(r, k) { return ix[k] == null ? "" : String(r[ix[k]] == null ? "" : r[ix[k]]).trim(); }
+  var recs = [], badCoord = 0, unrec = {};
+  function pick(r, k, tbl, key) { var v = g(r, k), o = ibisPick(v, tbl); if (o === null) { unrec[key] = (unrec[key] || 0) + 1; return "unrecognised"; } return o; }
+  for (var i = 1; i < rows.length && recs.length < STRIKE_MAX_ROWS; i++) {
+    var r = rows[i], la = null, lo = null, sla = g(r, "lat"), slo = g(r, "lon");
+    if (sla !== "" || slo !== "") {
+      la = parseFloat(sla.replace(",", ".")); lo = parseFloat(slo.replace(",", "."));
+      if (!isFinite(la) || !isFinite(lo) || Math.abs(la) > 90 || Math.abs(lo) > 180) { badCoord++; la = null; lo = null; }
+    }
+    var dt = ibisDate(g(r, "date"), g(r, "day"), g(r, "month"), g(r, "year"));
+    var tod = pick(r, "tod", IBIS_T.tod, "time_of_day");
+    var h = parseFloat(g(r, "h").replace(/[^0-9.\-]/g, ""));
+    var c1 = parseFloat(g(r, "c1").replace(/[^0-9.\-]/g, "")), c2 = parseFloat(g(r, "c2").replace(/[^0-9.\-]/g, "")), hrs = parseFloat(g(r, "hrs").replace(/[^0-9.\-]/g, ""));
+    var pdv = g(r, "pd"), dmg = !!pdv && !/^(none|no|nil|n a|0|false)$/.test(ibisN(pdv));
+    var cnt = ibisCount(g(r, "n")); if (cnt === null) { unrec.birds_struck = (unrec.birds_struck || 0) + 1; cnt = "unrecognised"; }
+    var sp = g(r, "sp");
+    recs.push({
+      lat: la, lon: lo, icao: g(r, "icao").toUpperCase(), y: dt.y, m: dt.m, d: dt.txt,
+      ph: pick(r, "ph", IBIS_T.ph, "phase_of_flight"), tod: tod, ef: pick(r, "ef", IBIS_T.ef, "effect_on_flight"), sk: pick(r, "sk", IBIS_T.sk, "sky_condition"),
+      pr: pick(r, "pr", IBIS_T.pr, "precipitation"), sz: pick(r, "sz", IBIS_T.sz, "bird_size"), pw: pick(r, "pw", IBIS_T.pw, "pilot_warned"), cnt: cnt,
+      sp: sp.length > 60 ? sp.slice(0, 60) : sp, rwy: g(r, "rwy").slice(0, 12), h: isFinite(h) ? Math.round(h) : null, dmg: dmg,
+      c1: isFinite(c1) ? c1 : null, c2: isFinite(c2) ? c2 : null, hrs: isFinite(hrs) ? hrs : null, rm: g(r, "rm").slice(0, 160)
+    });
+  }
+  return { recs: recs, badCoord: badCoord, unrec: unrec, unknownCols: unknownCols, cols: Object.keys(ix), truncated: rows.length - 1 > STRIKE_MAX_ROWS };
+}
+function hBand(h) { return h == null ? "" : h <= 100 ? "0-100 ft" : h <= 500 ? "101-500 ft" : h <= 1500 ? "501-1,500 ft" : h <= 3000 ? "1,501-3,000 ft" : "above 3,000 ft"; }
+function newStrikeSum() { return { total: 0, mapped: 0, noCoord: 0, damage: 0, f: { ph: {}, tod: {}, sz: {}, cnt: {}, ef: {}, sk: {}, pr: {}, pw: {}, sp: {}, y: {}, mo: {}, hb: {} }, cost: { c1: 0, c2: 0, hrs: 0, n: 0 } }; }
+function sumAdd(o, k) { if (k === "" || k == null) return; o[k] = (o[k] || 0) + 1; }
+/* Adds parsed records to the airport: mapped points (within 40 km) for the heatmap, every record of this aerodrome for the summary. */
+function strikeAbsorb(apt, parsed) {
+  var out = { read: parsed.recs.length, mapped: 0, noCoord: 0, far: 0, otherAd: 0 };
+  apt.strikeSum = apt.strikeSum || newStrikeSum();
+  var S = apt.strikeSum, ours = (apt.icao && apt.icao !== "COORDS") ? apt.icao : "";
+  parsed.recs.forEach(function (r) {
+    if (ours && r.icao && r.icao !== ours) { out.otherAd++; return; }
+    var hasXY = r.lat != null && r.lon != null;
+    if (hasXY && haversine(apt.lat, apt.lon, r.lat, r.lon) > 40) { out.far++; return; }
+    S.total++;
+    if (hasXY) {
+      S.mapped++; out.mapped++;
+      var det = {}; ["sp", "ph", "ef", "sz", "cnt", "tod", "rwy", "rm"].forEach(function (k) { if (r[k] && r[k] !== "unrecognised") det[k] = r[k]; });
+      if (r.h != null) det.h = r.h; if (r.dmg) det.dm = 1;
+      apt.strikePts = (apt.strikePts || []).concat([[+r.lon.toFixed(5), +r.lat.toFixed(5), r.d || "", det]]);
+    } else { S.noCoord++; out.noCoord++; }
+    sumAdd(S.f.ph, r.ph); sumAdd(S.f.tod, r.tod); sumAdd(S.f.sz, r.sz); sumAdd(S.f.cnt, r.cnt); sumAdd(S.f.ef, r.ef); sumAdd(S.f.sk, r.sk); sumAdd(S.f.pr, r.pr); sumAdd(S.f.pw, r.pw);
+    sumAdd(S.f.sp, r.sp ? r.sp.toLowerCase() : ""); sumAdd(S.f.y, r.y ? String(r.y) : ""); sumAdd(S.f.mo, r.m ? String(r.m) : ""); sumAdd(S.f.hb, hBand(r.h));
+    if (r.dmg) S.damage++;
+    if (r.c1 != null || r.c2 != null || r.hrs != null) { S.cost.n++; S.cost.c1 += r.c1 || 0; S.cost.c2 += r.c2 || 0; S.cost.hrs += r.hrs || 0; }
+  });
+  return out;
+}
+function strikeTemplateCsv() {
+  var ex = ["2025-03-14", "day", "HECA", "05L", "30.1120", "31.3990", "150", "140", "take-off run", "Black kite", "1", "2-10", "medium", "none", "", "", "some cloud", "none", "no", "", "", "", "Bird seen on runway before rotation"];
+  var ex2 = ["2025-04-02", "dusk", "HECA", "23R", "", "", "30", "135", "approach", "Cattle egret", "2-10", "2-10", "small", "none", "engine no. 1", "engine no. 1", "no cloud", "none", "yes", "2", "15", "", "Latitude and longitude left empty: counted in the summary, not drawn"];
+  return IBIS_COLS.join(",") + "\r\n" + ex.map(function (x) { return /[,"]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(",") + "\r\n" + ex2.map(function (x) { return /[,"]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; }).join(",") + "\r\n";
+}
+function downloadStrikeTemplate() {
+  try {
+    var blob = new Blob(["﻿" + strikeTemplateCsv()], { type: "text/csv;charset=utf-8" }), a = document.createElement("a");
+    a.href = URL.createObjectURL(blob); a.download = "bird_strike_log_template.csv"; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  } catch (e) { window.alert("The template could not be created in this browser."); }
+}
+function strikePopupHtml(p) {
+  var L = [["d", "Date"], ["tod", "Time of day"], ["rwy", "Runway"], ["ph", "Phase of flight"], ["h", "Height AGL (ft)"], ["sp", "Species"], ["cnt", "Birds struck"], ["sz", "Size"], ["ef", "Effect on flight"], ["dm", "Damage"], ["rm", "Remarks"]], h = '<div style="font-size:.7rem;line-height:1.5"><b>Bird-strike record (user-supplied)</b>';
+  L.forEach(function (x) { var v = p[x[0]]; if (v === undefined || v === "" || v === null) return; if (x[0] === "dm") v = "reported"; h += '<br>' + x[1] + ': ' + escXML(String(v)); });
+  return h + '<br><span style="opacity:.7">Not verified by this application.</span></div>';
 }
 function drawStrikes(apt) {
   if (!map || !apt) return;
   var pfx = "a" + apt.idx + "_", pts = apt.strikePts || [];
-  var gj = { type: "FeatureCollection", features: pts.map(function (q) { return { type: "Feature", properties: { d: q[2] || "" }, geometry: { type: "Point", coordinates: [q[0], q[1]] } }; }) };
+  var gj = { type: "FeatureCollection", features: pts.map(function (q) { var pr = { d: q[2] || "" }, dd = q[3] || {}; Object.keys(dd).forEach(function (k) { pr[k] = dd[k]; }); return { type: "Feature", properties: pr, geometry: { type: "Point", coordinates: [q[0], q[1]] } }; }) };
   var s = map.getSource(pfx + "strike");
   if (s) { s.setData(gj); return; }
   if (!pts.length) return;
@@ -7762,7 +7931,49 @@ function drawStrikes(apt) {
     "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"], 0, "rgba(0,0,0,0)", 0.2, "rgba(255,230,0,0.55)", 0.5, "rgba(255,140,0,0.8)", 1, "rgba(220,20,20,0.95)"],
     "heatmap-opacity": 0.85 } });
   addLyr({ id: pfx + "strikeP", type: "circle", source: pfx + "strike", minzoom: 13, paint: { "circle-radius": 3.5, "circle-color": "#ef4444", "circle-stroke-color": "#fff", "circle-stroke-width": 1 } });
+  map.on("click", pfx + "strikeP", function (e) {
+    if (addFeatMode || measureMode || !e.features || !e.features.length) return;
+    new maplibregl.Popup({ closeButton: true, offset: 8, maxWidth: "260px" }).setLngLat(e.features[0].geometry.coordinates.slice()).setHTML(strikePopupHtml(e.features[0].properties)).addTo(map);
+  });
+  map.on("mouseenter", pfx + "strikeP", function () { map.getCanvas().style.cursor = "pointer"; });
+  map.on("mouseleave", pfx + "strikeP", function () { map.getCanvas().style.cursor = ""; });
   applyAnnotationFilter();
+}
+function strikeTable(title, obj, order, top) {
+  var keys = Object.keys(obj || {}); if (!keys.length) return "";
+  if (order) keys.sort(function (a, b) { var ia = order.indexOf(a), ib = order.indexOf(b); return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || (obj[b] - obj[a]); }); else keys.sort(function (a, b) { return obj[b] - obj[a] || (a < b ? -1 : 1); });
+  var total = keys.reduce(function (s, k) { return s + obj[k]; }, 0), shown = top ? keys.slice(0, top) : keys, rest = keys.length - shown.length;
+  var h = '<tr><td rowspan="' + (shown.length + (rest > 0 ? 1 : 0)) + '"><b>' + title + '</b></td>';
+  shown.forEach(function (k, i) { h += (i ? "<tr>" : "") + '<td>' + escXML(k) + '</td><td>' + obj[k] + '</td><td>' + Math.round(obj[k] / total * 100) + '%</td></tr>'; });
+  if (rest > 0) h += '<tr><td>' + rest + ' other value(s)</td><td>' + (total - shown.reduce(function (s, k) { return s + obj[k]; }, 0)) + '</td><td></td></tr>';
+  return h;
+}
+function reportStrikeHtml(apt) {
+  var pts = apt.strikePts || [], S = apt.strikeSum;
+  if (!pts.length && !(S && S.total)) return "";
+  var near = pts.filter(function (q) { return haversine(apt.lat, apt.lon, q[1], q[0]) <= 13; }).length;
+  var h = '<div class="rpt-p" style="margin-top:.9rem"><b>Bird-strike log (user-supplied).</b> ';
+  if (S && S.total) h += S.total + ' strike record(s) for this aerodrome were imported by the user; ' + S.mapped + ' have coordinates (' + near + ' of them within 13 km of the reference point) and are shown on the map as a heatmap, and ' + S.noCoord + ' record(s) without coordinates appear only in the summary below. ';
+  else h += pts.length + ' strike record(s) were imported by the user, ' + near + ' of them within 13 km of the reference point. ';
+  h += 'The heatmap and the summary are for context only. They do not change any risk score. This report does not infer that any habitat caused any strike. The data is supplied by the user, follows the field names of the ICAO bird strike reporting form (IBIS) as far as the file provided them, and has not been verified by this application.</div>';
+  if (S && S.total) {
+    var MO = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], mo = {};
+    Object.keys(S.f.mo).forEach(function (k) { mo[MO[+k - 1] || k] = S.f.mo[k]; });
+    var rows = strikeTable("Phase of flight", S.f.ph, ["parked", "taxi", "take-off run", "climb", "en route", "descent", "approach", "landing roll", "unrecognised"])
+      + strikeTable("Height above ground", S.f.hb, ["0-100 ft", "101-500 ft", "501-1,500 ft", "1,501-3,000 ft", "above 3,000 ft"])
+      + strikeTable("Time of day", S.f.tod, ["dawn", "day", "dusk", "night", "unrecognised"])
+      + strikeTable("Bird size", S.f.sz, ["small", "medium", "large", "unrecognised"])
+      + strikeTable("Birds struck", S.f.cnt, ["1", "2-10", "11-100", "more than 100", "unrecognised"])
+      + strikeTable("Effect on flight", S.f.ef, ["none", "aborted take-off", "precautionary landing", "engines shut down", "other", "unrecognised"])
+      + strikeTable("Species (most frequent)", S.f.sp, null, 8)
+      + strikeTable("Month of year", mo, MO)
+      + strikeTable("Year", S.f.y, null, 10);
+    h += '<table class="rpt-tbl"><thead><tr><th>Field</th><th>Value</th><th>Records</th><th>Share</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    var extra = S.damage + ' record(s) list damaged parts.';
+    if (S.cost.n) extra += ' Costs as written in the file (' + S.cost.n + ' record(s) with cost or downtime): repairs ' + S.cost.c1.toLocaleString() + ' and other costs ' + S.cost.c2.toLocaleString() + ' (thousands of US dollars if the template columns were used), aircraft out of service ' + S.cost.hrs.toLocaleString() + ' hours.';
+    h += '<div class="rpt-p">' + extra + ' Each share is calculated from the records that stated the field; records that left a field empty are not counted in that field.</div>';
+  }
+  return h;
 }
 
 /* ================================================================
@@ -7782,9 +7993,9 @@ function aptWorkSnapshot(apt) {
     var pr = f.properties || {}, k = featPersistKey(pr), o = apt._orig && k ? apt._orig[k] : null;
     if (k && o && (o.cat !== pr.cat || o.name !== pr.name)) edits[k] = { cat: pr.cat, name: pr.name };
   });
-  return { manual: (apt.manualFeatures || []), sketches: (apt.measureSketches || []), edits: edits, strikes: (apt.strikePts || []) };
+  return { manual: (apt.manualFeatures || []), sketches: (apt.measureSketches || []), edits: edits, strikes: (apt.strikePts || []), strikeSum: apt.strikeSum || null };
 }
-function workIsEmpty(s) { return !s.manual.length && !s.sketches.length && !Object.keys(s.edits).length && !(s.strikes && s.strikes.length); }
+function workIsEmpty(s) { return !s.manual.length && !s.sketches.length && !Object.keys(s.edits).length && !(s.strikes && s.strikes.length) && !(s.strikeSum && s.strikeSum.total); }
 function saveWorkNow(apt) {
   if (!apt || !apt._workReady) return;
   if (typeof editingSketchBackup !== "undefined" && editingSketchBackup) return; /* a sketch is temporarily out of the list while being edited */
@@ -7836,6 +8047,7 @@ function applyStoredWork(apt, data) {
     }
   }
   if (rec && rec.strikes && rec.strikes.length && !(apt.strikePts && apt.strikePts.length)) { apt.strikePts = rec.strikes; activeAnn.strikes = true; }
+  if (rec && rec.strikeSum && rec.strikeSum.total && !apt.strikeSum) apt.strikeSum = rec.strikeSum;
   data.manualFeatures = apt.manualFeatures || [];
   apt._workReady = true;
   apt._workLast = JSON.stringify(aptWorkSnapshot(apt));
@@ -7849,7 +8061,7 @@ function applyStoredWork(apt, data) {
 function clearSavedWork(apt) {
   if (!apt) return;
   if (!window.confirm("Remove every manual feature, edit and measurement for this airport, including the copy saved in this browser? Deleted-feature memory is not affected. This cannot be undone.")) return;
-  apt.manualFeatures = []; apt.measureSketches = []; apt.strikePts = [];
+  apt.manualFeatures = []; apt.measureSketches = []; apt.strikePts = []; apt.strikeSum = null;
   try { drawStrikes(apt); } catch (e) {}
   if (apt.scannedData) {
     apt.scannedData.manualFeatures = apt.manualFeatures;
@@ -8014,12 +8226,12 @@ document.getElementById("importFile").addEventListener("change", function (ev) {
     rc.onload = function () {
       var r;
       try { r = parseStrikeCsv(String(rc.result)); } catch (e) { window.alert("This CSV could not be used (" + e.message + "). Nothing was imported."); return; }
-      var inside = r.pts.filter(function (q) { return haversine(apt.lat, apt.lon, q[1], q[0]) <= 40; });
-      var far = r.pts.length - inside.length;
-      if (!inside.length) { window.alert("None of the " + r.pts.length + " records are within 40 km of this airport, so nothing was imported. Check the latitude and longitude columns."); return; }
-      apt.strikePts = (apt.strikePts || []).concat(inside);
-      activeAnn.strikes = true; drawStrikes(apt); buildLegend(); applyAnnotationFilter(); saveWorkNow(apt);
-      window.alert("Bird-strike log: " + inside.length + " record(s) added to the map as a heatmap." + (far ? "\nSkipped, more than 40 km away: " + far + "." : "") + (r.bad ? "\nSkipped, invalid coordinates: " + r.bad + "." : "") + "\nThe heatmap is for context. The app does not verify the data or infer causes.");
+      var a = strikeAbsorb(apt, r);
+      if (!a.mapped && !a.noCoord) { window.alert("No usable record for this aerodrome was found in the " + a.read + " row(s) read." + (a.far ? "\nMore than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nBelong to another aerodrome code: " + a.otherAd + "." : "") + "\nCheck the aerodrome_icao, latitude and longitude columns, or use the template."); return; }
+      if (a.mapped) { activeAnn.strikes = true; drawStrikes(apt); buildLegend(); applyAnnotationFilter(); }
+      saveWorkNow(apt);
+      var un = Object.keys(r.unrec).map(function (k) { return k.replace(/_/g, " ") + ": " + r.unrec[k]; }).join(", ");
+      window.alert("Bird-strike log: " + (a.mapped + a.noCoord) + " record(s) added for this aerodrome.\nOn the map as a heatmap: " + a.mapped + ".\nWithout coordinates (counted in the report summary only): " + a.noCoord + "." + (a.far ? "\nSkipped, more than 40 km away: " + a.far + "." : "") + (a.otherAd ? "\nSkipped, another aerodrome code: " + a.otherAd + "." : "") + (r.badCoord ? "\nInvalid coordinates (kept in the summary without a map point): " + r.badCoord + "." : "") + (un ? "\nValues not recognised (" + un + ")." : "") + (r.truncated ? "\nOnly the first " + STRIKE_MAX_ROWS.toLocaleString() + " rows were read." : "") + "\nThe heatmap and summary are for context. The app does not verify the data or infer causes. Importing the same file twice counts the records twice.");
     };
     rc.readAsText(file);
     return;
