@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta name="color-scheme" content="dark">
+<meta name="build" content="2026-11-01">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Habitat Scanner 3D</title>
@@ -9,7 +10,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  /* Ver12 fix: declaring color-scheme explicitly stops browsers/OSes
+  /* declaring color-scheme explicitly stops browsers/OSes
      (notably Chrome's "force dark" auto-theming on mobile, and some
      print pipelines) from guessing at a page with no declared scheme
      and auto-inverting colors. The app chrome is intentionally dark;
@@ -36,7 +37,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .sw-num{font-family:var(--F);font-size:.65rem;font-weight:900;color:var(--navy);background:var(--cyan);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .sw-note{font-family:var(--F);font-size:.5rem;letter-spacing:.15em;color:rgba(100,170,220,.4);text-align:center}
 
-/* LOADING / CINEMATIC INTRO (Ver13) */
+/* LOADING / CINEMATIC INTRO */
 #LS{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;background:#000;transition:opacity 1.1s ease;overflow:hidden}
 #bg{position:absolute;inset:0;width:100%;height:100%;animation:lsFade 2.4s ease both}
 @keyframes lsFade{from{opacity:0}to{opacity:1}}
@@ -85,7 +86,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 @media (max-height:640px){.ls-msg p{line-height:1.45;margin-bottom:.5em}.logo{font-size:1.5rem}.ls-eye{display:none}.ls-scroll{padding:.6rem .9rem}}
 @media (prefers-reduced-motion:reduce){#bg,.ls-eye,.logo,.ls-rule,.ls-msg p,.ls-sig{animation:none!important;opacity:1}.ls-bar{animation:none;height:6.5vh}.ls-btns{transition:none}}
 
-/* TEXT-SIZE CONTROL + HOME (Ver14) */
+/* TEXT-SIZE CONTROL + HOME */
 #ABT .is-tools{position:fixed;top:1rem;left:1rem;right:1rem;z-index:101;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
 .is-tools>*{pointer-events:auto}
 .home-btn{display:inline-flex;align-items:center;gap:.55rem;min-height:44px;padding:.5rem 1.05rem .5rem .8rem;background:rgba(6,20,46,.88);border:1px solid rgba(247,217,120,.6);border-radius:4px;color:var(--cyan2);font-family:var(--F);font-size:.7rem;font-weight:900;letter-spacing:.16em;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
@@ -93,7 +94,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .home-btn:hover{background:rgba(247,217,120,.16);border-color:var(--cyan);transform:translateY(-1px)}
 .is-tools .idesc{font-size:1.02rem!important;line-height:1.65!important;font-weight:500!important;color:rgba(235,226,200,.82)!important}
 
-/* Ver19: compact water callout (solid dot, broken leader, small label) */
+/* compact water callout (solid dot, broken leader, small label) */
 .bwco{position:relative;width:0;height:0}
 .bwco .bwdot{position:absolute;left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:var(--bwc);border:1.5px solid #001024;box-shadow:0 0 0 1px rgba(255,255,255,.55);cursor:pointer}
 .bwco .bwln{position:absolute;left:0;top:-28px;overflow:visible;pointer-events:none}
@@ -103,7 +104,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .bwco.left .bwlab{left:auto;right:47px}
 .bwco:hover{z-index:6}
 .bwco .bwdot:hover,.bwco .bwlab:hover{filter:brightness(1.25)}
-/* Ver16: big-water callouts, dimension labels, dock, scan banner */
+/* big-water callouts, dimension labels, dock, scan banner */
 .bwchip{display:flex;align-items:center;gap:.4rem;cursor:pointer;background:rgba(3,10,26,.92);border:1px solid var(--bwc,#3b82f6);border-radius:999px;padding:.12rem .5rem .12rem .12rem;color:#fff;font-family:var(--B);box-shadow:0 2px 10px rgba(0,0,0,.6);transition:box-shadow .2s}
 .bwchip .bwi{width:1.35rem;height:1.35rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--bwc,#3b82f6);color:#001024;font-weight:900;font-size:.9rem;line-height:1}
 .bwchip .bwtxt{display:flex;flex-direction:column;max-width:0;opacity:0;overflow:hidden;white-space:nowrap;transition:max-width .28s ease,opacity .2s ease;font-size:.82rem;line-height:1.2}
@@ -125,7 +126,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 #scanBanner .sbBar::after{content:"";position:absolute;top:0;bottom:0;width:38%;border-radius:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:sbSweep 1.4s ease-in-out infinite}
 @keyframes sbSweep{0%{left:-40%}100%{left:102%}}
 
-/* FLOATING TEXT-SIZE CONTROL (Ver16, style after the StopBIRDSTRIKE dashboard) */
+/* FLOATING TEXT-SIZE CONTROL (style after the StopBIRDSTRIKE dashboard) */
 #fontControls{position:fixed;top:50%;right:14px;transform:translateY(-50%);z-index:700;display:flex;flex-direction:column;align-items:center;gap:6px;padding:6px;background:rgba(6,20,46,.94);border:1px solid rgba(247,217,120,.45);border-radius:999px;box-shadow:0 6px 24px rgba(0,0,0,.55);}
 .font-btn{position:relative;width:42px;height:42px;border-radius:50%;border:1px solid rgba(247,217,120,.35);background:#0c1f3d;color:#f5efe0;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:900;line-height:1;transition:all .15s;font-family:var(--B)}
 .font-btn .fb-a{font-size:16px}.font-btn .fb-s{font-size:18px;margin-left:1px;color:var(--cyan)}
@@ -173,7 +174,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--navy);color:va
 .me-b{font-size:.88rem;color:var(--dim);line-height:1.74;max-width:460px;margin-bottom:1.4rem}
 .me-btn{background:rgba(0,24,60,.8);border:1px solid rgba(247,217,120,.3);border-radius:2px;color:var(--cyan);font-family:var(--F);font-size:.6rem;letter-spacing:.2em;padding:.62rem 1.3rem;cursor:pointer}
 
-/* ABOUT MODAL (Ver13: larger type, wider layout, hero section) */
+/* ABOUT MODAL (larger type, wider layout, hero section) */
 #ABT{position:fixed;inset:0;z-index:500;background:rgba(2,8,22,.97);display:none;align-items:center;justify-content:center;padding:.8rem}
 #ABT.on{display:flex}
 .abt-wrap{width:min(1040px,97vw);max-height:95vh;background:var(--panel);border:1px solid rgba(247,217,120,.28);border-radius:4px;overflow-y:auto;box-shadow:0 0 80px rgba(0,40,120,.5)}
@@ -450,7 +451,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 }
 
 
-/* Ver31 BATCH MODE */
+/* BATCH MODE */
 #crashBar{position:fixed;left:50%;top:10px;transform:translateX(-50%);z-index:900;width:min(760px,94vw);background:rgba(60,10,10,.96);border:1px solid rgba(255,120,100,.6);color:#ffd9d2;font-family:var(--F);font-size:.55rem;letter-spacing:.06em;line-height:1.6;padding:.7rem .9rem;display:none}
 #crashBar button{margin:.4rem .4rem 0 0;font-family:var(--F);font-size:.5rem;padding:.35rem .7rem;background:rgba(0,20,50,.8);color:#9be;border:1px solid rgba(150,200,255,.4);cursor:pointer}
 #batOL{position:fixed;inset:0;z-index:160;background:rgba(2,8,22,.9);display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
@@ -498,6 +499,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 .pin-dot{width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#d62828;border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.7)}
 .pin-lb{margin-top:3px;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--F);font-size:.55rem;font-weight:800;letter-spacing:.05em;color:#fff;background:rgba(6,20,46,.92);border:1px solid #f2c94c;border-radius:2px;padding:1px 5px}
 .pin-pop .maplibregl-popup-content{background:#071a38;color:#eef4ff;border:1px solid rgba(247,217,120,.55);font-family:var(--B);font-size:.82rem;line-height:1.5;padding:.6rem .75rem;max-width:300px}
+.pin-pop .maplibregl-popup-close-button{color:#eef4ff}
 .pin-pop .maplibregl-popup-tip{border-top-color:#071a38;border-bottom-color:#071a38}
 .pin-pop input,.pin-pop select{width:100%;margin:.2rem 0 .4rem;background:rgba(0,16,46,.8);border:1px solid rgba(247,217,120,.35);color:#fff;font-family:var(--B);font-size:.82rem;padding:.3rem .4rem}
 .pin-pop button{font-family:var(--F);font-size:.5rem;letter-spacing:.1em;font-weight:800;padding:.35rem .6rem;margin-right:.3rem;background:rgba(0,40,100,.8);color:#9be;border:1px solid rgba(150,200,255,.4);cursor:pointer}
@@ -590,7 +592,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 
 .seglbl{pointer-events:none;white-space:nowrap;padding:.18rem .5rem;background:rgba(3,10,26,.9);border:1px solid #ffd400;border-radius:4px;color:#fff;font-family:var(--B);font-size:.95rem;font-weight:700;letter-spacing:.02em;box-shadow:0 2px 8px rgba(0,0,0,.6)}
 .seglbl.saved{border-color:#ffa500;color:#ffe2a8;font-size:.88rem}
-/* Reconnaissance drone overlay + cinematic bars (Ver14) */
+/* Reconnaissance drone overlay + cinematic bars */
 #droneCv{position:absolute;left:0;top:0;pointer-events:none;z-index:7}
 #cineBars{position:absolute;inset:0;pointer-events:none;z-index:9}
 #cineBars i{position:absolute;left:0;right:0;height:0;background:#000;transition:height 1.6s cubic-bezier(.2,.7,.2,1)}
@@ -832,7 +834,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
   <button class="me-btn" onclick="location.reload()">&#8635; RELOAD</button>
 </div>
 
-<!-- BATCH MODE OVERLAY (Ver31) -->
+<!-- BATCH MODE OVERLAY -->
 <div id="batOL">
   <div class="bat-box">
     <h3>&#9776; BATCH MODE: SCAN MANY AIRPORTS INTO A SUMMARY TABLE</h3>
@@ -1577,7 +1579,7 @@ if (!window._sandboxed) {
 })();
 
 /* ================================================================
-   CINEMATIC INTRO (Ver13)
+   CINEMATIC INTRO
    A procedurally drawn "first light" scene, no video or image files:
    a night sky turning to sunrise over a runway, layered clouds that
    drift at different speeds, a flock of birds crossing the sun, an
@@ -1974,7 +1976,7 @@ function wait(ms) { return new Promise(function (res) { setTimeout(res, ms); });
 /* ================================================================
    HABITAT + FLYWAY CONFIG
 ================================================================ */
-/* Audit note (Ver08): this list used to have one entry per rough GROUP
+/* Audit note: this list used to have one entry per rough GROUP
    (e.g. "scrub" covered Grassland + Scrubland + Heathland under a single
    legend row labeled "Scrub / Grassland"). classifyHabitat() already
    produced more specific labels than that for individual features — so a
@@ -1991,7 +1993,7 @@ function wait(ms) { return new Promise(function (res) { setTimeout(res, ms); });
    in classifyHabitat(): a vineyard (landuse=vineyard) was silently
    falling into the "Forest / Woodland" label, and a beach or bare sand
    area (natural=beach/sand) was silently falling into "Heathland". */
-/* Ver12: each entry carries a "desc" — a short, plain-language
+/* each entry carries a "desc" — a short, plain-language
    explanation of what the habitat/attractant type is and why it
    matters to wildlife hazard management, shown in the hover tooltip
    and the click detail panel (item 4). This is deliberately distinct
@@ -2009,7 +2011,7 @@ var HAB_CATS = [
   { cat: "scrub",       color: "#84cc16", label: "Scrubland", desc: "Low, dense shrub cover offers nesting and shelter habitat for small birds and mammals, with a comparatively lower collision-risk profile than forest or open water." },
   { cat: "heath",       color: "#a16207", label: "Heathland", desc: "Sparse, low-nutrient vegetation on poor soils, generally carrying limited wildlife-attractant value relative to other vegetated categories." },
   { cat: "coastal",     color: "#d4a373", label: "Beach / Shoreline", desc: "Beaches and shorelines concentrate gulls and shorebirds, especially along the tideline at low tide." },
-  /* Ver13: natural=sand used to share the "Beach / Bare Ground" category
+  /* natural=sand used to share the "Beach / Bare Ground" category
      with real beaches, so inland desert sand and bare ground was labelled
      as a coastal gull attractant, rated HIGH, and toggled together with
      Water Bodies. It now has its own low-weight category. */
@@ -2033,7 +2035,7 @@ var activeCats = {};
 for (var hc = 0; hc < HAB_CATS.length; hc++) { activeCats[HAB_CATS[hc].cat] = true; }
 
 /* ================================================================
-   HABITAT LEGEND GROUPING (Ver12)
+   HABITAT LEGEND GROUPING
 
    HAB_CATS (20 entries above) stays the classification system of
    record: classifyHabitat(), the detail panel, the KML export, and
@@ -2065,7 +2067,7 @@ var HAB_GROUPS = [
 ];
 
 /* ================================================================
-   WILDLIFE HAZARD RISK-SCORING ENGINE (Ver11)
+   WILDLIFE HAZARD RISK-SCORING ENGINE
 
    This is a rule-based lookup, not a statistical or ML model: every
    category below carries a documented attractant severity tier and
@@ -2136,7 +2138,7 @@ function attractantSeverity(cat) {
 }
 
 /* ================================================================
-   Ver32 COMBINED ATTRACTANTS (FAA AC 150/5200-33C section 2.10: land uses that are individually acceptable can together form a wildlife corridor)
+   COMBINED ATTRACTANTS (FAA AC 150/5200-33C section 2.10: land uses that are individually acceptable can together form a wildlife corridor)
    Flag rule (app-defined, not a published standard): two or more DIFFERENT higher-severity classes (VERY HIGH or HIGH tier) lie within
    COMBINE_KM (1 km) of each other, edge to edge, and every member is inside the 13 km assessment zone. Excluded from the test:
    features below the minimum mapping unit, the designation overlays (park, nature reserve), and satellite-derived water polygons
@@ -2437,7 +2439,7 @@ var FLYWAYS = [
 
 var activeFlyways = {};
 for (var fi = 0; fi < FLYWAYS.length; fi++) { activeFlyways[FLYWAYS[fi].id] = true; }
-/* Ver25: month filter. The peak months are read from each flyway's own "peak" text (e.g. "Aug\u2013Nov (southbound) / Mar\u2013May (northbound)"),
+/* month filter. The peak months are read from each flyway's own "peak" text (e.g. "Aug\u2013Nov (southbound) / Mar\u2013May (northbound)"),
    so the data stays the single source of truth. -1 = no month filter. */
 var FLY_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 var FLY_MONTH_FULL = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -2481,7 +2483,7 @@ function buildFlywaysGJ() {
 function buildLegend() {
   var hl = document.getElementById("habLeg"); hl.innerHTML = "";
   for (var i = 0; i < HAB_GROUPS.length; i++) {
-    if (HAB_GROUPS[i].key === "g_built") continue; /* Ver21: built-up land is not part of the automated scan; it stays available for manual features only */
+    if (HAB_GROUPS[i].key === "g_built") continue; /* built-up land is not part of the automated scan; it stays available for manual features only */
     (function (g) {
       /* A group shows checked only when every member category is
          active, so the checkbox state is never ambiguous; clicking
@@ -2602,7 +2604,7 @@ function applyHabFilter() {
     } else if (lid.endsWith("_shoreHit") || lid.endsWith("_shoreLn")) {
       map.setFilter(lid, catFilter);
     } else if (lid.endsWith("_mf") || lid.endsWith("_ms")) {
-      /* Ver16: manual features obey the category toggles AND the Manual annotations toggle */
+      /* manual features obey the category toggles AND the Manual annotations toggle */
       map.setFilter(lid, catFilter);
     }
   }
@@ -2914,7 +2916,7 @@ setInterval(syncHomeBtn, 250); syncHomeBtn();
 (function () {
   var fc = document.getElementById("fontControls"), grip = document.getElementById("fcGrip"), mini = document.getElementById("fcMini");
   var KEY_POS = "hs3d_fc_pos2", KEY_MIN = "hs3d_fc_min", peekT = null, placed = false;
-  /* Ver27b: the bar remembers its distance from the NEAREST SIDE (not an absolute pixel position), so it stays at the right edge when the window
+  /* the bar remembers its distance from the NEAREST SIDE (not an absolute pixel position), so it stays at the right edge when the window
      is resized or DevTools is opened, and still moves wherever the user drags it. */
   var anchor = { side: "r", x: 14, y: 150 };
   function place(x, y) {
@@ -3248,7 +3250,7 @@ function baseHabitatProps(tags, cls, aptLat, aptLon, prov, footprintType) {
 }
 
 var boundsOnlyLog = [];
-/* Ver28b: dumpsters, skips and recycling bins (amenity=waste_disposal, amenity=recycling without recycling_type=centre) are street furniture,
+/* dumpsters, skips and recycling bins (amenity=waste_disposal, amenity=recycling without recycling_type=centre) are street furniture,
    not waste-disposal sites. Airports carry hundreds of them. They are not mapped as attractants; they are counted and reported. A feature with a
    mapped outline of 1 ha or more is kept, because a large tagged compound can be a real open waste yard. */
 var wasteContainersExcluded = 0;
@@ -3270,7 +3272,7 @@ function relationsWithoutOutline(raw) {
   });
   return set;
 }
-/* Ver39: osmtogeojson tests every inner ring (island) against a freshly copied version of the whole outer ring, which takes minutes for a lake such as Lake Nasser
+/* osmtogeojson tests every inner ring (island) against a freshly copied version of the whole outer ring, which takes minutes for a lake such as Lake Nasser
    (hundreds of islands, hundreds of thousands of shoreline points). For such relations only, the rings are joined and the islands assigned here, in near-linear time. */
 var BIGREL_COST = 3e6;
 function bigRelRingArea(r) { var s = 0; for (var i = 0; i < r.length - 1; i++) s += r[i][0] * r[i + 1][1] - r[i + 1][0] * r[i][1]; return s / 2; }
@@ -3449,10 +3451,10 @@ function buildHabitatGJ(rawOverpassJson, elements, aptLat, aptLon) {
 /* Compute centroid, approximate area, and distance-from-ARP for every
    habitat feature. Uses Turf.js (geodesically correct) when available,
    otherwise a simple planar-average fallback for centroid only (no area). */
-/* Ver21: distance from the ARP to the NEAREST EDGE of an area feature (0 when the ARP lies inside it).
+/* distance from the ARP to the NEAREST EDGE of an area feature (0 when the ARP lies inside it).
    The zone (Area A/B/C) and risk tier are driven by the closest part of a habitat, not its centre:
    a forest spanning 2 to 6 km is an Area A attractant, even though its centroid is at 4 km. */
-/* Ver57: independent fallback (no Turf): distance from a point to the nearest outline of a polygon, or 0 inside it. */
+/* independent fallback (no Turf): distance from a point to the nearest outline of a polygon, or 0 inside it. */
 function edgeDistManual(feature, lat, lon) {
   var g = feature && feature.geometry; if (!g) return null;
   var polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : null; if (!polys) return null;
@@ -3515,7 +3517,7 @@ function enrichHabitatFeatures(fc, aptLat, aptLon) {
       if (typeof ed === "number") { p.distKm = ed; p.distBasis = "edge"; }
     }
     p.areaM2 = areaM2;
-    /* Ver60: a very large area that contains the reference point is usually a rough outline (it also holds buildings, roads and other uses) */
+    /* a very large area that contains the reference point is usually a rough outline (it also holds buildings, roads and other uses) */
     if (areaM2 && areaM2 >= 10000000 && p.footprintType !== "point" && window._turfReady && !/^Satellite/.test(p.source || "")) {
       try { if (turf.booleanPointInPolygon([aptLon, aptLat], f)) p.coversArp = true; } catch (eCv) {}
     }
@@ -3581,7 +3583,7 @@ function buildRunwayData(elements) {
   for (var i = 0; i < elements.length; i++) {
     var el = elements[i];
     if (!el.geometry || el.geometry.length < 2) continue;
-    if (el.tags && (el.tags.disused === "yes" || el.tags.abandoned === "yes")) continue; /* Ver57: runways mapped as disused or abandoned get no screening fan */
+    if (el.tags && (el.tags.disused === "yes" || el.tags.abandoned === "yes")) continue; /* runways mapped as disused or abandoned get no screening fan */
     var ref = (el.tags && el.tags.ref) ? el.tags.ref.trim() : "";
     var coords = [];
     for (var j = 0; j < el.geometry.length; j++) { var gq = el.geometry[j]; if (gq && typeof gq.lon === "number") coords.push([gq.lon, gq.lat]); }
@@ -3751,7 +3753,7 @@ async function fetchOverpass(query, label, maxTries) {
 
 
 /* ================================================================
-   SEA / COASTAL WATER FROM OSM COASTLINE (Ver14)
+   SEA / COASTAL WATER FROM OSM COASTLINE
    OpenStreetMap does NOT store the sea as a water polygon: it stores only
    the coastline as a line (natural=coastline) whose direction always keeps
    land on the LEFT and water on the RIGHT. A tag query for natural=water
@@ -3988,9 +3990,9 @@ function pickSmallestFeature(features) {
 /* Trim every area feature to the 21 km scan circle so shape, area, centroid and distance all describe
    the part that is actually inside the scan zone (a lake that continues beyond the zone is cut cleanly
    at the circle, never closed with a made-up straight edge). */
-/* Ver27: the scan is split into several SMALL Overpass queries run three at a time. One big combined query timed out on all four
+/* the scan is split into several SMALL Overpass queries run three at a time. One big combined query timed out on all four
    public mirrors for dense cities (KJFK). Each part is cached separately by the Worker, so a retry only repeats the parts that failed. */
-/* Ver39: while the cinematic flight is running, heavy data processing waits (the network fetch does not), so the camera never stutters. */
+/* while the cinematic flight is running, heavy data processing waits (the network fetch does not), so the camera never stutters. */
 var flightGate = null;
 function flightGateStart(maxMs) {
   flightGateEnd();
@@ -3998,7 +4000,7 @@ function flightGateStart(maxMs) {
   flightGate = { p: p, r: r, t: setTimeout(function () { flightGateEnd(); }, maxMs) };
 }
 function flightGateEnd() { if (flightGate) { clearTimeout(flightGate.t); var g = flightGate; flightGate = null; g.r(); } }
-/* Ver39: breadcrumb log. Written to localStorage BEFORE each heavy step, so if the page freezes or is force-quit, the next page load can say which step it was in. */
+/* breadcrumb log. Written to localStorage BEFORE each heavy step, so if the page freezes or is force-quit, the next page load can say which step it was in. */
 var _crumbs = [];
 function crumb(msg) {
   _crumbs.push([Date.now(), msg]); if (_crumbs.length > 60) _crumbs.shift();
@@ -4013,7 +4015,7 @@ async function fetchOverpassParts(parts) {
       var liteNote = "";
       var rl0 = null;
       if (pt.qLite) {
-        /* Ver43: start the full and the reduced query together. The reduced one is usually cached and returns at once; the full one then gets at most 15 more seconds. If it is late it keeps running in the background (the Worker saves it for next time) but this scan continues with the reduced data. */
+        /* start the full and the reduced query together. The reduced one is usually cached and returns at once; the full one then gets at most 15 more seconds. If it is late it keeps running in the background (the Worker saves it for next time) but this scan continues with the reduced data. */
         var FAIL = function () { return { elements: [], _failed: true }; };
         var pf = fetchOverpass(pt.q, pt.label, 1).catch(FAIL), fDone = false, pl = null;
         pf.then(function () { fDone = true; });
@@ -4037,7 +4039,7 @@ async function fetchOverpassParts(parts) {
         try { r = await fetchOverpass(pt.q, pt.label, 3); } catch (eP) { r = { elements: [], _failed: true }; }
       }
       if (r && r._failed && pt.qLite) {
-        /* Ver40: the full query for this part failed (a huge lake such as Lake Nasser can be too heavy for the public servers). Ask for a reduced version: all ponds, lakes and river polygons that are single ways, and only the names/centres of the huge multi-part lakes (their outlines come from the satellite layer). */
+        /* the full query for this part failed (a huge lake such as Lake Nasser can be too heavy for the public servers). Ask for a reduced version: all ponds, lakes and river polygons that are single ways, and only the names/centres of the huge multi-part lakes (their outlines come from the satellite layer). */
         crumb("full query failed for " + pt.label + "; trying the reduced query");
         var _hlL = document.getElementById("hload"); if (_hlL && !flightGate) { _hlL.classList.add("warn"); } if (_hlL && !flightGate) _hlL.textContent = "\u23f3 LARGE LAKE DETECTED \u00b7 USING A LIGHTER QUERY FOR THIS PART \u00b7 PLEASE WAIT";
         var rl = rl0;
@@ -4071,7 +4073,7 @@ async function fetchOverpassParts(parts) {
   return { merged: { version: 0.6, generator: "Habitat Scanner 3D (merged parts)", elements: merged }, status: results.map(function (rp) { return { label: rp.label, what: rp.what, ok: rp.ok, lite: rp.lite || "", count: rp.count, ms: rp.ms, servedFrom: rp.servedFrom, fetchedAt: rp.fetchedAt }; }) };
 }
 
-/* Ver27: automatic per-scan integrity checks, shown with every scan, in the report and in the diagnostics file. */
+/* automatic per-scan integrity checks, shown with every scan, in the report and in the diagnostics file. */
 function computeIntegrity(partsStatus, habGJ, rwyCount, perf, noOutlineCount) {
   var checks = [], failed = (partsStatus || []).filter(function (s) { return !s.ok && !s.lite; }), liteParts = (partsStatus || []).filter(function (s) { return !!s.lite; });
   checks.push({ ok: !failed.length, text: failed.length ? ("OpenStreetMap data INCOMPLETE: " + failed.map(function (s) { return s.label; }).join(", ") + " could not be retrieved") : liteParts.length ? ("OpenStreetMap data: " + ((partsStatus || []).length - liteParts.length) + " of " + (partsStatus || []).length + " query parts complete; " + liteParts.map(function (s) { return s.label; }).join(", ") + " retrieved in reduced form") : ("OpenStreetMap data complete: all " + (partsStatus || []).length + " query parts retrieved") });
@@ -4086,13 +4088,13 @@ function computeIntegrity(partsStatus, habGJ, rwyCount, perf, noOutlineCount) {
   var cov = (habGJ.features || []).filter(function (f) { return f.properties && f.properties.coversArp; });
   if (cov.length) checks.push({ ok: false, text: cov.length + " large area(s) of more than 1,000 ha cover the reference point (" + cov.slice(0, 3).map(function (f) { return (f.properties.label || "area") + " " + Math.round(f.properties.areaM2 / 10000).toLocaleString() + " ha"; }).join(", ") + "). Areas this large are often rough outlines in OpenStreetMap that also include buildings and roads; check them against imagery before relying on them" });
   var shown = (habGJ.features || []).filter(function (f) { return !(f.properties && f.properties.belowMMU); }).length;
-  /* Ver39: this is a performance note, not a data-quality failure, so it no longer shows as a warning mark. */
+  /* this is a performance note, not a data-quality failure, so it no longer shows as a warning mark. */
   checks.push({ ok: true, text: shown + " features drawn on the map" + (shown > 4000 ? " (dense area: the map may be slower; small features can be hidden with the legend switch)" : "") });
   return { checks: checks, failedParts: failed.map(function (s) { return s.label; }), liteParts: liteParts.map(function (s) { return s.label; }) };
 }
 function integrityText(conf) { return (conf && conf.checks) ? conf.checks.map(function (k) { return (k.ok ? "\u2713 " : "! ") + k.text; }).join(" | ") : ""; }
 
-/* Ver39: linear-time clipping of polygon rings to a convex clip ring (the scan circle). Rings that are only partly inside get short bridges along the circle edge, which have no area. */
+/* linear-time clipping of polygon rings to a convex clip ring (the scan circle). Rings that are only partly inside get short bridges along the circle edge, which have no area. */
 function shClipRing(ring, clipPts) {
   var out = ring.slice(0, ring.length - 1), m = clipPts.length;
   function inter(p, q, a, b) {
@@ -4142,12 +4144,12 @@ function clipHabitatsToScanCircle(fc, lat, lon) {
       var bb = turf.bbox(f);
       if (bb[0] >= cb[0] && bb[1] >= cb[1] && bb[2] <= cb[2] && bb[3] <= cb[3]) { out.push(f); return; }
       var nv0 = 0; try { turf.coordEach(f, function () { nv0++; }); } catch (eCe) {}
-      if (nv0 > 3000 && typeof turf.bboxClip === "function") { /* Ver39: linear-time exact trim to the circle's box first, so the slow boolean step sees far fewer vertices */
+      if (nv0 > 3000 && typeof turf.bboxClip === "function") { /* linear-time exact trim to the circle's box first, so the slow boolean step sees far fewer vertices */
         try { var bc = turf.bboxClip(f, cb); if (bc && bc.geometry && bc.geometry.coordinates && bc.geometry.coordinates.length) f = { type: "Feature", properties: f.properties, geometry: bc.geometry }; } catch (eBc) {}
       }
       var nv1 = 0; try { turf.coordEach(f, function () { nv1++; }); } catch (eCe2) {}
       var fname = (f.properties && (f.properties.name || f.properties.cat)) || "?";
-      if (nv1 > 8000) { /* Ver39: huge outline (e.g. Lake Nasser): exact boolean clipping can take minutes, so clip each ring to the circle with a linear-time method (Sutherland-Hodgman) */
+      if (nv1 > 8000) { /* huge outline (e.g. Lake Nasser): exact boolean clipping can take minutes, so clip each ring to the circle with a linear-time method (Sutherland-Hodgman) */
         crumb("fast clip start: " + fname + " " + nv1 + " vertices");
         var tfc = performance.now(), g2 = shClipGeometry(f.geometry, circ.geometry.coordinates[0]);
         crumb("fast clip done: " + fname + " " + Math.round(performance.now() - tfc) + " ms");
@@ -4171,7 +4173,7 @@ function safeBuild(fn, fallback, label) {
   catch (e) { console.warn("Skipped " + label + " (build error):", e); overpassDiagnostics.push({ endpoint: "Build " + label, method: "local", outcome: "Skipped: " + (e.message || e) }); return fallback; }
 }
 
-/* Ver30: scans are queued (two at a time) instead of all running at once, and the page gets a breathing space between jobs. */
+/* scans are queued (two at a time) instead of all running at once, and the page gets a breathing space between jobs. */
 var scanQ = [], scanRunning = 0, SCAN_CONCURRENCY = 2;
 function fetchAllData(lat, lon) {
   return new Promise(function (resolve, reject) {
@@ -4237,13 +4239,13 @@ async function fetchAllDataRaw(lat, lon) {
   var dLat = bboxR / 111320;
   var dLon = bboxR / (111320 * Math.cos(lat * Math.PI / 180));
   var bbox = (lat - dLat).toFixed(6) + "," + (lon - dLon).toFixed(6) + "," + (lat + dLat).toFixed(6) + "," + (lon + dLon).toFixed(6);
-  /* Ver27: five small queries instead of one large one. Critical attractants and linear water/coast use the full 21 km box;
+  /* five small queries instead of one large one. Critical attractants and linear water/coast use the full 21 km box;
      generic cover (forest, grass, farmland, parks) only the inner 13 km box. The box is applied PER CLAUSE (not as a global [bbox]),
-     so every selected feature comes back with its complete outline (Ver19 fix for chord artefacts). */
+     so every selected feature comes back with its complete outline ( fix for chord artefacts). */
   var d13Lat = 13000 / 111320, d13Lon = 13000 / (111320 * Math.cos(lat * Math.PI / 180));
   var bbox13 = (lat - d13Lat).toFixed(6) + "," + (lon - d13Lon).toFixed(6) + "," + (lat + d13Lat).toFixed(6) + "," + (lon + d13Lon).toFixed(6);
   var B21 = "(" + bbox + ")", B13 = "(" + bbox13 + ")";
-  /* Ver27b ROOT-CAUSE FIX: "out geom tags" prints relations WITHOUT their member list, so every multipolygon (lakes, reservoirs, wetlands,
+  /* ROOT-CAUSE FIX: "out geom tags" prints relations WITHOUT their member list, so every multipolygon (lakes, reservoirs, wetlands,
      parks, reserves, big forests) came back as only a bounding box, and osmtogeojson drew that box as a rectangle. Ways keep "tags geom";
      relations are now printed with "body geom" so their member outlines are included. */
   function QQ(body) { return "[out:json][timeout:40];(" + body + ")->.r;way.r;out tags geom;rel.r;out body geom;node.r;out;"; }
@@ -4265,7 +4267,7 @@ async function fetchAllDataRaw(lat, lon) {
   ];
   /* Overpass and GEE are independent services: fetched in parallel. */
   var _hl = document.getElementById("hload"), _hlDefault = "\u25cb SCANNING HABITATS...";
-  /* Ver44: the patience notice appears only when the data really is slow: 20 s after the scan started for the first message, 40 s for the second, and never while the cinematic flight is still running (it is shown the moment the flight ends if the data is still not here). Fast airports never see it. */
+  /* the patience notice appears only when the data really is slow: 20 s after the scan started for the first message, 40 s for the second, and never while the cinematic flight is still running (it is shown the moment the flight ends if the data is still not here). Fast airports never see it. */
   var _patOn = true;
   function _patShow(msg) {
     function go() { if (!_patOn) return; _hl.classList.add("warn"); _hl.textContent = msg; }
@@ -4353,7 +4355,7 @@ async function fetchAllDataRaw(lat, lon) {
         catch (eSimp) { /* keep the original, unsimplified geometry if this shape can't be simplified */ }
       }
       var isDup = false;
-      /* Dedup rule (Ver14): a satellite polygon is a duplicate only when a
+      /* Dedup rule: a satellite polygon is a duplicate only when a
          representative point INSIDE it lies inside an OSM water polygon
          (i.e. OSM already maps that water). The earlier rule dropped any
          satellite polygon whose bounding box merely touched an OSM water
@@ -4373,7 +4375,7 @@ async function fetchAllDataRaw(lat, lon) {
       if (!isDup) nonDuplicateGee.push(gf);
     }
     if (nonDuplicateGee.length > 0) {
-      /* Ver27b: the satellite request covers a 21 km SQUARE; trim it to the scan circle like the OSM features, so no straight box edges remain */
+      /* the satellite request covers a 21 km SQUARE; trim it to the scan circle like the OSM features, so no straight box edges remain */
       var geeClipped = clipHabitatsToScanCircle({ type: "FeatureCollection", features: nonDuplicateGee }, lat, lon).features;
       habGJ.features = habGJ.features.concat(enrichHabitatFeatures({ type: "FeatureCollection", features: geeClipped }, lat, lon).features);
     }
@@ -4386,7 +4388,7 @@ async function fetchAllDataRaw(lat, lon) {
      alongside the reduced satellite fill-opacity and pickSmallestFeature()
      click/hover handling above. Point features (no area) sort last,
      i.e. always on top, which is what you want for a point marker. */
-  /* Ver16: large water (sea, ocean, big lakes, or polygons cut by the query box)
+  /* large water (sea, ocean, big lakes, or polygons cut by the query box)
      is not drawn as a polygon; it becomes a callout at the nearest shore point. */
   await stageMark("merge_satellite_water", "big_water_and_sort");
   _satEdgeCount = 0; try { _perf.suspectEdges = flagSuspectEdges(habGJ); _perf.satSuspectEdges = _satEdgeCount; } catch (eSE) { _perf.suspectEdges = -1; }
@@ -4448,7 +4450,7 @@ var trackedSources = [];
 var trackedMarkers = [];
 
 /* ================================================================
-   Ver16: LARGE-WATER CALLOUTS, DIMENSION LABELS, SELECTION LEADER LINE
+   LARGE-WATER CALLOUTS, DIMENSION LABELS, SELECTION LEADER LINE
 ================================================================ */
 var BIG_WATER_M2 = 3000000; /* 3 km2 inside the scan circle: larger water is shown as a small callout, not a polygon */
 function nearestBoundaryPoint(feature, lat, lon) {
@@ -4471,7 +4473,7 @@ var SHORE_BY_ID = {}; /* feature id -> MultiLineString of the real shoreline ins
 /* Real shoreline = the outline of the (circle-trimmed) polygon WITHOUT the arc that only exists because we cut at 21 km */
 var CHORD_AXIS_KM = 3.0, CHORD_ANY_KM = 4.0, _satEdgeCount = 0;
 /* A single outline segment this long is almost never a real shoreline: it is usually where an incomplete OSM multipolygon was closed
-   with a straight line. Rule (app-defined heuristic, Ver28): >= 4 km in any direction, or >= 3 km and within about 10 degrees of true N-S or E-W (raised from 2.5 / 1 km after real-data scans showed legitimate straight lakes and canals). */
+   with a straight line. Rule: >= 4 km in any direction, or >= 3 km and within about 10 degrees of true N-S or E-W (raised from 2.5 / 1 km after real-data scans showed legitimate straight lakes and canals). */
 function segIsChord(a, b) {
   var dl = haversine(a[1], a[0], b[1], b[0]);
   if (dl < CHORD_AXIS_KM) return false;
@@ -4488,7 +4490,7 @@ function flagSuspectEdges(habGJ) {
   var n = 0;
   (habGJ.features || []).forEach(function (f) {
     var p = f.properties || {};
-    /* Ver39: satellite-derived water outlines come from a 10 m raster, so a long straight segment is a vectorisation artefact, not a
+    /* satellite-derived water outlines come from a 10 m raster, so a long straight segment is a vectorisation artefact, not a
        real shoreline and not an OSM gap. They are flagged separately (satEdgeKm) with their own wording. */
     if (p.satDerived && p.cat === "water" && !p.seaDerived) { var ms = maxChordKm(f.geometry); if (ms > 0) { p.satEdgeKm = +ms.toFixed(2); _satEdgeCount++; } return; }
     if ((p.cat !== "water" && p.cat !== "wetland") || p.seaDerived || p.satDerived || p.footprintType === "point") return;
@@ -4540,7 +4542,7 @@ function convertBigWater(habGJ, lat, lon) {
     /* Real, complete OSM water (lakes, reservoirs, rivers) stays a normal polygon.
        Callouts are reserved for shapes that cannot be drawn truthfully: the sea
        (no polygon in OSM), outlines cut by the query box, and huge satellite blobs. */
-    var big = !p.satDerived && (p.seaDerived || area >= BIG_WATER_M2); /* Ver26: generalised satellite outlines never become shoreline callouts */
+    var big = !p.satDerived && (p.seaDerived || area >= BIG_WATER_M2); /* generalised satellite outlines never become shoreline callouts */
     if (!big) return f;
     var runs = shorelineRuns(f.geometry, lat, lon, !p.seaDerived);
     if (runs.chords && runs.chords.length) p.suspectEdgeKm = +Math.max.apply(null, runs.chords).toFixed(2);
@@ -4593,7 +4595,7 @@ function syncBigWater(apt) {
     });
     shoreSrc.setData({ type: "FeatureCollection", features: lines });
   }
-  /* Ver26: labels only for NAMED large water within 13 km, nearest first, at most 6. Every large water body keeps its hoverable shoreline. */
+  /* labels only for NAMED large water within 13 km, nearest first, at most 6. Every large water body keeps its hoverable shoreline. */
   var callFeats = feats.filter(function (f) { var q = f.properties; return q.name && q.name !== "null" && !/unnamed/i.test(q.name) && typeof q.distKm === "number" && q.distKm <= 13; })
     .sort(function (a, b) { return a.properties.distKm - b.properties.distKm; }).slice(0, 6);
   callFeats.forEach(function (f, idx) {
@@ -4682,7 +4684,7 @@ function renderFeatDimLive() {
   } catch (e) {}
 }
 
-/* Selection leader line was removed in Ver18 at the user's request; clearSelLine stays as a harmless no-op for older call sites. */
+/* Selection leader line was removed in  at the user's request; clearSelLine stays as a harmless no-op for older call sites. */
 function clearSelLine() {}
 
 /* Scan banner shown on every airport scan until habitats arrive */
@@ -4952,6 +4954,7 @@ function addAirportData(aptObj, data) {
     "fill-opacity": ["case",
       ["==", ["get", "overlay"], true], 0.02,
       ["==", ["get", "satDerived"], true], 0.2,
+      ["==", ["get", "coversArp"], true], 0.07,
       ["==", ["get", "footprintType"], "point"], 0.22,
       0.36]
   } });
@@ -4962,7 +4965,7 @@ function addAirportData(aptObj, data) {
   addLyr({ minzoom: 7, id: pfx + "hs", type: "line", source: pfx + "hab", filter: ["all", ["!=", ["get", "footprintType"], "point"], ["!=", ["get", "overlay"], true], notBigWaterFilter()], paint: {
     "line-color": ["get", "color"], "line-opacity": 0.7, "line-width": 0.8
   } });
-  /* Ver28: parks and nature reserves are designations, drawn as thin dashed outlines only */
+  /* parks and nature reserves are designations, drawn as thin dashed outlines only */
   addLyr({ minzoom: 7, id: pfx + "hsOv", type: "line", source: pfx + "hab", filter: ["all", ["==", ["get", "overlay"], true], notBigWaterFilter()], paint: {
     "line-color": ["get", "color"], "line-opacity": 0.85, "line-width": 1.3, "line-dasharray": [3, 2.2]
   } });
@@ -5179,10 +5182,10 @@ function renderOverpassDiagnostics(diag) {
 /* ================================================================
    DATA CONFIDENCE BANNER
 ================================================================ */
-/* Ver57: objective check of the reference point. The point comes from OurAirports, not from the AIP. If it lies far from the middle
+/* objective check of the reference point. The point comes from OurAirports, not from the AIP. If it lies far from the middle
    of the runways mapped in OpenStreetMap, the user is told, because zones and distances all depend on it. App-defined threshold. */
-var ARP_CHECK_M = 1000;
-/* Ver59: which mapped runway ways belong to THIS aerodrome? OpenStreetMap runway ways inside the scan circle can belong to neighbouring
+var ARP_CHECK_M = 1000, ARP_NEAR_M = 2000;
+/* which mapped runway ways belong to THIS aerodrome? OpenStreetMap runway ways inside the scan circle can belong to neighbouring
    aerodromes (for example Wilson and Eastleigh near Nairobi, Sharjah near Dubai). Ways are grouped by proximity (single linkage, links up to
    RWY_LINK_KM apart); the group nearest to the reference point is taken as this aerodrome, if it lies within RWY_OWN_MAX_KM. Two aerodromes
    closer together than RWY_LINK_KM cannot be separated by this rule. Ways whose two ends coincide (closed loops) or are under 0.15 km are ignored. */
@@ -5221,7 +5224,7 @@ function selectOwnRunways(rwyLines, apt) {
     }).sort(function (x, y) { return x.d - y.d; });
     var best = list[0];
     if (best && best.d <= RWY_OWN_MAX_KM) {
-      /* Ver60: parallel runways of one aerodrome carry the same number with L, C or R (ICAO Annex 14 designation rule). A group within
+      /* parallel runways of one aerodrome carry the same number with L, C or R (ICAO Annex 14 designation rule). A group within
          RWY_OWN_MAX_KM that shares a runway number with a suffix (for example 05L/23R and 05C/23C) belongs to the same aerodrome even when
          the parallels are further apart than RWY_LINK_KM (Cairo). */
       function rwyNums(g) { var o = {}; g.forEach(function (it) { String(it.f.properties.ref || "").split(/[\/\-]/).forEach(function (t) { var m = /^(\d{1,2})[LCR]$/i.exec(t.trim()); if (m) o[String(+m[1])] = true; }); }); return o; }
@@ -5249,12 +5252,16 @@ function computeArpCheck(apt, rwyLines) {
     });
     if (!n || !sw) return null;
     var cLon = sx / sw, cLat = sy / sw, d = haversine(apt.lat, apt.lon, cLat, cLon) * 1000;
-    return { offsetM: Math.round(d), runways: n, midLat: +cLat.toFixed(6), midLon: +cLon.toFixed(6), flagged: d > ARP_CHECK_M };
+    /* the flag uses the distance from the reference point to the nearest mapped runway. The middle of several runways is not a
+       fair test for aerodromes with parallel runways and terminals on one side (Cairo gave a false alarm). */
+    var near = 1e9;
+    fs.forEach(function (f) { var cs = f.geometry && f.geometry.coordinates; if (!cs || cs.length < 2) return; rwySamples(cs).forEach(function (q) { var dd = haversine(apt.lat, apt.lon, q[1], q[0]) * 1000; if (dd < near) near = dd; }); });
+    return { offsetM: Math.round(d), nearestRunwayM: near < 1e9 ? Math.round(near) : null, runways: n, midLat: +cLat.toFixed(6), midLon: +cLon.toFixed(6), flagged: near < 1e9 ? near > ARP_NEAR_M : d > ARP_CHECK_M };
   } catch (e) { return null; }
 }
 function arpCheckNote(apt) {
   var c = apt && apt.arpCheck; if (!c || !c.flagged) return "";
-  return "Reference point check: the reference location (OurAirports) lies about " + (c.offsetM >= 1000 ? (c.offsetM / 1000).toFixed(1) + " km" : c.offsetM + " m") + " from the middle of the " + c.runways + " runway line(s) mapped in OpenStreetMap. The official Aerodrome Reference Point in the AIP may differ. Zones, distances and risk tiers all depend on it, so check it against the AIP before using the result.";
+  return "Reference point check: the reference location (OurAirports) lies about " + (c.nearestRunwayM != null ? (c.nearestRunwayM >= 1000 ? (c.nearestRunwayM / 1000).toFixed(1) + " km" : c.nearestRunwayM + " m") + " from the nearest" : (c.offsetM >= 1000 ? (c.offsetM / 1000).toFixed(1) + " km" : c.offsetM + " m") + " from the middle of the") + " runway line(s) of this aerodrome mapped in OpenStreetMap (" + c.runways + " runway(s) counted). The official Aerodrome Reference Point in the AIP may differ. Zones, distances and risk tiers all depend on it, so check it against the AIP before using the result.";
 }
 function renderConfidence(conf, aptRef) {
   var el = document.getElementById("habConf");
@@ -5546,7 +5553,7 @@ async function confirmAddContinue(apt) {
 
 
 /* ================================================================
-   Ver31 BATCH MODE
+   BATCH MODE
    Scans a pasted list of ICAO codes one after another (never in parallel, with a pause between airports) and keeps ONLY a small summary
    per airport. The full scan data is dropped right after summarising, so memory stays flat however many airports are in the list.
    Opening an airport from the table runs the normal single-airport scan (the Worker cache makes this fast).
@@ -5569,7 +5576,7 @@ function batchSummarise(apt, data) {
     var p = f.properties || {};
     if (p.belowMMU) { below++; return; }
     shown++;
-    if (p.satDerived) { satN++; if (typeof p.distKm === "number" && (satNear === null || p.distKm < satNear)) satNear = p.distKm; return; } /* Ver39: approximate satellite outlines are kept out of the tier counts and nearest-attractant figures */
+    if (p.satDerived) { satN++; if (typeof p.distKm === "number" && (satNear === null || p.distKm < satNear)) satNear = p.distKm; return; } /* approximate satellite outlines are kept out of the tier counts and nearest-attractant figures */
     var cat = p.cat || "unknown", sev = attractantSeverity(cat);
     tiers[sev.tier] = (tiers[sev.tier] || 0) + 1;
     var c = cats[cat] || (cats[cat] = { n: 0, km2: 0 });
@@ -5715,7 +5722,7 @@ document.getElementById("scanBatchBtn").addEventListener("click", batchShow);
 window.addEventListener("beforeunload", function (e) { if (batchRunning) { e.preventDefault(); e.returnValue = ""; } });
 
 /* ================================================================
-   RECONNAISSANCE DRONE (Ver14)
+   RECONNAISSANCE DRONE
    A screen-space cinematic overlay: a quadcopter drawn on its own canvas
    above the map. It is NOT a geographic object; it is the "eye" of the
    virtual flight. Phases: cruise (chase view, far) -> descend -> final ->
@@ -6182,7 +6189,7 @@ function closeFloatingPanels() {
   var sb = document.getElementById("scanBanner");
   if (sb) { if (scanBannerTimer) { clearTimeout(scanBannerTimer); scanBannerTimer = null; } sb.classList.remove("on", "in", "out"); }
 }
-/* Ver39: icon buttons on the panel itself hide and show the left panel and the right tools, so the map is never covered. */
+/* icon buttons on the panel itself hide and show the left panel and the right tools, so the map is never covered. */
 (function () {
   function wire(btnId, boxId, hideTip, showTip) {
     var b = document.getElementById(btnId), box = document.getElementById(boxId);
@@ -6198,7 +6205,7 @@ function closeFloatingPanels() {
   wire("apTog", "AP", "Hide side panel", "Show side panel");
   wire("btnsTog", "btns", "Hide tools", "Show tools");
 })();
-/* Ver39: if the last scan never finished (page frozen, force-quit or closed), say which step it was in. */
+/* if the last scan never finished (page frozen, force-quit or closed), say which step it was in. */
 (function () {
   try {
     var raw = localStorage.getItem("hs_crumbs"); if (!raw) return;
@@ -6209,11 +6216,11 @@ function closeFloatingPanels() {
     var bar = document.getElementById("crashBar"); if (!bar) return;
     document.getElementById("crashTxt").style.whiteSpace = "pre-wrap"; document.getElementById("crashTxt").textContent = txt;
     bar.style.display = "block";
-    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D Ver60 scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
+    document.getElementById("crashCopy").onclick = function () { var full = "Habitat Scanner 3D scan crash report\n" + lines.join("\n"); try { navigator.clipboard.writeText(full); } catch (e) {} };
     document.getElementById("crashClose").onclick = function () { bar.style.display = "none"; try { localStorage.removeItem("hs_crumbs"); } catch (e) {} };
   } catch (e) {}
 })();
-/* Ver39: the habitat detail panel and the flyway tooltip close when the user clicks or taps anywhere outside them, or presses Escape. */
+/* the habitat detail panel and the flyway tooltip close when the user clicks or taps anywhere outside them, or presses Escape. */
 (function () {
   function open(id) { var e = document.getElementById(id); return e && e.style.display && e.style.display !== "none"; }
   function closeDetail() {
@@ -6368,7 +6375,7 @@ function openEditFeatModal(apt, feat) {
   document.getElementById("hft").style.display = "none";
 }
 
-/* Ver23: re-shape a saved manual feature (drag corners, add corners, change a circle's radius) with the same
+/* re-shape a saved manual feature (drag corners, add corners, change a circle's radius) with the same
    drawing tools used to create it. The original is hidden while editing and replaced on SAVE; CANCEL restores it. */
 var reshapingFeatId = null, reshapingApt = null;
 function setManualSource(apt, omitId) {
@@ -6765,7 +6772,7 @@ document.getElementById("featDrawConfirm").addEventListener("click", function ()
     if (!centroid) centroid = turf.centroid(gf).geometry.coordinates;
     areaM2 = turf.area(gf);
   } catch (eArea) { /* leave areaM2 null if turf can't compute it (shouldn't normally happen) */ }
-  /* Audit note (Ver09): if turf.centroid() above threw (caught by eArea),
+  /* Audit note: if turf.centroid() above threw (caught by eArea),
      `centroid` could be left null here for a RECT/POLYGON shape (CIRCLE
      always sets it directly, above). pendingFeatCentroid was then stored
      as null, and the ADD-feature handler immediately does
@@ -7008,7 +7015,7 @@ document.getElementById("featOkBtn").addEventListener("click", function () {
     var src = map && map.getSource(pfx + "manual");
     if (src) src.setData({ type: "FeatureCollection", features: apt.manualFeatures });
   }
-  /* Ver16: a new feature is made visible: its category and the Manual annotations toggle are switched on */
+  /* a new feature is made visible: its category and the Manual annotations toggle are switched on */
   activeCats[catDef.cat] = true; activeAnn.manualFeat = true;
   try { buildLegend(); applyHabFilter(); applyAnnotationFilter(); } catch (eVis) {}
   pendingFeatShape = null;
@@ -7485,7 +7492,7 @@ function startEditSketch(apt, sketchId) {
 }
 
 /* ================================================================
-   Ver28: OVERLAP ARBITRATION ("one answer per place")
+   OVERLAP ARBITRATION ("one answer per place")
    Rule set (app-defined, documented in About): every drawn polygon is ranked by a fixed priority ladder; where two polygons overlap,
    the higher-ranked one keeps the shared area and the lower-ranked one is drawn with a hole there. Within the same rank the smaller
    (more specific) polygon wins. Satellite-derived water ranks LAST: it only fills places OpenStreetMap leaves unmapped.
@@ -7547,7 +7554,7 @@ function scheduleArb(apt, delay) {
   clearTimeout(apt._arbTimer);
   apt._arbTimer = setTimeout(function () { try { startArbitration(apt); } catch (e) { console.warn("arbitration", e); } }, delay || 400);
 }
-/* Ver30: arbitration runs as a queue, one airport at a time, in one background worker. Before, a single shared worker and timer meant that
+/* arbitration runs as a queue, one airport at a time, in one background worker. Before, a single shared worker and timer meant that
    adding a second airport cancelled the first one's job, and every finished job re-fed the map data of ALL airports. */
 var arbQueue = [], arbBusy = false;
 function startArbitration(apt) {
@@ -7603,7 +7610,7 @@ function pumpArb() {
 }
 
 /* ================================================================
-   Ver26: SCALE-DEPENDENT MINIMUM MAPPING UNIT AND DIAGNOSTICS
+   SCALE-DEPENDENT MINIMUM MAPPING UNIT AND DIAGNOSTICS
    Small features are NOT deleted: they are flagged (belowMMU) and kept for the report and KML, but left off the map by default.
    Thresholds are app-defined (see About): critical attractants keep smaller features near the runway than generic cover does.
 ================================================================ */
@@ -7618,7 +7625,7 @@ function applyMinMapUnit(habGJ) {
     p.overlay = ARB_OVERLAY[p.cat] ? true : false;
     if (p.footprintType === "point" || p.bigWater || typeof p.areaM2 !== "number" || typeof p.distKm !== "number") return;
     var z = classifyZone(p.distKm).key, thr = (MMU_CRIT[p.cat] ? MMU_M2.crit : MMU_M2.other)[z];
-    if (p.cat === "lawn" && thr < 10000) thr = 10000; /* Ver29b: low-value mown grass (verges, infields) is only shown from 1 ha */
+    if (p.cat === "lawn" && thr < 10000) thr = 10000; /* low-value mown grass (verges, infields) is only shown from 1 ha */
     p.mmuM2 = thr;
     if (p.areaM2 < thr) { p.belowMMU = true; hidden++; }
   });
@@ -7649,7 +7656,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D Ver60", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
+  var out = { app: "Habitat Scanner 3D", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
     runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, from: a ? [+a[1].toFixed(5), +a[0].toFixed(5)] : null, to: b ? [+b[1].toFixed(5), +b[0].toFixed(5)] : null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
@@ -7716,7 +7723,7 @@ function downloadScanDiagnostics(apt) {
 }
 
 /* ================================================================
-   Ver24: RUNWAY APPROACH/DEPARTURE SECTORS (screening) AND BIRD-STRIKE LOG
+   RUNWAY APPROACH/DEPARTURE SECTORS (screening) AND BIRD-STRIKE LOG
    The sectors are an APP-DEFINED screening aid, not an ICAO Annex 14 obstacle limitation surface:
    10 km long, 150 m half-width at the runway end, widening 15 degrees each side.
    They flag features; they do NOT change any risk score.
@@ -7728,10 +7735,10 @@ function buildRunwaySectors(rwyFC) {
   var ends = [];
   rwyFC.features.forEach(function (f, wi) {
     var cs = f.geometry && f.geometry.coordinates; if (!cs || cs.length < 2) return;
-    var a = cs[0], b = cs[cs.length - 1], len = haversine(a[1], a[0], b[1], b[0]); /* Ver59: end-to-end distance, so a closed loop mapped as a runway gets no fan */
+    var a = cs[0], b = cs[cs.length - 1], len = haversine(a[1], a[0], b[1], b[0]); /* end-to-end distance, so a closed loop mapped as a runway gets no fan */
     if (len < 0.8) return; /* too short to be a runway: helipad, stub or fragment */
     var ref = ((f.properties && f.properties.ref) || "").split("/");
-    if (!(f.properties && f.properties.ref) && len < 1.0) return; /* Ver59: no designator and short: not treated as a runway */
+    if (!(f.properties && f.properties.ref) && len < 1.0) return; /* no designator and short: not treated as a runway */
     ends.push({ w: wi, pt: a, out: calcBearing(b[1], b[0], a[1], a[0]), label: (ref[0] || "").trim() });
     ends.push({ w: wi, pt: b, out: calcBearing(a[1], a[0], b[1], b[0]), label: (ref[1] || "").trim() });
   });
@@ -7803,7 +7810,7 @@ function reportFlywayHtml(apt, rlbl) {
   var srcs = {}; near.forEach(function (r) { if (r.f.source) srcs[r.f.source] = true; });
   return h + t + '<div class="rpt-cite">Flyways within 500 km are listed. Flyway information source(s): ' + escXML(Object.keys(srcs).join("; ")) + '.</div>';
 }
-/* ---- strike log CSV (Ver59: field names follow the ICAO bird strike reporting form used for IBIS) ----
+/* ---- strike log CSV (field names follow the ICAO bird strike reporting form used for IBIS) ----
    IBIS is a reporting form and database; it defines no official CSV file layout. This importer reads the form's field names (and common
    spellings of them) from the header row. Latitude and longitude are optional: records without them are counted in the summary only. */
 var STRIKE_MAX_ROWS = 20000;
@@ -7955,7 +7962,7 @@ function drawStrikes(apt) {
   addLyr({ id: pfx + "strikeP", type: "circle", source: pfx + "strike", minzoom: 13, paint: { "circle-radius": 3.5, "circle-color": "#ef4444", "circle-stroke-color": "#fff", "circle-stroke-width": 1 } });
   map.on("click", pfx + "strikeP", function (e) {
     if (addFeatMode || measureMode || !e.features || !e.features.length) return;
-    new maplibregl.Popup({ closeButton: true, offset: 8, maxWidth: "260px" }).setLngLat(e.features[0].geometry.coordinates.slice()).setHTML(strikePopupHtml(e.features[0].properties)).addTo(map);
+    new maplibregl.Popup({ closeButton: true, offset: 8, maxWidth: "260px", className: "pin-pop" }).setLngLat(e.features[0].geometry.coordinates.slice()).setHTML(strikePopupHtml(e.features[0].properties)).addTo(map);
   });
   map.on("mouseenter", pfx + "strikeP", function () { map.getCanvas().style.cursor = "pointer"; });
   map.on("mouseleave", pfx + "strikeP", function () { map.getCanvas().style.cursor = ""; });
@@ -7999,7 +8006,7 @@ function reportStrikeHtml(apt) {
 }
 
 /* ================================================================
-   Ver22: AUTOSAVE OF USER WORK, KML/GEOJSON IMPORT, KMZ EXPORT
+   AUTOSAVE OF USER WORK, KML/GEOJSON IMPORT, KMZ EXPORT
    Manual features, reclassifications/renames of automated features and saved
    measurements are written to this browser (localStorage) per airport every
    2 seconds and restored when the same airport is scanned again. Deletions
@@ -8346,7 +8353,7 @@ function escXML(s) {
 }
 
 /* ================================================================
-   WILDLIFE HAZARD REPORT (Ver11)
+   WILDLIFE HAZARD REPORT
 
    Mirrors exportKML()'s data-gathering (same apt.scannedData /
    apt.manualFeatures shapes) but renders a standalone, printable
@@ -8390,7 +8397,7 @@ function reportFeatureDistKm(feat, lat, lon) {
 
 
 /* ================================================================
-   Ver53 ADD COORDINATES: type or paste latitude and longitude, get a small labelled pin.
+   ADD COORDINATES: type or paste latitude and longitude, get a small labelled pin.
    The pin never replaces or hides a mapped feature. Hover shows name, class, coordinates and distance
    from the reference point; click opens a small editor. Pins are kept with the focused airport and are
    written to the KML export as a separate folder. They are not saved between sessions.
@@ -8497,7 +8504,7 @@ document.getElementById("pinCxBtn").addEventListener("click", function () { docu
 })();
 
 /* ================================================================
-   Ver53 WORD EXPORT (.docx). The report on the screen is converted block by block into an editable Word file:
+   WORD EXPORT (.docx). The report on the screen is converted block by block into an editable Word file:
    cover, Part A and Part B in separate sections (the map page is landscape), running header and footer with page numbers.
    The docx library is loaded on demand from a public CDN; nothing is sent anywhere.
 ================================================================ */
@@ -8808,8 +8815,8 @@ function reportFlowSVG(nHab, nHotspot) {
 }
 
 
-/* Ver53: one-page, visual management summary placed at the top of the report. Every figure is computed from the same rows as the detailed sections; nothing is estimated. */
-/* Ver57: neighbouring parts of one water or wetland system (for example the many outlines of one bay) are grouped
+/* one-page, visual management summary placed at the top of the report. Every figure is computed from the same rows as the detailed sections; nothing is estimated. */
+/* neighbouring parts of one water or wetland system (for example the many outlines of one bay) are grouped
    before the "top sites" are chosen, so one system cannot fill the whole list. App-defined rule: same class family,
    edge to edge gap of 250 m or less. Nothing is removed from counts, scores, the map or the KML. */
 var RPT_GROUP_GAP_KM = 0.25;
@@ -9077,7 +9084,7 @@ function buildReport(apt) {
   rows.sort(function (a, b) { return a.distKm - b.distKm; });
   var rptComb = safeBuild(function () { return computeCombinedAttractants(habFeats.concat(manualFeats), lat, lon); }, null, "combined attractants (report)");
 
-  /* Ver53 (decision 5a): features below the minimum mapping unit stay in the counts and the KML, but are NOT ranked as hotspots. */
+  /*  (decision 5a): features below the minimum mapping unit stay in the counts and the KML, but are NOT ranked as hotspots. */
   var hotspots = rptGroupHotspots(rows.filter(function (r) { return r.risk.score >= 8 && !r.small; })
     .sort(function (a, b) { return b.risk.score - a.risk.score || a.distKm - b.distKm; }), 10);
 
@@ -9125,7 +9132,7 @@ function buildReport(apt) {
     '<div class="rpt-p">Data-confidence assessment for this scan: <b>' + escXML((conf.level || "unknown").toUpperCase()) + '</b> — ' + escXML(conf.message) + '</div>' + (arpCheckNote(apt) ? '<div class="rpt-p"><b>Reference point.</b> ' + escXML(arpCheckNote(apt)) + '</div>' : '') + (hsRegionNote(apt) ? '<div class="rpt-p"><b>Regional note.</b> ' + escXML(hsRegionNote(apt)) + '</div>' : '') + '<div class="rpt-p" style="margin-bottom:.2rem"><b>Integrity checks</b> (a tick means passed; an exclamation mark is a note to read):</div>' + ((conf && conf.checks) ? '<ul class="rpt-checks">' + conf.checks.map(function (k) { return '<li><span class="' + (k.ok ? 'ck-ok' : 'ck-no') + '">' + (k.ok ? '&#10003;' : '!') + '</span> ' + escXML(k.text) + '</li>'; }).join('') + '</ul>' : '')
   );
 
-  /* ── 2. Habitat & attractant overview (Ver12: dashboard, not a
+  /* ── 2. Habitat & attractant overview (dashboard, not a
      754-row table — a real scan can return hundreds of OSM features,
      and nobody reads a printed report that long. The full per-feature
      list with coordinates already exists, in the KML export; this
@@ -9238,7 +9245,7 @@ function buildReport(apt) {
   document.getElementById("reportDoc").innerHTML = html;
 }
 
-/* Ver23: a top-down image of the 20 km assessment area for the report. The camera is moved under the
+/* a top-down image of the 20 km assessment area for the report. The camera is moved under the
    full-screen report overlay, the map canvas is copied, ARP / rings / scale are drawn on the copy, and the
    camera is put back. DOM callouts and dimension labels are not part of the canvas and are not drawn. */
 function captureReportMap(apt) {
@@ -9395,7 +9402,7 @@ function coordsToKmlStr(coordArray) {
   return coordArray.map(function (c) { return c[0] + "," + c[1] + ",0"; }).join(" ");
 }
 
-/* Audit note (Ver08): the KML Polygon writer used to export only
+/* Audit note: the KML Polygon writer used to export only
    ringSet[0] (the outer boundary) and silently drop any further rings.
    For a simple polygon that's the whole shape, but for an OSM
    multipolygon relation with holes (a lake with an island, a forest
@@ -9522,7 +9529,7 @@ function exportKML(apt, asKmz) {
       var pName  = fp.name || catData.label;
       var isPointOnly = fp.footprintType === "point";
       var isManual = fp.status === "manual";
-      /* Audit note (Ver08): this fallback (only reached when distKm wasn't
+      /* Audit note: this fallback (only reached when distKm wasn't
          precomputed, e.g. a centroid calc failed upstream) used to index
          MultiPolygon coordinates the same way as Polygon coordinates
          ([0][0][1]/[0][0][0]), which for a MultiPolygon is one nesting
@@ -9609,7 +9616,7 @@ function exportKML(apt, asKmz) {
     for (var mi = 0; mi < manualFeats.length; mi++) {
       var mf = manualFeats[mi], mp2 = mf.properties;
       var areaDesc = (typeof mp2.areaM2 === "number") ? (" | Approx. area: " + (mp2.areaM2 >= 10000 ? (mp2.areaM2 / 10000).toFixed(2) + " ha" : mp2.areaM2.toFixed(0) + " m\u00b2")) : "";
-      /* Audit note (Ver09): distKm is only ever set via haversine() for a
+      /* Audit note: distKm is only ever set via haversine() for a
          manual feature (never left undefined in current code paths), but
          unlike every other distance field exported to KML in this file,
          this one called .toFixed(2) on it unguarded \u2014 one bad upstream
