@@ -511,6 +511,11 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 .fb-p a,.fb-s a{color:#7dd3fc}
 .fb-row{display:flex;gap:.6rem;margin-top:.7rem}
 .fb-b{font-family:var(--F);font-size:.62rem;letter-spacing:.14em;padding:.6rem 1rem;background:#f7d978;color:#071a38;border:0;cursor:pointer}
+.fb-sec{margin-top:1rem;padding-top:.7rem;border-top:1px solid rgba(247,217,120,.25)}
+.fb-rec{font-size:.66rem;font-weight:700;color:#071a38;background:#f7d978;padding:.05rem .35rem;margin-left:.3rem;letter-spacing:.04em;text-transform:uppercase}
+.fb-opt{font-size:.66rem;font-weight:400;color:#9fb4d0;margin-left:.3rem;letter-spacing:.04em;text-transform:uppercase}
+.fb-two{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}@media (max-width:420px){.fb-two{grid-template-columns:1fr}}
+.fb-chk{margin-top:.6rem}
 .fb-b:disabled{opacity:.5;cursor:default}.fb-x{background:transparent;color:#cfe3ff;border:1px solid rgba(207,227,255,.4)}
 .pin-pop .maplibregl-popup-tip{border-top-color:#071a38;border-bottom-color:#071a38}
 .pin-pop input,.pin-pop select{width:100%;margin:.2rem 0 .4rem;background:rgba(0,16,46,.8);border:1px solid rgba(247,217,120,.35);color:#fff;font-family:var(--B);font-size:.82rem;padding:.3rem .4rem}
@@ -1490,15 +1495,21 @@ function hsShowFeedback(live) {
       '<div class="fb-row"><button class="fb-b fb-x" id="fbClose">CLOSE</button></div>';
   } else {
     body = '<div class="fb-t">SEND FEEDBACK</div>' +
-      '<div class="fb-p">Short and anonymous unless you add your email. Aerodrome: <b>' + (icao || "none scanned yet") + "</b> (sent with your message).</div>" +
+      '<div class="fb-p">Your feedback helps improve this tool. Aerodrome: <b>' + (icao || "none scanned yet") + "</b> (sent with your message).</div>" +
       '<div class="fb-q">What is it about?</div><div class="fb-g">' + radios("kind", kinds) + "</div>" +
       '<div class="fb-q">How well does the map match what you know of this aerodrome?</div><div class="fb-g">' + radios("rating", ratings) + "</div>" +
+      '<div class="fb-q">Message (up to 1,500 characters)</div><textarea id="fbMsg" class="fb-i" rows="4" maxlength="1500" placeholder="For a wrong feature: what you saw, and where."></textarea>' +
       '<div class="fb-q">Your role (optional)</div><select id="fbRole" class="fb-i"><option value="">Choose...</option>' + opts(roles) + "</select>" +
-      '<div class="fb-q">Message (optional, up to 1,500 characters)</div><textarea id="fbMsg" class="fb-i" rows="4" maxlength="1500" placeholder="For a wrong feature: what you saw, and where."></textarea>' +
-      '<div class="fb-q">Email (optional, only if you want a reply)</div><input id="fbMail" class="fb-i" type="email" maxlength="120" autocomplete="email">' +
-      '<label class="fb-r"><input type="checkbox" id="fbOpt"> Tell me about updates and early access to this tool (needs an email)</label>' +
-      '<input id="fbHp" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px" aria-hidden="true">' +
-      '<div class="fb-p fb-s">Your message goes to the developer by email. Your email, if given, is used only to reply and, if you ticked the box, to send updates. It is kept for up to 12 months and deleted on request. <a href="' + HS_CONFIG.privacyUrl + '" target="_blank" rel="noopener">Privacy</a>. Not for emergencies or safety reports.</div>' +
+      '<div class="fb-q fb-sec">How can I follow up with you? <span class="fb-rec">Recommended</span></div>' +
+      '<div class="fb-p fb-s">Leave a way to reach you if you would like an answer, an explanation, or to hear when your suggestion is acted on. All the fields below are optional. I use them only to respond to your feedback. <a href="' + HS_CONFIG.privacyUrl + '" target="_blank" rel="noopener">Read the privacy notice</a> before you send.</div>' +
+      '<div class="fb-two"><div><div class="fb-q">First name <span class="fb-rec">Recommended</span></div><input id="fbName" class="fb-i" type="text" maxlength="60" autocomplete="given-name"></div>' +
+      '<div><div class="fb-q">Email <span class="fb-rec">Recommended</span></div><input id="fbMail" class="fb-i" type="email" maxlength="120" autocomplete="email"></div></div>' +
+      '<div class="fb-two"><div><div class="fb-q">Organisation <span class="fb-opt">Optional</span></div><input id="fbOrg" class="fb-i" type="text" maxlength="80" autocomplete="organization"></div>' +
+      '<div><div class="fb-q">WhatsApp <span class="fb-opt">Optional</span></div><input id="fbWa" class="fb-i" type="tel" maxlength="24" placeholder="with country code" autocomplete="tel"></div></div>' +
+      '<div class="fb-q">LinkedIn <span class="fb-opt">Optional</span></div><input id="fbLi" class="fb-i" type="text" maxlength="150" placeholder="profile link">' +
+      '<label class="fb-r fb-chk"><input type="checkbox" id="fbOpt"> Also tell me about updates and early access to this tool (needs an email)</label>' +
+      '<input id="fbHp" name="hs_extra_field" type="text" tabindex="-1" autocomplete="off" readonly style="position:absolute;left:-9999px;width:1px;height:1px" aria-hidden="true">' +
+      '<div class="fb-p fb-s">Your message goes to the developer by email. Contact details are optional, used only to respond to you and, if you ticked the box, to send updates. They are kept for up to 12 months and deleted on request. Not for emergencies or safety reports.</div>' +
       '<div class="fb-p" id="fbSt" role="status"></div>' +
       '<div class="fb-row"><button class="fb-b" id="fbSend">SEND</button><button class="fb-b fb-x" id="fbClose">CLOSE</button></div>';
   }
@@ -1516,8 +1527,10 @@ function hsShowFeedback(live) {
     if (opt && !mail) { st.textContent = "Please add your email, or untick the updates box."; return; }
     if (!msg && !(opt && mail)) { st.textContent = "Please write a short message first."; return; }
     if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) { st.textContent = "That email address does not look right."; return; }
+    var wa = document.getElementById("fbWa").value.trim();
+    if (wa && !/^[+0-9][0-9 ()\-]{5,22}$/.test(wa)) { st.textContent = "The WhatsApp number should use digits only, with the country code (for example +20 100 000 0000)."; return; }
     send.disabled = true; st.textContent = "Sending...";
-    var payload = { kind: val("kind"), rating: val("rating"), role: document.getElementById("fbRole").value, message: msg, email: mail, optin: opt, icao: icao, utm: HS_UTM, ua: navigator.userAgent.slice(0, 200), lang: (navigator.language || "").slice(0, 20), website: document.getElementById("fbHp").value };
+    var payload = { kind: val("kind"), rating: val("rating"), role: document.getElementById("fbRole").value, message: msg, name: document.getElementById("fbName").value.trim(), org: document.getElementById("fbOrg").value.trim(), whatsapp: wa, linkedin: document.getElementById("fbLi").value.trim(), email: mail, optin: opt, icao: icao, utm: HS_UTM, ua: navigator.userAgent.slice(0, 200), lang: (navigator.language || "").slice(0, 20), website: document.getElementById("fbHp").value };
     fetch(HS_CONFIG.feedbackEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok }; }); })
       .then(function (res) {
