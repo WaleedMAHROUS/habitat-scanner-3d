@@ -3518,7 +3518,7 @@ function enrichHabitatFeatures(fc, aptLat, aptLon) {
     }
     p.areaM2 = areaM2;
     /* a very large area that contains the reference point is usually a rough outline (it also holds buildings, roads and other uses) */
-    if (areaM2 && areaM2 >= 10000000 && p.footprintType !== "point" && window._turfReady && !/^Satellite/.test(p.source || "")) {
+    if (areaM2 && areaM2 >= 10000000 && p.footprintType !== "point" && !ARB_OVERLAY[p.cat] && window._turfReady && !/^Satellite/.test(p.source || "")) {
       try { if (turf.booleanPointInPolygon([aptLon, aptLat], f)) p.coversArp = true; } catch (eCv) {}
     }
   }
@@ -5576,6 +5576,7 @@ function batchSummarise(apt, data) {
     var p = f.properties || {};
     if (p.belowMMU) { below++; return; }
     shown++;
+    if (p.coversArp) return; /* rough covering outline: counted as shown, not in tier counts */
     if (p.satDerived) { satN++; if (typeof p.distKm === "number" && (satNear === null || p.distKm < satNear)) satNear = p.distKm; return; } /* approximate satellite outlines are kept out of the tier counts and nearest-attractant figures */
     var cat = p.cat || "unknown", sev = attractantSeverity(cat);
     tiers[sev.tier] = (tiers[sev.tier] || 0) + 1;
@@ -8860,9 +8861,9 @@ function rptGroupHotspots(list, maxGroups) {
 function rptPartsNote(h) { return h && h.parts > 0 ? " (+" + h.parts + " adjoining part" + (h.parts > 1 ? "s" : "") + ")" : ""; }
 function reportExecutiveHtml(apt, rows, hotspots, rptComb, conf, habFeats, rlbl, genDateStr) {
   var TIERS = [ { n: "CRITICAL HOTSPOT", c: "#c0392b", s: "Critical" }, { n: "HIGH CONCERN", c: "#d97706", s: "High" }, { n: "MODERATE", c: "#b8860b", s: "Moderate" }, { n: "MONITOR ONLY", c: "#5a7a3a", s: "Monitor" } ];
-  var mapped = rows.filter(function (r) { return !r.small && !r.isManual; });
+  var mapped = rows.filter(function (r) { return !r.small && !r.coarse && !r.isManual; });
   var crit = hotspots.filter(function (h) { return h.risk.score >= 12; }).length;
-  var allHot = rows.filter(function (r) { return !r.small && r.risk.score >= 8; });
+  var allHot = rows.filter(function (r) { return !r.small && !r.coarse && r.risk.score >= 8; });
   var critAll = allHot.filter(function (r) { return r.risk.score >= 12; }).length, highAll = allHot.length - critAll;
   var nSmall = rows.filter(function (r) { return r.small; }).length, nSat = rows.filter(function (r) { return r.sat && !r.small; }).length;
   var nClust = rptComb && rptComb.clusters ? rptComb.clusters.length : 0;
@@ -8911,6 +8912,8 @@ function reportExecutiveHtml(apt, rows, hotspots, rptComb, conf, habFeats, rlbl,
   obs.push(aHi ? ("<b>" + aHi + "</b> high-concern or critical site(s) lie inside Area A (0–3 km), the zone where attractants matter most.") : "No high-concern or critical site lies inside Area A (0–3 km).");
   if (nClust) { var nc = rptComb.clusters[0]; obs.push("<b>" + nClust + "</b> combined-attractant cluster(s) (different attractant classes within 1 km of each other); the nearest is at " + (nc && nc.nearestKm != null ? nc.nearestKm.toFixed(1) + " km" : "the reference point") + "."); var bigC = rptComb.clusters.slice().sort(function (a, b) { return b.members - a.members; })[0]; if (bigC && bigC.members >= 20) obs.push("The largest cluster (" + bigC.id + ") links <b>" + bigC.members + "</b> features over about " + bigC.spanKm.toFixed(0) + " km: a continuous attractant belt to examine as one zone."); }
   if (nSat) obs.push("<b>" + nSat + "</b> water polygon(s) come from satellite data (ESA WorldCover, 10 m). Their outlines are approximate and are marked as such.");
+  var coarseRows = rows.filter(function (r) { return r.coarse; });
+  if (coarseRows.length) obs.push(coarseRows.length + " large area(s) cover the reference point (" + coarseRows.slice(0, 3).map(function (r) { return r.catLabel + (r.feat && r.feat.properties && r.feat.properties.areaM2 ? " " + Math.round(r.feat.properties.areaM2 / 10000).toLocaleString() + " ha" : ""); }).join(", ") + "). Areas this large are often rough outlines in OpenStreetMap that also include buildings and runways, so they are shown lightly on the map and are not ranked as hotspots. Check them against current imagery.");
   if (nSmall) obs.push(nSmall + " very small feature(s) are kept in the counts and in the Google Earth (KML) export but are not ranked as hotspots.");
 
   /* suggested follow-up (rule-based, for specialist review) */
@@ -9064,7 +9067,7 @@ function buildReport(apt) {
       name: fp.name || (catDef ? catDef.label : "Unclassified feature"),
       catLabel: fp.label || (catDef ? catDef.label : "Unclassified"),
       distKm: dist, zone: zone, sev: sev, risk: risk, isManual: false,
-      cat: fp.cat, small: !!fp.belowMMU, sat: !!fp.satDerived, feat: f
+      cat: fp.cat, small: !!fp.belowMMU, coarse: !!fp.coversArp, sat: !!fp.satDerived, feat: f
     });
   }
   for (var mi = 0; mi < manualFeats.length; mi++) {
@@ -9085,7 +9088,7 @@ function buildReport(apt) {
   var rptComb = safeBuild(function () { return computeCombinedAttractants(habFeats.concat(manualFeats), lat, lon); }, null, "combined attractants (report)");
 
   /*  (decision 5a): features below the minimum mapping unit stay in the counts and the KML, but are NOT ranked as hotspots. */
-  var hotspots = rptGroupHotspots(rows.filter(function (r) { return r.risk.score >= 8 && !r.small; })
+  var hotspots = rptGroupHotspots(rows.filter(function (r) { return r.risk.score >= 8 && !r.small && !r.coarse; })
     .sort(function (a, b) { return b.risk.score - a.risk.score || a.distKm - b.distKm; }), 10);
 
   window._rptMarks = hotspots.slice(0, 5).map(function (h, i) {
@@ -9150,7 +9153,7 @@ function buildReport(apt) {
     ca.zones[ar.zone.key] = true;
     if (ar.distKm < ca.minDist) ca.minDist = ar.distKm;
     if (ar.distKm > ca.maxDist) ca.maxDist = ar.distKm;
-    if (!ar.small && ar.risk.score > ca.maxScore) { ca.maxScore = ar.risk.score; ca.maxRisk = ar.risk; }
+    if (!ar.small && !ar.coarse && ar.risk.score > ca.maxScore) { ca.maxScore = ar.risk.score; ca.maxRisk = ar.risk; }
     if (!ca.maxRisk) ca.maxRisk = ar.risk;
   }
   var catList = Object.keys(catAgg).sort(function (a, b) { return catAgg[b].maxScore - catAgg[a].maxScore; });
@@ -9196,11 +9199,11 @@ function buildReport(apt) {
     }
   }
   html += rptSection("3. Hazard Assessment — Prioritized Hotspots", '<div class="rpt-p" style="font-size:.74rem;color:#4a5568">Ranking rule: features smaller than the minimum mapping unit are listed in the counts and the KML export but are not ranked here. Neighbouring parts of the same water or wetland system (gap of 250 m or less, an app-defined rule) are ranked together as one site, shown as \u201cadjoining parts\u201d; every part stays in the counts, on the map and in the KML export. Satellite-derived water is ranked but marked as approximate.</div>' + hsHtml + reportCombinedHtml(rptComb, rlbl) + reportProcessingHtml(apt, data, habFeats) + reportSectorHtml(apt, habFeats, manualFeats, rlbl) + reportStrikeHtml(apt) + reportFlywayHtml(apt, rlbl) +
-    '<div class="rpt-p" style="margin-top:.8rem">The ' + hotspots.length + ' highest-ranked sites are described below; the complete list of critical and high-concern sites (' + rows.filter(function (r) { return !r.small && r.risk.score >= 8; }).length + ') is in the Google Earth (KML) export. Hotspots are ranked by a combined score (documented attractant severity &times; proximity-zone weight); see Section 5 for the full scoring methodology and citations.</div>'
+    '<div class="rpt-p" style="margin-top:.8rem">The ' + hotspots.length + ' highest-ranked sites are described below; the complete list of critical and high-concern sites (' + rows.filter(function (r) { return !r.small && !r.coarse && r.risk.score >= 8; }).length + ') is in the Google Earth (KML) export. Hotspots are ranked by a combined score (documented attractant severity &times; proximity-zone weight); see Section 5 for the full scoring methodology and citations.</div>'
   );
 
   /* ── 4. Process flow ── */
-  html += rptSection("4. Assessment Process Flow", reportFlowSVG(rows.length, rows.filter(function (r) { return !r.small && r.risk.score >= 8; }).length));
+  html += rptSection("4. Assessment Process Flow", reportFlowSVG(rows.length, rows.filter(function (r) { return !r.small && !r.coarse && r.risk.score >= 8; }).length));
 
   /* ── 5. Methodology & references ── */
   html += rptSection("5. Methodology, Sources & Limitations",
