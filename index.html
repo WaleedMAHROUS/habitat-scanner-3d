@@ -500,6 +500,18 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 .pin-lb{margin-top:3px;max-width:150px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--F);font-size:.55rem;font-weight:800;letter-spacing:.05em;color:#fff;background:rgba(6,20,46,.92);border:1px solid #f2c94c;border-radius:2px;padding:1px 5px}
 .pin-pop .maplibregl-popup-content{background:#071a38;color:#eef4ff;border:1px solid rgba(247,217,120,.55);font-family:var(--B);font-size:.82rem;line-height:1.5;padding:.6rem .75rem;max-width:300px}
 .pin-pop .maplibregl-popup-close-button{color:#eef4ff}
+.fb-bg{position:fixed;inset:0;z-index:99999;background:rgba(2,10,28,.72);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.fb-card{position:relative;width:100%;max-width:460px;max-height:92vh;overflow:auto;background:#071a38;color:#eef4ff;border:1px solid rgba(247,217,120,.55);padding:18px 18px 14px;font-family:var(--B);font-size:.92rem;line-height:1.45}
+.fb-t{font-family:var(--F);font-size:.78rem;letter-spacing:.16em;color:#f7d978;margin-bottom:.5rem}
+.fb-q{margin:.7rem 0 .25rem;font-weight:700;color:#cfe3ff}
+.fb-g{display:flex;flex-direction:column;gap:.1rem}
+.fb-r{display:block;cursor:pointer;margin:.1rem 0}
+.fb-i{width:100%;box-sizing:border-box;background:rgba(0,16,46,.8);border:1px solid rgba(247,217,120,.35);color:#fff;font-family:var(--B);font-size:.9rem;padding:.4rem .5rem}
+.fb-p{margin:.4rem 0;color:#cfe3ff}.fb-s{font-size:.74rem;color:#9fb4d0}
+.fb-p a,.fb-s a{color:#7dd3fc}
+.fb-row{display:flex;gap:.6rem;margin-top:.7rem}
+.fb-b{font-family:var(--F);font-size:.62rem;letter-spacing:.14em;padding:.6rem 1rem;background:#f7d978;color:#071a38;border:0;cursor:pointer}
+.fb-b:disabled{opacity:.5;cursor:default}.fb-x{background:transparent;color:#cfe3ff;border:1px solid rgba(207,227,255,.4)}
 .pin-pop .maplibregl-popup-tip{border-top-color:#071a38;border-bottom-color:#071a38}
 .pin-pop input,.pin-pop select{width:100%;margin:.2rem 0 .4rem;background:rgba(0,16,46,.8);border:1px solid rgba(247,217,120,.35);color:#fff;font-family:var(--B);font-size:.82rem;padding:.3rem .4rem}
 .pin-pop button{font-family:var(--F);font-size:.5rem;letter-spacing:.1em;font-weight:800;padding:.35rem .6rem;margin-right:.3rem;background:rgba(0,40,100,.8);color:#9be;border:1px solid rgba(150,200,255,.4);cursor:pointer}
@@ -1039,6 +1051,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
           <div class="abt-p" style="color:rgba(200,225,250,.85)">Founder, <b>StopBIRDSTRIKE</b> &middot; Aviation Wildlife Hazard Management Consultant</div>
           <div class="abt-p">Habitat Scanner 3D is built and maintained by Waleed Mahrous, founder of the StopBIRDSTRIKE platform, to give aerodrome wildlife-hazard specialists worldwide a fast, practical first look at the habitat environment around any airport. Questions, feedback, or interested in a wildlife hazard management consultation? Reach out through any of the links below.</div>
           <a class="abt-cl" href="#" onclick="hsOpenFeedback();return false;">&#9993; Send feedback about this tool</a>
+          <a class="abt-cl" href="privacy.html" target="_blank" rel="noopener">&#9432; Privacy</a>
           <a class="abt-cl" href="https://waleedmahrous.com/" target="_blank" rel="noopener">&#127760; Website &mdash; waleedmahrous.com</a>
           <a class="abt-cl" href="https://waleedmahrous.com/#contact-waleed-mahrous" target="_blank" rel="noopener">&#9993; Contact Waleed Mahrous</a>
           <a class="abt-cl" href="https://waleedmahrous.com/book-an-appointment-for-a-wildlife-hazard-management-consultation" target="_blank" rel="noopener">&#128197; Book a Wildlife Hazard Management Consultation</a>
@@ -1091,6 +1104,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
     <div class="dbst"><div class="dbdot pulse" id="dbdot"></div><span id="dbstxt">LOADING AIRPORT DATABASE...</span></div>
     <span class="abt-lnk" id="aboutLnk">&#9432; ABOUT THIS TOOL</span>
     <span class="abt-lnk" id="fbLnk">&#9993; SEND FEEDBACK</span>
+    <a class="abt-lnk" href="privacy.html" target="_blank" rel="noopener" style="text-decoration:none">&#9432; PRIVACY</a>
   </div>
 </div>
 
@@ -1441,7 +1455,7 @@ table.rpt-tbl tr:nth-child(even) td{background:#f7f5ef}
 /* ---- Deployment settings (edit here only) ----
    feedbackUrl: the feedback form page. Until the form exists it points to the contact page.
    goatCounterUrl: anonymous visit counter, for example "https://yourcode.goatcounter.com/count". Empty means no counting. */
-var HS_CONFIG = { feedbackUrl: "https://waleedmahrous.com/#contact-waleed-mahrous", goatCounterUrl: "" };
+var HS_CONFIG = { feedbackUrl: "https://waleedmahrous.com/#contact-waleed-mahrous", goatCounterUrl: "https://habitat-scanner-3d.goatcounter.com/count", feedbackEndpoint: "https://habitat-feedback.waleed-elsagheer17.workers.dev", privacyUrl: "privacy.html", contactEmail: "info@waleedmahrous.com" };
 var HS_UTM = (function () { try { var p = new URLSearchParams(location.search), o = {}; ["utm_source", "utm_medium", "utm_campaign", "utm_content", "ref"].forEach(function (k) { var v = p.get(k); if (v) o[k] = v.slice(0, 60); }); return o; } catch (e) { return {}; } })();
 function hsTrack(name) { try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: String(name), title: String(name), event: true }); } catch (e) {} }
 (function () { if (!HS_CONFIG.goatCounterUrl) return; try { var sc = document.createElement("script"); sc.async = true; sc.setAttribute("data-goatcounter", HS_CONFIG.goatCounterUrl); sc.src = "https://gc.zgo.at/count.js"; document.head.appendChild(sc); } catch (e) {} })();
@@ -1451,7 +1465,68 @@ function hsFeedbackUrl() {
   try { var a = pinFocusedApt(); if (a && a.icao && a.icao !== "COORDS") q.push("icao=" + encodeURIComponent(a.icao)); } catch (e) {}
   return base + (base.indexOf("?") >= 0 ? "&" : "?") + q.join("&") + hash;
 }
-function hsOpenFeedback() { hsTrack("feedback-click"); window.open(hsFeedbackUrl(), "_blank", "noopener"); }
+function hsOpenFeedback() {
+  hsTrack("feedback-click");
+  var ep = HS_CONFIG.feedbackEndpoint;
+  if (!ep) { window.open(hsFeedbackUrl(), "_blank", "noopener"); return; }
+  var ctl = ("AbortController" in window) ? new AbortController() : null, tm = setTimeout(function () { if (ctl) ctl.abort(); }, 4000);
+  fetch(ep, { method: "GET", signal: ctl ? ctl.signal : undefined })
+    .then(function (r) { clearTimeout(tm); hsShowFeedback(r.ok); })
+    .catch(function () { clearTimeout(tm); hsShowFeedback(false); });
+}
+function hsShowFeedback(live) {
+  var old = document.getElementById("fbModal"); if (old) old.remove();
+  var em = HS_CONFIG.contactEmail, a = null; try { a = pinFocusedApt(); } catch (e) {}
+  var icao = a && a.icao && a.icao !== "COORDS" ? a.icao : "";
+  function opts(arr) { return arr.map(function (t) { return "<option>" + t + "</option>"; }).join(""); }
+  function radios(name, arr) { return arr.map(function (t, i) { return '<label class="fb-r"><input type="radio" name="' + name + '" value="' + t + '"' + (i === 0 && name === "kind" ? " checked" : "") + "> " + t + "</label>"; }).join(""); }
+  var kinds = ["Wrong or missing feature on the map", "Problem with the report or export", "Suggestion", "Question", "Other"];
+  var ratings = ["Very well", "Mostly, a few errors", "Poorly", "I do not know this aerodrome"];
+  var roles = ["Aerodrome operator / airport staff", "Civil aviation authority", "Wildlife hazard specialist / biologist", "Consultant", "Student / academic", "Other"];
+  var box = document.createElement("div"); box.id = "fbModal"; box.className = "fb-bg";
+  var body;
+  if (!live) {
+    body = '<div class="fb-t">SEND FEEDBACK</div><div class="fb-p">The feedback form is not available right now. Please write to <a href="mailto:' + em + '">' + em + '</a>' + (icao ? " and mention the aerodrome (" + icao + ")" : "") + ".</div>" +
+      '<div class="fb-row"><button class="fb-b fb-x" id="fbClose">CLOSE</button></div>';
+  } else {
+    body = '<div class="fb-t">SEND FEEDBACK</div>' +
+      '<div class="fb-p">Short and anonymous unless you add your email. Aerodrome: <b>' + (icao || "none scanned yet") + "</b> (sent with your message).</div>" +
+      '<div class="fb-q">What is it about?</div><div class="fb-g">' + radios("kind", kinds) + "</div>" +
+      '<div class="fb-q">How well does the map match what you know of this aerodrome?</div><div class="fb-g">' + radios("rating", ratings) + "</div>" +
+      '<div class="fb-q">Your role (optional)</div><select id="fbRole" class="fb-i"><option value="">Choose...</option>' + opts(roles) + "</select>" +
+      '<div class="fb-q">Message (optional, up to 1,500 characters)</div><textarea id="fbMsg" class="fb-i" rows="4" maxlength="1500" placeholder="For a wrong feature: what you saw, and where."></textarea>' +
+      '<div class="fb-q">Email (optional, only if you want a reply)</div><input id="fbMail" class="fb-i" type="email" maxlength="120" autocomplete="email">' +
+      '<label class="fb-r"><input type="checkbox" id="fbOpt"> Tell me about updates and early access to this tool (needs an email)</label>' +
+      '<input id="fbHp" type="text" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px" aria-hidden="true">' +
+      '<div class="fb-p fb-s">Your message goes to the developer by email. Your email, if given, is used only to reply and, if you ticked the box, to send updates. It is kept for up to 12 months and deleted on request. <a href="' + HS_CONFIG.privacyUrl + '" target="_blank" rel="noopener">Privacy</a>. Not for emergencies or safety reports.</div>' +
+      '<div class="fb-p" id="fbSt" role="status"></div>' +
+      '<div class="fb-row"><button class="fb-b" id="fbSend">SEND</button><button class="fb-b fb-x" id="fbClose">CLOSE</button></div>';
+  }
+  box.innerHTML = '<div class="fb-card" role="dialog" aria-modal="true" aria-label="Send feedback">' + body + "</div>";
+  document.body.appendChild(box);
+  function close() { var m = document.getElementById("fbModal"); if (m) m.remove(); document.removeEventListener("keydown", onKey); }
+  function onKey(e) { if (e.key === "Escape") close(); }
+  document.addEventListener("keydown", onKey);
+  box.addEventListener("click", function (e) { if (e.target === box) close(); });
+  document.getElementById("fbClose").addEventListener("click", close);
+  var send = document.getElementById("fbSend"); if (!send) return;
+  send.addEventListener("click", function () {
+    var st = document.getElementById("fbSt"), val = function (n) { var r = box.querySelector('input[name="' + n + '"]:checked'); return r ? r.value : ""; };
+    var msg = document.getElementById("fbMsg").value.trim(), mail = document.getElementById("fbMail").value.trim(), opt = document.getElementById("fbOpt").checked;
+    if (opt && !mail) { st.textContent = "Please add your email, or untick the updates box."; return; }
+    if (!msg && !(opt && mail)) { st.textContent = "Please write a short message first."; return; }
+    if (mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) { st.textContent = "That email address does not look right."; return; }
+    send.disabled = true; st.textContent = "Sending...";
+    var payload = { kind: val("kind"), rating: val("rating"), role: document.getElementById("fbRole").value, message: msg, email: mail, optin: opt, icao: icao, utm: HS_UTM, ua: navigator.userAgent.slice(0, 200), lang: (navigator.language || "").slice(0, 20), website: document.getElementById("fbHp").value };
+    fetch(HS_CONFIG.feedbackEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok && j.ok }; }); })
+      .then(function (res) {
+        if (res.ok) { hsTrack("feedback-sent"); box.querySelector(".fb-card").innerHTML = '<div class="fb-t">THANK YOU</div><div class="fb-p">Your message was sent.</div><div class="fb-row"><button class="fb-b fb-x" id="fbClose2">CLOSE</button></div>'; document.getElementById("fbClose2").addEventListener("click", close); }
+        else { send.disabled = false; st.innerHTML = 'It could not be sent. Please write to <a href="mailto:' + em + '">' + em + "</a> instead."; }
+      })
+      .catch(function () { send.disabled = false; st.innerHTML = 'It could not be sent. Please write to <a href="mailto:' + em + '">' + em + "</a> instead."; });
+  });
+}
 /* Regions where OpenStreetMap coverage is often thinner (Africa, Middle East, parts of Asia): a plain reminder, not a score. */
 var HS_THIN_OSM = "DZ AO BJ BW BF BI CM CV CF TD KM CG CD CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW EH AE BH IQ IR IL JO KW LB OM PS QA SA SY TR YE AF PK BD NP MM LA KH TL KZ UZ TM KG TJ".split(" ");
 function hsRegionNote(apt) {
