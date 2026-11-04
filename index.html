@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="color-scheme" content="dark">
-<meta name="build" content="2026-11-04b">
+<meta name="build" content="2026-11-04c">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Habitat Scanner 3D</title>
@@ -3702,6 +3702,8 @@ function buildRunwayData(elements) {
     var coords = [];
     for (var j = 0; j < el.geometry.length; j++) { var gq = el.geometry[j]; if (gq && typeof gq.lon === "number") coords.push([gq.lon, gq.lat]); }
     if (coords.length < 2) continue;
+    var _len = 0; for (var jl = 1; jl < coords.length; jl++) _len += haversine(coords[jl - 1][1], coords[jl - 1][0], coords[jl][1], coords[jl][0]);
+    if (_len < 0.05) continue; /* degenerate runway way (under 50 m, e.g. both ends on one point): not a usable runway line */
     lines.push({ type: "Feature", properties: { ref: ref, osm: (el.type || "way") + "/" + el.id, surface: (el.tags && el.tags.surface) || null, construction: !!(el.tags && (el.tags.construction || el.tags["construction:aeroway"])) }, geometry: { type: "LineString", coordinates: coords } });
     var parts = ref.split("/"), n = coords.length;
     if (parts[0] && n >= 2) {
@@ -7786,7 +7788,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
+  var out = { app: "Habitat Scanner 3D", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, dataConfidence: d.confidence ? { level: d.confidence.level, label: hsConfLabel(d.confidence.level), keyCounts: d.confidence.keyCounts || null, thinClasses: d.confidence.thinClasses || [], satelliteTotal: d.confidence.geeCount || 0, satelliteShown: d.confidence.geeShown || 0, message: d.confidence.message || "" } : null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
     runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, from: a ? [+a[1].toFixed(5), +a[0].toFixed(5)] : null, to: b ? [+b[1].toFixed(5), +b[0].toFixed(5)] : null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
