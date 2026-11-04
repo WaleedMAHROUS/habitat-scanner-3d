@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="color-scheme" content="dark">
-<meta name="build" content="2026-11-04d">
+<meta name="build" content="2026-11-04e">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Habitat Scanner 3D</title>
@@ -3155,6 +3155,9 @@ function parseCoords(s) {
   return null;
 }
 
+/* ICAO codes that were changed: old code -> current code in OurAirports (verified: Kuwait International OKBK -> OKKK). */
+var HS_ICAO_ALIAS = { OKBK: "OKKK" };
+function hsAlias(code) { return (AIRPORTS && !AIRPORTS[code] && HS_ICAO_ALIAS[code] && AIRPORTS[HS_ICAO_ALIAS[code]]) ? HS_ICAO_ALIAS[code] : code; }
 function lookupAirport(raw) {
   var looksCoords = /[\d].*[\s,;/].*[\d]/.test(raw) && !/^[A-Za-z]{4}$/.test(raw.trim());
   if (looksCoords) {
@@ -3162,7 +3165,7 @@ function lookupAirport(raw) {
     if (co) return { lat: co.lat, lon: co.lon, name: "Custom Location", icao: "COORDS", country: "" };
     return null;
   }
-  var code = raw.toUpperCase().replace(/\s/g, "");
+  var code = hsAlias(raw.toUpperCase().replace(/\s/g, ""));
   if (AIRPORTS[code]) {
     var a = AIRPORTS[code];
     return { lat: a.lat, lon: a.lon, name: a.name, icao: code, country: a.country };
@@ -4199,7 +4202,7 @@ async function fetchOverpassParts(parts) {
       }
       var els = (r && r.elements) || [];
       crumb("part done: " + pt.label + " | " + els.length + " elements | " + Math.round(performance.now() - t0) + " ms");
-      results[i] = { label: pt.label, what: pt.what, ok: !(r && r._failed) && !liteNote, lite: liteNote, count: els.length, ms: Math.round(performance.now() - t0), servedFrom: (r && r._meta && r._meta.servedFrom) || "", fetchedAt: (r && r._meta && r._meta.fetchedAt) || "", elements: els };
+      results[i] = { label: pt.label, what: pt.what, optional: !!pt.optional, ok: !(r && r._failed) && !liteNote, lite: liteNote, count: els.length, ms: Math.round(performance.now() - t0), servedFrom: (r && r._meta && r._meta.servedFrom) || "", fetchedAt: (r && r._meta && r._meta.fetchedAt) || "", elements: els };
       overpassDiagnostics.push({ endpoint: "Scan part: " + pt.label, method: "summary", outcome: liteNote ? ("REDUCED: " + els.length + " OSM elements; " + liteNote) : results[i].ok ? (els.length + " OSM elements in " + (results[i].ms / 1000).toFixed(1) + " s" + (results[i].servedFrom ? " (" + results[i].servedFrom + ")" : "")) : "FAILED after retries" });
     }
   }
@@ -4209,14 +4212,16 @@ async function fetchOverpassParts(parts) {
   var times = results.filter(function (rp) { return rp.fetchedAt; }).map(function (rp) { return rp.fetchedAt; }).sort();
   var cache = results.filter(function (rp) { return /kv-cache/.test(rp.servedFrom); }).length, live = results.filter(function (rp) { return /live-fetch/.test(rp.servedFrom); }).length;
   lastOverpassMeta = { servedFrom: results.length + " query parts: " + live + " live, " + cache + " from the permanent cache", fetchedAt: times.length ? times[0] : "" };
-  return { merged: { version: 0.6, generator: "Habitat Scanner 3D (merged parts)", elements: merged }, status: results.map(function (rp) { return { label: rp.label, what: rp.what, ok: rp.ok, lite: rp.lite || "", count: rp.count, ms: rp.ms, servedFrom: rp.servedFrom, fetchedAt: rp.fetchedAt }; }) };
+  return { merged: { version: 0.6, generator: "Habitat Scanner 3D (merged parts)", elements: merged }, status: results.map(function (rp) { return { label: rp.label, what: rp.what, optional: !!rp.optional, ok: rp.ok, lite: rp.lite || "", count: rp.count, ms: rp.ms, servedFrom: rp.servedFrom, fetchedAt: rp.fetchedAt }; }) };
 }
 
 /* automatic per-scan integrity checks, shown with every scan, in the report and in the diagnostics file. */
 function computeIntegrity(partsStatus, habGJ, rwyCount, perf, noOutlineCount) {
-  var checks = [], failed = (partsStatus || []).filter(function (s) { return !s.ok && !s.lite; }), liteParts = (partsStatus || []).filter(function (s) { return !!s.lite; });
-  checks.push({ ok: !failed.length, text: failed.length ? ("OpenStreetMap data INCOMPLETE: " + failed.map(function (s) { return s.label; }).join(", ") + " could not be retrieved") : liteParts.length ? ("OpenStreetMap data: " + ((partsStatus || []).length - liteParts.length) + " of " + (partsStatus || []).length + " query parts complete; " + liteParts.map(function (s) { return s.label; }).join(", ") + " retrieved in reduced form") : ("OpenStreetMap data complete: all " + (partsStatus || []).length + " query parts retrieved") });
+  var optFailed = (partsStatus || []).filter(function (s) { return !s.ok && !s.lite && s.optional; });
+  var checks = [], failed = (partsStatus || []).filter(function (s) { return !s.ok && !s.lite && !s.optional; }), liteParts = (partsStatus || []).filter(function (s) { return !!s.lite; });
+  checks.push({ ok: !failed.length, text: failed.length ? ("OpenStreetMap data INCOMPLETE: " + failed.map(function (s) { return s.label; }).join(", ") + " could not be retrieved") : liteParts.length ? ("OpenStreetMap data: " + ((partsStatus || []).length - liteParts.length) + " of " + (partsStatus || []).length + " query parts complete; " + liteParts.map(function (s) { return s.label; }).join(", ") + " retrieved in reduced form") : optFailed.length ? ("OpenStreetMap data complete for all habitat classes: " + ((partsStatus || []).length - optFailed.length) + " of " + (partsStatus || []).length + " query parts retrieved; supplementary part missing: " + optFailed.map(function (s) { return s.label; }).join(", ")) : ("OpenStreetMap data complete: all " + (partsStatus || []).length + " query parts retrieved") });
   (partsStatus || []).forEach(function (s) { if (s.lite) checks.push({ ok: true, text: "Part \"" + s.label + "\" was retrieved in REDUCED form (" + s.lite + "). Large lakes are drawn from the satellite layer instead. Press RETRY to try the full query again." }); });
+  optFailed.forEach(function (s) { checks.push({ ok: false, text: "Supplementary part \"" + s.label + "\" could not be retrieved (public map servers did not answer). All other classes are complete; food sources are not shown on this scan. Scan again later to add them." }); });
   checks.push({ ok: rwyCount > 0, rwy: true, text: rwyCount > 0 ? (rwyCount + " runway way(s) found in OpenStreetMap (disused or abandoned runways not counted)") : "No runway is mapped in OpenStreetMap here: runway sectors are unavailable" });
   checks.push({ ok: !noOutlineCount, text: noOutlineCount ? (noOutlineCount + " multi-part OpenStreetMap feature(s) came back without an outline and were NOT drawn (never shown as boxes)") : "All multi-part features (lakes, parks, reserves) have real outlines" });
   var se = (perf && perf.suspectEdges) || 0;
@@ -4229,7 +4234,7 @@ function computeIntegrity(partsStatus, habGJ, rwyCount, perf, noOutlineCount) {
   var shown = (habGJ.features || []).filter(function (f) { return !(f.properties && f.properties.belowMMU); }).length;
   /* this is a performance note, not a data-quality failure, so it no longer shows as a warning mark. */
   checks.push({ ok: true, text: shown + " features drawn on the map" + (shown > 4000 ? " (dense area: the map may be slower; small features can be hidden with the legend switch)" : "") });
-  return { checks: checks, failedParts: failed.map(function (s) { return s.label; }), liteParts: liteParts.map(function (s) { return s.label; }) };
+  return { checks: checks, optionalFailed: optFailed.map(function (s) { return s.label; }), failedParts: failed.map(function (s) { return s.label; }), liteParts: liteParts.map(function (s) { return s.label; }) };
 }
 function integrityText(conf) { return (conf && conf.checks) ? conf.checks.map(function (k) { return (k.ok ? "\u2713 " : "! ") + k.text; }).join(" | ") : ""; }
 
@@ -4399,7 +4404,7 @@ async function fetchAllDataRaw(lat, lon) {
       q: QQ('way["waterway"~"drain|ditch|canal|river|stream"]' + B21 + ';way["natural"="coastline"]' + B21 + ';nwr["natural"~"^(bay|strait)$"]["name"]' + B21 + ';nwr["place"~"^(sea|ocean)$"]["name"]' + B21 + ';') },
     { label: "waste, farms and runways", what: "landfill, wastewater, aquaculture, livestock, golf, reserves, runways",
       q: QQ('nwr["landuse"~"landfill|sewage|farmyard|aquaculture|animal_keeping"]' + B21 + ';nwr["leisure"~"nature_reserve|golf_course|horse_riding"]' + B21 + ';nwr["man_made"~"wastewater_plant|sewage_treatment"]' + B21 + ';nwr["amenity"~"waste_disposal|recycling|waste_transfer_station|animal_boarding|animal_breeding|animal_shelter"]' + B21 + ';way["aeroway"="runway"]' + B21 + ';') },
-    { label: "food sources", what: "markets, slaughterhouses, food and fish processing",
+    { label: "food sources", what: "markets, slaughterhouses, food and fish processing", optional: true,
       q: QQ('nwr["amenity"="marketplace"]' + B21 + ';nwr["industrial"~"slaughterhouse|abattoir|^food$|food_industry|food_processing|fish_processing|meat_processing|^dairy$"]' + B21 + ';nwr["building"="slaughterhouse"]' + B21 + ';nwr["man_made"="works"]["product"~"meat|fish|food|poultry"]' + B21 + ';') },
     { label: "land cover (landuse)", what: "forest, farmland, grass, orchards, cemeteries, recreation (13 km)",
       q: QQ('nwr["landuse"~"forest|farmland|farm|meadow|grass|recreation_ground|cemetery|allotments|orchard|vineyard"]' + B13 + ';') },
@@ -4553,6 +4558,10 @@ async function fetchAllDataRaw(lat, lon) {
   _perf.noOutline = boundsOnlyLog.length; _perf.wasteContainersExcluded = wasteContainersExcluded;
   confidence.checks = integ.checks;
   if (wasteContainersExcluded > 0) confidence.checks.push({ ok: true, text: wasteContainersExcluded + " waste containers (dumpsters, recycling bins) not mapped as attractors" });
+  if (integ.optionalFailed && integ.optionalFailed.length) {
+    confidence.foodNotRetrieved = true;
+    confidence.message = confidence.message.replace(/Food sources mapped: \d+\. /, "Food sources: not retrieved on this scan (servers did not answer). ");
+  }
   if (integ.failedParts.length) {
     confidence.message = "INCOMPLETE SCAN. These OpenStreetMap parts could not be retrieved: " + integ.failedParts.join(", ") + ". The map is missing those classes, so do not use it as a complete assessment. Press RETRY: parts already retrieved are served from the cache. " + confidence.message;
     confidence.level = confidence.osmCount === 0 ? "none" : "partial";
@@ -5760,6 +5769,7 @@ async function batchRun(codes) {
     batchStat("SCANNING " + code + "  (" + (i + 1) + " OF " + total + ")", (i / total) * 100);
     var existing = null; batchRows.forEach(function (r) { if (r.icao === code) existing = r; });
     if (existing && existing.status === "COMPLETE") { done++; continue; }
+    if (/^[A-Z0-9]{4}$/.test(code) && AIRPORTS) code = hsAlias(code);
     var a = (/^[A-Z0-9]{4}$/.test(code) && AIRPORTS && AIRPORTS[code]) ? AIRPORTS[code] : null;
     if (!a) { batchSetRow({ icao: code, name: "", country: "", status: "NOT FOUND", tiers: {}, vhZone: {}, cats: {}, scannedAt: new Date().toISOString() }); continue; }
     var apt = { lat: a.lat, lon: a.lon, name: a.name, icao: code, country: a.country };
@@ -7799,7 +7809,7 @@ function fastBBox(g) {
 function downloadScanDiagnostics(apt) {
   if (!apt || !apt.scannedData) return;
   var d = apt.scannedData, feats = (d.habGJ && d.habGJ.features) || [];
-  var out = { app: "Habitat Scanner 3D", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, dataConfidence: d.confidence ? { level: d.confidence.level, label: hsConfLabel(d.confidence.level), keyCounts: d.confidence.keyCounts || null, foodSources: d.confidence.foodCount || 0, thinClasses: d.confidence.thinClasses || [], satelliteTotal: d.confidence.geeCount || 0, satelliteShown: d.confidence.geeShown || 0, message: d.confidence.message || "" } : null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
+  var out = { app: "Habitat Scanner 3D", queryParts: (d.scanMeta && d.scanMeta.partsStatus) || null, omittedNoOutline: (d.scanMeta && d.scanMeta.omittedNoOutline) || [], integrity: (d.confidence && d.confidence.checks) || null, dataConfidence: d.confidence ? { level: d.confidence.level, label: hsConfLabel(d.confidence.level), keyCounts: d.confidence.keyCounts || null, foodSources: d.confidence.foodNotRetrieved ? "not retrieved" : (d.confidence.foodCount || 0), thinClasses: d.confidence.thinClasses || [], satelliteTotal: d.confidence.geeCount || 0, satelliteShown: d.confidence.geeShown || 0, message: d.confidence.message || "" } : null, suspectEdges: [], generated: new Date().toISOString(), icao: apt.icao, lat: apt.lat, lon: apt.lon, perf: d.perf || null, arpCheck: apt.arpCheck || null, referencePointSource: "OurAirports",
     runwayWays: ((d.rwyData && d.rwyData.lines && d.rwyData.lines.features) || []).map(function (f) { var cs = (f.geometry && f.geometry.coordinates) || [], a = cs[0], b = cs[cs.length - 1]; return { osm: f.properties.osm || null, ref: f.properties.ref || null, from: a ? [+a[1].toFixed(5), +a[0].toFixed(5)] : null, to: b ? [+b[1].toFixed(5), +b[0].toFixed(5)] : null, lengthKm: a && b ? +haversine(a[1], a[0], b[1], b[0]).toFixed(2) : null, surface: f.properties.surface || null, construction: !!f.properties.construction, own: f.properties.own !== false }; }), runwayOwnership: apt.rwyOwn ? { ownNearestKm: apt.rwyOwn.ownKm, ownWays: apt.rwyOwn.own.features.length, otherGroups: apt.rwyOwn.others } : null, runwaySectors: ((apt.rwySectors && apt.rwySectors.features) || []).map(function (f) { return f.properties && f.properties.end; }),
     totals: { features: feats.length, belowMinimumSize: 0, bigWater: 0, satelliteDerived: 0, manual: (apt.manualFeatures || []).length }, byCategory: {}, bboxOverlapPairs: {}, bigWater: [], largest: [] };
   var areasByCat = {};
