@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta name="color-scheme" content="dark">
-<meta name="build" content="2026-11-04">
+<meta name="build" content="2026-11-04b">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Habitat Scanner 3D</title>
@@ -3722,6 +3722,19 @@ function buildRunwayData(elements) {
    empty (see renderOverpassDiagnostics). */
 var overpassDiagnostics = [];
 
+/* Reads a proxy reply as JSON even when the cached body arrives still gzip-compressed (a cached value stored compressed can be
+   compressed a second time on the way, so the browser removes only one layer). Strips any remaining gzip layers, then parses. */
+async function hsReadJson(resp) {
+  var buf = new Uint8Array(await resp.arrayBuffer()), layers = 0;
+  while (buf.length > 2 && buf[0] === 0x1f && buf[1] === 0x8b && layers < 3) {
+    if (typeof DecompressionStream === "undefined") throw new Error("compressed reply and this browser cannot decompress it (update the browser)");
+    var ds = new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"));
+    buf = new Uint8Array(await new Response(ds).arrayBuffer()); layers++;
+  }
+  var out = JSON.parse(new TextDecoder("utf-8").decode(buf));
+  if (out && typeof out === "object") out._gzLayers = layers;
+  return out;
+}
 async function fetchOverpass(query, label, maxTries) {
   var PL = "your Cloudflare proxy" + (label ? " [" + label + "]" : "");
   function record(label, method, outcome) { overpassDiagnostics.push({ endpoint: label, method: method, outcome: outcome }); }
@@ -3756,7 +3769,8 @@ async function fetchOverpass(query, label, maxTries) {
         var _sf = respP.headers.get("X-Served-From") || "";
         lastOverpassMeta = { servedFrom: _sf, fetchedAt: respP.headers.get("X-Data-Fetched-At") || "" };
         record(PL, "GET", "HTTP 200 (succeeded" + (_sf ? ", " + _sf : "") + ")");
-        var _okJson = await respP.json();
+        var _okJson = await hsReadJson(respP);
+        if (_okJson._gzLayers) record(PL, "GET", "Cached reply was still compressed; decompressed in the browser");
         _okJson._meta = { servedFrom: _sf, fetchedAt: respP.headers.get("X-Data-Fetched-At") || "" };
         return _okJson;
       }
